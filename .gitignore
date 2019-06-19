@@ -1,0 +1,15 @@
+build/
+DerivedData
+build.xcarchive
+xcuserdata/
+Pods/
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+.DS_Store
+.idea/
