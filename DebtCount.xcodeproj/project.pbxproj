@@ -23,6 +23,7 @@
 		FAF8482E22BB7F2A009FDD55 /* DCAddPersonPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482D22BB7F2A009FDD55 /* DCAddPersonPresenter.m */; };
 		FAF8483122BB9304009FDD55 /* DCPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483022BB9304009FDD55 /* DCPerson.m */; };
 		FAF8483622BB97F8009FDD55 /* DCValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483522BB97F8009FDD55 /* DCValidator.m */; };
+		FAF8483A22BBBAB1009FDD55 /* DCValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483922BBBAB1009FDD55 /* DCValidationResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		FAF8483022BB9304009FDD55 /* DCPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPerson.m; sourceTree = "<group>"; };
 		FAF8483422BB97F8009FDD55 /* DCValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCValidator.h; sourceTree = "<group>"; };
 		FAF8483522BB97F8009FDD55 /* DCValidator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCValidator.m; sourceTree = "<group>"; };
+		FAF8483822BBBAB1009FDD55 /* DCValidationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCValidationResponse.h; sourceTree = "<group>"; };
+		FAF8483922BBBAB1009FDD55 /* DCValidationResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCValidationResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,10 +234,20 @@
 		FAF8483322BB97BB009FDD55 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
+				FAF8483722BBB796009FDD55 /* ValidationError */,
 				FAF8483422BB97F8009FDD55 /* DCValidator.h */,
 				FAF8483522BB97F8009FDD55 /* DCValidator.m */,
 			);
 			path = Validator;
+			sourceTree = "<group>";
+		};
+		FAF8483722BBB796009FDD55 /* ValidationError */ = {
+			isa = PBXGroup;
+			children = (
+				FAF8483822BBBAB1009FDD55 /* DCValidationResponse.h */,
+				FAF8483922BBBAB1009FDD55 /* DCValidationResponse.m */,
+			);
+			path = ValidationError;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +332,7 @@
 				FAF847EA22BA39BF009FDD55 /* AppDelegate.m in Sources */,
 				FAF8480322BA5B1C009FDD55 /* DCPersonsListViewController.m in Sources */,
 				FAF8481B22BA8574009FDD55 /* DCPersonCellPresenter.m in Sources */,
+				FAF8483A22BBBAB1009FDD55 /* DCValidationResponse.m in Sources */,
 				FAF8482422BA8955009FDD55 /* DCAddPersonViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -42,6 +42,15 @@
     [self.presenter okPressed];
 }
 
+- (IBAction)nameTextChanged:(UITextField *)sender {
+    [self.presenter userChangedNameString:sender.text];
+}
+
+- (IBAction)relationTextChanged:(UITextField *)sender {
+    [self.presenter userChangedRelationString:sender.text];
+}
+
+
 @end
 
 // MARK: - UI Setup
@@ -51,12 +60,38 @@
 - (void)setupUI {
     [self.addPictureButton.layer setCornerRadius:(self.addPictureButton.bounds.size.width / 2)];
     [self.addPictureButton.layer setMasksToBounds:true];
+
+    [self.nameTextField.layer setBorderWidth:1.0];
+    [self.nameTextField.layer setBorderColor:UIColor.blueColor.CGColor];
+    [self.nameTextField.layer setCornerRadius:self.relationTextField.bounds.size.height / 2];
+    [self.nameTextField.layer setMasksToBounds:true];
+
+    [self.relationTextField.layer setBorderWidth:1.0];
+    [self.relationTextField.layer setBorderColor:UIColor.blueColor.CGColor];
+    [self.relationTextField.layer setCornerRadius:self.relationTextField.bounds.size.height / 2];
+    [self.relationTextField.layer setMasksToBounds:true];
 }
 
 @end
 // MARK: - Signals from Presenter
 
 @implementation DCAddPersonViewController (AddPersonPresenter)
+
+- (void)showRelationFieldError {
+    [self.relationTextField.layer setBorderColor:UIColor.redColor.CGColor];
+}
+
+- (void)hideRelationFieldError {
+    [self.relationTextField.layer setBorderColor:UIColor.blueColor.CGColor];
+}
+
+- (void)showNameFieldError {
+    [self.nameTextField.layer setBorderColor:UIColor.redColor.CGColor];
+}
+
+- (void)hideNameFieldError {
+    [self.nameTextField.layer setBorderColor:UIColor.blueColor.CGColor];
+}
 
 - (void)closePopover {
     [self dismissViewControllerAnimated:true completion:nil];

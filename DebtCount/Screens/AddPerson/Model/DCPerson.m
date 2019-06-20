@@ -9,14 +9,6 @@
 #import "DCPerson.h"
 #import <UIKit/UIKit.h>
 
-@interface DCPerson ()
-
-@property NSString *name;
-@property NSString *relation;
-@property UIImage *avatar;
-
-@end
-
 @implementation DCPerson
 
 @end
