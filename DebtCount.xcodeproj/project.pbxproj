@@ -20,6 +20,8 @@
 		FAF8481B22BA8574009FDD55 /* PersonCellPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8481A22BA8574009FDD55 /* PersonCellPresenter.m */; };
 		FAF8482422BA8955009FDD55 /* AddPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482322BA8955009FDD55 /* AddPersonViewController.m */; };
 		FAF8482622BA8963009FDD55 /* AddPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF8482522BA8963009FDD55 /* AddPerson.storyboard */; };
+		FAF8482E22BB7F2A009FDD55 /* AddPersonPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482D22BB7F2A009FDD55 /* AddPersonPresenter.m */; };
+		FAF8483122BB9304009FDD55 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483022BB9304009FDD55 /* Person.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,10 @@
 		FAF8482222BA8955009FDD55 /* AddPersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPersonViewController.h; sourceTree = "<group>"; };
 		FAF8482322BA8955009FDD55 /* AddPersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPersonViewController.m; sourceTree = "<group>"; };
 		FAF8482522BA8963009FDD55 /* AddPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPerson.storyboard; sourceTree = "<group>"; };
+		FAF8482C22BB7F2A009FDD55 /* AddPersonPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPersonPresenter.h; sourceTree = "<group>"; };
+		FAF8482D22BB7F2A009FDD55 /* AddPersonPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPersonPresenter.m; sourceTree = "<group>"; };
+		FAF8482F22BB9304009FDD55 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		FAF8483022BB9304009FDD55 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +201,8 @@
 		FAF8482022BA8937009FDD55 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				FAF8482C22BB7F2A009FDD55 /* AddPersonPresenter.h */,
+				FAF8482D22BB7F2A009FDD55 /* AddPersonPresenter.m */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -202,6 +210,8 @@
 		FAF8482122BA893B009FDD55 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FAF8482F22BB9304009FDD55 /* Person.h */,
+				FAF8483022BB9304009FDD55 /* Person.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,6 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF8480A22BA5B7E009FDD55 /* PersonDetailViewController.m in Sources */,
+				FAF8482E22BB7F2A009FDD55 /* AddPersonPresenter.m in Sources */,
+				FAF8483122BB9304009FDD55 /* Person.m in Sources */,
 				FAF8481822BA83E0009FDD55 /* PersonCell.m in Sources */,
 				FAF847F322BA39BF009FDD55 /* DebtCount.xcdatamodeld in Sources */,
 				FAF847FB22BA39C0009FDD55 /* main.m in Sources */,

@@ -38,12 +38,21 @@
     UIViewController *controller = [storyboard instantiateInitialViewController];
 
     controller.modalPresentationStyle = UIModalPresentationPopover;
-    [self presentViewController:controller animated:YES completion:nil];
 
-    UIPopoverPresentationController *popController = [controller popoverPresentationController];
-    popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
-    popController.barButtonItem = self.addPersonButton;
-    popController.delegate = self;
+    controller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    controller.popoverPresentationController.barButtonItem = self.addPersonButton;
+    controller.popoverPresentationController.delegate = self;
+
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+@end
+
+@implementation PersonsListViewController (PopoverDelegate)
+
+- (BOOL)popoverPresentationControllerShouldDismissPopover:
+    (UIPopoverPresentationController *)popoverPresentationController {
+    return NO;
 }
 
 @end

@@ -29,7 +29,7 @@
 }
 
 - (void)viewIsReady {
-    NSLog(@"ViewIsReady");
+    
 }
 
 - (void)addPersonButtonPressed {

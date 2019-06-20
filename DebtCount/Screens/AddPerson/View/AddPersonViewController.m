@@ -7,8 +7,17 @@
 //
 
 #import "AddPersonViewController.h"
+#import "AddPersonPresenter.h"
 
 @interface AddPersonViewController ()
+
+@property AddPersonPresenter *presenter;
+
+@end
+
+@interface AddPersonViewController (UISetup)
+
+- (void)setupUI;
 
 @end
 
@@ -16,17 +25,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.presenter = [[AddPersonPresenter alloc] initWithView:self];
+    [self setupUI];
+    [self.presenter viewIsReady];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)addPictureButtonPressed:(id)sender {
+    [self.presenter changePicturePressed];
 }
-*/
+
+- (IBAction)cancelButtonPressed:(id)sender {
+    [self.presenter cancelPressed];
+}
+
+- (IBAction)okButtonPressed:(id)sender {
+    [self.presenter okPressed];
+}
+
+@end
+
+// MARK: - UI Setup
+
+@implementation AddPersonViewController (UISetup)
+
+- (void)setupUI {
+    [self.addPictureButton.layer setCornerRadius:(self.addPictureButton.bounds.size.width / 2)];
+    [self.addPictureButton.layer setMasksToBounds:true];
+}
+
+@end
+// MARK: - Signals from Presenter
+
+@implementation AddPersonViewController (AddPersonPresenter)
+
+- (void)closePopover {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
+- (void)takeAPicture {
+    NSLog(@"open image picker controller");
+}
 
 @end

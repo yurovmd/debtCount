@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PersonsListViewController : UITableViewController
+@interface PersonsListViewController : UITableViewController <UIPopoverPresentationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addPersonButton;
 
