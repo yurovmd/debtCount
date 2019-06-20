@@ -6,21 +6,21 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "AddPersonPresenter.h"
-#import "AddPersonViewController.h"
-#import "Person.h"
+#import "DCAddPersonPresenter.h"
+#import "DCAddPersonViewController.h"
+#import "DCPerson.h"
 #import <UIKit/UIKit.h>
 
-@interface AddPersonPresenter ()
+@interface DCAddPersonPresenter ()
 
-@property (weak) AddPersonViewController *view;
-@property Person *person;
+@property (weak) DCAddPersonViewController *view;
+@property DCPerson *person;
 
 @end
 
-@implementation AddPersonPresenter
+@implementation DCAddPersonPresenter
 
-- (instancetype)initWithView:(AddPersonViewController *)view {
+- (instancetype)initWithView:(DCAddPersonViewController *)view {
     if (self = [super init]) {
         self.view = view;
     }

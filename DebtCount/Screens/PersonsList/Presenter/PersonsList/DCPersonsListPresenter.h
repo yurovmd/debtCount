@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PersonsListViewController.h"
+#import "DCPersonsListViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PersonsListPresenter : NSObject
+@interface DCPersonsListPresenter : NSObject
 
-- (instancetype)initWithView:(PersonsListViewController *)view;
+- (instancetype)initWithView:(DCPersonsListViewController *)view;
 
 - (void)viewIsReady;
 - (void)addPersonButtonPressed;

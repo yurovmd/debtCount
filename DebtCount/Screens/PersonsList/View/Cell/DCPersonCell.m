@@ -6,9 +6,9 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "PersonCell.h"
+#import "DCPersonCell.h"
 
-@implementation PersonCell
+@implementation DCPersonCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

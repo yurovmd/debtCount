@@ -6,8 +6,8 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "PersonCellPresenter.h"
+#import "DCPersonCellPresenter.h"
 
-@implementation PersonCellPresenter
+@implementation DCPersonCellPresenter
 
 @end

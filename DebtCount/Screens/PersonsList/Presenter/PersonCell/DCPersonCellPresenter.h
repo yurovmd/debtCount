@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PersonCellPresenter : NSObject
+@interface DCPersonCellPresenter : NSObject
 
 @end
 

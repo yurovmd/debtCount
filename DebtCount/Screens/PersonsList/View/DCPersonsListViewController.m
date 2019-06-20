@@ -6,20 +6,20 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "PersonsListViewController.h"
-#import "PersonsListPresenter.h"
+#import "DCPersonsListViewController.h"
+#import "DCPersonsListPresenter.h"
 
-@interface PersonsListViewController ()
+@interface DCPersonsListViewController ()
 
-@property PersonsListPresenter *presenter;
+@property DCPersonsListPresenter *presenter;
 
 @end
 
-@implementation PersonsListViewController
+@implementation DCPersonsListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.presenter = [[PersonsListPresenter alloc] initWithView:self];
+    self.presenter = [[DCPersonsListPresenter alloc] initWithView:self];
     [self.presenter viewIsReady];
 }
 
@@ -31,10 +31,10 @@
 
 // MARK: - Signals from Presenter
 
-@implementation PersonsListViewController (PresenterSignals)
+@implementation DCPersonsListViewController (PresenterSignals)
 
 - (void)showAddPersonPopover {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"AddPerson" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DCAddPerson" bundle:nil];
     UIViewController *controller = [storyboard instantiateInitialViewController];
 
     controller.modalPresentationStyle = UIModalPresentationPopover;
@@ -48,7 +48,7 @@
 
 @end
 
-@implementation PersonsListViewController (PopoverDelegate)
+@implementation DCPersonsListViewController (PopoverDelegate)
 
 - (BOOL)popoverPresentationControllerShouldDismissPopover:
     (UIPopoverPresentationController *)popoverPresentationController {

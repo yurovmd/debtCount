@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AddPersonViewController.h"
+#import "DCAddPersonViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddPersonPresenter : NSObject
+@interface DCAddPersonPresenter : NSObject
 
-- (instancetype)initWithView:(AddPersonViewController *)view;
+- (instancetype)initWithView:(DCAddPersonViewController *)view;
 
 - (void)viewIsReady;
 - (void)userChangedNameString:(NSString *)string;

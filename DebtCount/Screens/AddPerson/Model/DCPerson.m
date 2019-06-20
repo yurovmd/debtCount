@@ -6,10 +6,10 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "Person.h"
+#import "DCPerson.h"
 #import <UIKit/UIKit.h>
 
-@interface Person ()
+@interface DCPerson ()
 
 @property NSString *name;
 @property NSString *relation;
@@ -17,6 +17,6 @@
 
 @end
 
-@implementation Person
+@implementation DCPerson
 
 @end

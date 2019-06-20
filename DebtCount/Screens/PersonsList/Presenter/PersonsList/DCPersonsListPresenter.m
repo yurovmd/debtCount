@@ -6,22 +6,22 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "PersonsListPresenter.h"
-#import "PersonsListViewController.h"
+#import "DCPersonsListPresenter.h"
+#import "DCPersonsListViewController.h"
 
 // MARK: - Properties
 
-@interface PersonsListPresenter ()
+@interface DCPersonsListPresenter ()
 
-@property (weak) PersonsListViewController *view;
+@property (weak) DCPersonsListViewController *view;
 
 @end
 
 // MARK: - Implementation
 
-@implementation PersonsListPresenter
+@implementation DCPersonsListPresenter
 
-- (instancetype)initWithView:(PersonsListViewController *)view {
+- (instancetype)initWithView:(DCPersonsListViewController *)view {
     if (self = [super init]) {
         self.view = view;
     }

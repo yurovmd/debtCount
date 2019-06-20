@@ -6,26 +6,26 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "AddPersonViewController.h"
-#import "AddPersonPresenter.h"
+#import "DCAddPersonViewController.h"
+#import "DCAddPersonPresenter.h"
 
-@interface AddPersonViewController ()
+@interface DCAddPersonViewController ()
 
-@property AddPersonPresenter *presenter;
+@property DCAddPersonPresenter *presenter;
 
 @end
 
-@interface AddPersonViewController (UISetup)
+@interface DCAddPersonViewController (UISetup)
 
 - (void)setupUI;
 
 @end
 
-@implementation AddPersonViewController
+@implementation DCAddPersonViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.presenter = [[AddPersonPresenter alloc] initWithView:self];
+    self.presenter = [[DCAddPersonPresenter alloc] initWithView:self];
     [self setupUI];
     [self.presenter viewIsReady];
 }
@@ -46,7 +46,7 @@
 
 // MARK: - UI Setup
 
-@implementation AddPersonViewController (UISetup)
+@implementation DCAddPersonViewController (UISetup)
 
 - (void)setupUI {
     [self.addPictureButton.layer setCornerRadius:(self.addPictureButton.bounds.size.width / 2)];
@@ -56,7 +56,7 @@
 @end
 // MARK: - Signals from Presenter
 
-@implementation AddPersonViewController (AddPersonPresenter)
+@implementation DCAddPersonViewController (AddPersonPresenter)
 
 - (void)closePopover {
     [self dismissViewControllerAnimated:true completion:nil];

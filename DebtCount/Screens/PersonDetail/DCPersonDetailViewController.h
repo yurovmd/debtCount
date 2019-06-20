@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PersonDetailViewController : UIViewController
+@interface DCPersonDetailViewController : UIViewController
 
 @end
 

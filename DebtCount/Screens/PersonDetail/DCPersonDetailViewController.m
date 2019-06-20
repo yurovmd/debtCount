@@ -6,13 +6,13 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "PersonDetailViewController.h"
+#import "DCPersonDetailViewController.h"
 
-@interface PersonDetailViewController ()
+@interface DCPersonDetailViewController ()
 
 @end
 
-@implementation PersonDetailViewController
+@implementation DCPersonDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

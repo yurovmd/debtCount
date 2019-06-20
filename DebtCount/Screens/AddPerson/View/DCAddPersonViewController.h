@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddPersonViewController : UIViewController
+@interface DCAddPersonViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *cancelButtonPressed;
 @property (weak, nonatomic) IBOutlet UIButton *okButtonPressed;
@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: - Signals from Presenter
 
-@interface AddPersonViewController (AddPersonPresenter)
+@interface DCAddPersonViewController (AddPersonPresenter)
 
 - (void)takeAPicture;
 - (void)closePopover;

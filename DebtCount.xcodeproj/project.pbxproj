@@ -13,15 +13,16 @@
 		FAF847F522BA39C0009FDD55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF847F422BA39C0009FDD55 /* Assets.xcassets */; };
 		FAF847F822BA39C0009FDD55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF847F622BA39C0009FDD55 /* LaunchScreen.storyboard */; };
 		FAF847FB22BA39C0009FDD55 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF847FA22BA39C0009FDD55 /* main.m */; };
-		FAF8480322BA5B1C009FDD55 /* PersonsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8480222BA5B1C009FDD55 /* PersonsListViewController.m */; };
-		FAF8480A22BA5B7E009FDD55 /* PersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8480922BA5B7E009FDD55 /* PersonDetailViewController.m */; };
-		FAF8481122BA71BC009FDD55 /* PersonsListPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8481022BA71BC009FDD55 /* PersonsListPresenter.m */; };
-		FAF8481822BA83E0009FDD55 /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8481722BA83E0009FDD55 /* PersonCell.m */; };
-		FAF8481B22BA8574009FDD55 /* PersonCellPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8481A22BA8574009FDD55 /* PersonCellPresenter.m */; };
-		FAF8482422BA8955009FDD55 /* AddPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482322BA8955009FDD55 /* AddPersonViewController.m */; };
-		FAF8482622BA8963009FDD55 /* AddPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF8482522BA8963009FDD55 /* AddPerson.storyboard */; };
-		FAF8482E22BB7F2A009FDD55 /* AddPersonPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482D22BB7F2A009FDD55 /* AddPersonPresenter.m */; };
-		FAF8483122BB9304009FDD55 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483022BB9304009FDD55 /* Person.m */; };
+		FAF8480322BA5B1C009FDD55 /* DCPersonsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8480222BA5B1C009FDD55 /* DCPersonsListViewController.m */; };
+		FAF8480A22BA5B7E009FDD55 /* DCPersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8480922BA5B7E009FDD55 /* DCPersonDetailViewController.m */; };
+		FAF8481122BA71BC009FDD55 /* DCPersonsListPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8481022BA71BC009FDD55 /* DCPersonsListPresenter.m */; };
+		FAF8481822BA83E0009FDD55 /* DCPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8481722BA83E0009FDD55 /* DCPersonCell.m */; };
+		FAF8481B22BA8574009FDD55 /* DCPersonCellPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8481A22BA8574009FDD55 /* DCPersonCellPresenter.m */; };
+		FAF8482422BA8955009FDD55 /* DCAddPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482322BA8955009FDD55 /* DCAddPersonViewController.m */; };
+		FAF8482622BA8963009FDD55 /* DCAddPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF8482522BA8963009FDD55 /* DCAddPerson.storyboard */; };
+		FAF8482E22BB7F2A009FDD55 /* DCAddPersonPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482D22BB7F2A009FDD55 /* DCAddPersonPresenter.m */; };
+		FAF8483122BB9304009FDD55 /* DCPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483022BB9304009FDD55 /* DCPerson.m */; };
+		FAF8483622BB97F8009FDD55 /* DCValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483522BB97F8009FDD55 /* DCValidator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,23 +35,25 @@
 		FAF847F722BA39C0009FDD55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAF847F922BA39C0009FDD55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAF847FA22BA39C0009FDD55 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FAF8480122BA5B1C009FDD55 /* PersonsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonsListViewController.h; sourceTree = "<group>"; };
-		FAF8480222BA5B1C009FDD55 /* PersonsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonsListViewController.m; sourceTree = "<group>"; };
-		FAF8480822BA5B7E009FDD55 /* PersonDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonDetailViewController.h; sourceTree = "<group>"; };
-		FAF8480922BA5B7E009FDD55 /* PersonDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonDetailViewController.m; sourceTree = "<group>"; };
-		FAF8480F22BA71BC009FDD55 /* PersonsListPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonsListPresenter.h; sourceTree = "<group>"; };
-		FAF8481022BA71BC009FDD55 /* PersonsListPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonsListPresenter.m; sourceTree = "<group>"; };
-		FAF8481622BA83E0009FDD55 /* PersonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCell.h; sourceTree = "<group>"; };
-		FAF8481722BA83E0009FDD55 /* PersonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCell.m; sourceTree = "<group>"; };
-		FAF8481922BA8574009FDD55 /* PersonCellPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCellPresenter.h; sourceTree = "<group>"; };
-		FAF8481A22BA8574009FDD55 /* PersonCellPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCellPresenter.m; sourceTree = "<group>"; };
-		FAF8482222BA8955009FDD55 /* AddPersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPersonViewController.h; sourceTree = "<group>"; };
-		FAF8482322BA8955009FDD55 /* AddPersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPersonViewController.m; sourceTree = "<group>"; };
-		FAF8482522BA8963009FDD55 /* AddPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPerson.storyboard; sourceTree = "<group>"; };
-		FAF8482C22BB7F2A009FDD55 /* AddPersonPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPersonPresenter.h; sourceTree = "<group>"; };
-		FAF8482D22BB7F2A009FDD55 /* AddPersonPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPersonPresenter.m; sourceTree = "<group>"; };
-		FAF8482F22BB9304009FDD55 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		FAF8483022BB9304009FDD55 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		FAF8480122BA5B1C009FDD55 /* DCPersonsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonsListViewController.h; sourceTree = "<group>"; };
+		FAF8480222BA5B1C009FDD55 /* DCPersonsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonsListViewController.m; sourceTree = "<group>"; };
+		FAF8480822BA5B7E009FDD55 /* DCPersonDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonDetailViewController.h; sourceTree = "<group>"; };
+		FAF8480922BA5B7E009FDD55 /* DCPersonDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonDetailViewController.m; sourceTree = "<group>"; };
+		FAF8480F22BA71BC009FDD55 /* DCPersonsListPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonsListPresenter.h; sourceTree = "<group>"; };
+		FAF8481022BA71BC009FDD55 /* DCPersonsListPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonsListPresenter.m; sourceTree = "<group>"; };
+		FAF8481622BA83E0009FDD55 /* DCPersonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonCell.h; sourceTree = "<group>"; };
+		FAF8481722BA83E0009FDD55 /* DCPersonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonCell.m; sourceTree = "<group>"; };
+		FAF8481922BA8574009FDD55 /* DCPersonCellPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonCellPresenter.h; sourceTree = "<group>"; };
+		FAF8481A22BA8574009FDD55 /* DCPersonCellPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonCellPresenter.m; sourceTree = "<group>"; };
+		FAF8482222BA8955009FDD55 /* DCAddPersonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddPersonViewController.h; sourceTree = "<group>"; };
+		FAF8482322BA8955009FDD55 /* DCAddPersonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCAddPersonViewController.m; sourceTree = "<group>"; };
+		FAF8482522BA8963009FDD55 /* DCAddPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DCAddPerson.storyboard; sourceTree = "<group>"; };
+		FAF8482C22BB7F2A009FDD55 /* DCAddPersonPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddPersonPresenter.h; sourceTree = "<group>"; };
+		FAF8482D22BB7F2A009FDD55 /* DCAddPersonPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCAddPersonPresenter.m; sourceTree = "<group>"; };
+		FAF8482F22BB9304009FDD55 /* DCPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPerson.h; sourceTree = "<group>"; };
+		FAF8483022BB9304009FDD55 /* DCPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPerson.m; sourceTree = "<group>"; };
+		FAF8483422BB97F8009FDD55 /* DCValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCValidator.h; sourceTree = "<group>"; };
+		FAF8483522BB97F8009FDD55 /* DCValidator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCValidator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,7 @@
 		FAF847E722BA39BF009FDD55 /* DebtCount */ = {
 			isa = PBXGroup;
 			children = (
+				FAF8483222BB9772009FDD55 /* Utils */,
 				FAF8480622BA5B3F009FDD55 /* Screens */,
 				FAF847E822BA39BF009FDD55 /* AppDelegate.h */,
 				FAF847E922BA39BF009FDD55 /* AppDelegate.m */,
@@ -119,8 +123,8 @@
 		FAF8480722BA5B45009FDD55 /* PersonDetail */ = {
 			isa = PBXGroup;
 			children = (
-				FAF8480822BA5B7E009FDD55 /* PersonDetailViewController.h */,
-				FAF8480922BA5B7E009FDD55 /* PersonDetailViewController.m */,
+				FAF8480822BA5B7E009FDD55 /* DCPersonDetailViewController.h */,
+				FAF8480922BA5B7E009FDD55 /* DCPersonDetailViewController.m */,
 			);
 			path = PersonDetail;
 			sourceTree = "<group>";
@@ -129,8 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				FAF8481222BA836C009FDD55 /* Cell */,
-				FAF8480122BA5B1C009FDD55 /* PersonsListViewController.h */,
-				FAF8480222BA5B1C009FDD55 /* PersonsListViewController.m */,
+				FAF8480122BA5B1C009FDD55 /* DCPersonsListViewController.h */,
+				FAF8480222BA5B1C009FDD55 /* DCPersonsListViewController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -154,8 +158,8 @@
 		FAF8481222BA836C009FDD55 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				FAF8481622BA83E0009FDD55 /* PersonCell.h */,
-				FAF8481722BA83E0009FDD55 /* PersonCell.m */,
+				FAF8481622BA83E0009FDD55 /* DCPersonCell.h */,
+				FAF8481722BA83E0009FDD55 /* DCPersonCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -163,8 +167,8 @@
 		FAF8481C22BA8578009FDD55 /* PersonsList */ = {
 			isa = PBXGroup;
 			children = (
-				FAF8480F22BA71BC009FDD55 /* PersonsListPresenter.h */,
-				FAF8481022BA71BC009FDD55 /* PersonsListPresenter.m */,
+				FAF8480F22BA71BC009FDD55 /* DCPersonsListPresenter.h */,
+				FAF8481022BA71BC009FDD55 /* DCPersonsListPresenter.m */,
 			);
 			path = PersonsList;
 			sourceTree = "<group>";
@@ -172,8 +176,8 @@
 		FAF8481D22BA8591009FDD55 /* PersonCell */ = {
 			isa = PBXGroup;
 			children = (
-				FAF8481922BA8574009FDD55 /* PersonCellPresenter.h */,
-				FAF8481A22BA8574009FDD55 /* PersonCellPresenter.m */,
+				FAF8481922BA8574009FDD55 /* DCPersonCellPresenter.h */,
+				FAF8481A22BA8574009FDD55 /* DCPersonCellPresenter.m */,
 			);
 			path = PersonCell;
 			sourceTree = "<group>";
@@ -191,9 +195,9 @@
 		FAF8481F22BA8933009FDD55 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FAF8482222BA8955009FDD55 /* AddPersonViewController.h */,
-				FAF8482322BA8955009FDD55 /* AddPersonViewController.m */,
-				FAF8482522BA8963009FDD55 /* AddPerson.storyboard */,
+				FAF8482222BA8955009FDD55 /* DCAddPersonViewController.h */,
+				FAF8482322BA8955009FDD55 /* DCAddPersonViewController.m */,
+				FAF8482522BA8963009FDD55 /* DCAddPerson.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,8 +205,8 @@
 		FAF8482022BA8937009FDD55 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				FAF8482C22BB7F2A009FDD55 /* AddPersonPresenter.h */,
-				FAF8482D22BB7F2A009FDD55 /* AddPersonPresenter.m */,
+				FAF8482C22BB7F2A009FDD55 /* DCAddPersonPresenter.h */,
+				FAF8482D22BB7F2A009FDD55 /* DCAddPersonPresenter.m */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -210,10 +214,27 @@
 		FAF8482122BA893B009FDD55 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FAF8482F22BB9304009FDD55 /* Person.h */,
-				FAF8483022BB9304009FDD55 /* Person.m */,
+				FAF8482F22BB9304009FDD55 /* DCPerson.h */,
+				FAF8483022BB9304009FDD55 /* DCPerson.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FAF8483222BB9772009FDD55 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FAF8483322BB97BB009FDD55 /* Validator */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FAF8483322BB97BB009FDD55 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				FAF8483422BB97F8009FDD55 /* DCValidator.h */,
+				FAF8483522BB97F8009FDD55 /* DCValidator.m */,
+			);
+			path = Validator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +297,7 @@
 				FAF847F822BA39C0009FDD55 /* LaunchScreen.storyboard in Resources */,
 				FAF847F522BA39C0009FDD55 /* Assets.xcassets in Resources */,
 				FAF847F022BA39BF009FDD55 /* Main.storyboard in Resources */,
-				FAF8482622BA8963009FDD55 /* AddPerson.storyboard in Resources */,
+				FAF8482622BA8963009FDD55 /* DCAddPerson.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,17 +308,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAF8480A22BA5B7E009FDD55 /* PersonDetailViewController.m in Sources */,
-				FAF8482E22BB7F2A009FDD55 /* AddPersonPresenter.m in Sources */,
-				FAF8483122BB9304009FDD55 /* Person.m in Sources */,
-				FAF8481822BA83E0009FDD55 /* PersonCell.m in Sources */,
+				FAF8480A22BA5B7E009FDD55 /* DCPersonDetailViewController.m in Sources */,
+				FAF8483622BB97F8009FDD55 /* DCValidator.m in Sources */,
+				FAF8482E22BB7F2A009FDD55 /* DCAddPersonPresenter.m in Sources */,
+				FAF8483122BB9304009FDD55 /* DCPerson.m in Sources */,
+				FAF8481822BA83E0009FDD55 /* DCPersonCell.m in Sources */,
 				FAF847F322BA39BF009FDD55 /* DebtCount.xcdatamodeld in Sources */,
 				FAF847FB22BA39C0009FDD55 /* main.m in Sources */,
-				FAF8481122BA71BC009FDD55 /* PersonsListPresenter.m in Sources */,
+				FAF8481122BA71BC009FDD55 /* DCPersonsListPresenter.m in Sources */,
 				FAF847EA22BA39BF009FDD55 /* AppDelegate.m in Sources */,
-				FAF8480322BA5B1C009FDD55 /* PersonsListViewController.m in Sources */,
-				FAF8481B22BA8574009FDD55 /* PersonCellPresenter.m in Sources */,
-				FAF8482422BA8955009FDD55 /* AddPersonViewController.m in Sources */,
+				FAF8480322BA5B1C009FDD55 /* DCPersonsListViewController.m in Sources */,
+				FAF8481B22BA8574009FDD55 /* DCPersonCellPresenter.m in Sources */,
+				FAF8482422BA8955009FDD55 /* DCAddPersonViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
