@@ -10,4 +10,18 @@
 
 @implementation DCValidator
 
++ (DCValidationResponse *)checkName:(NSString *)name {
+    if (name.length > 1) {
+        return [[DCValidationResponse alloc] initWithType:DCValidationResponseTypeValid];
+    }
+    return [[DCValidationResponse alloc] initWithType:DCValidationResponseTypeIncorrectName];
+}
+
++ (DCValidationResponse *)checkRelation:(NSString *)relation {
+    if (relation.length > 0) {
+        return [[DCValidationResponse alloc] initWithType:DCValidationResponseTypeValid];
+    }
+    return [[DCValidationResponse alloc] initWithType:DCValidationResponseTypeIncorrectRelation];
+}
+
 @end

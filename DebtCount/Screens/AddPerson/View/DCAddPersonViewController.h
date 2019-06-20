@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DCAddPersonViewController (AddPersonPresenter)
 
+- (void)hideRelationFieldError;
+- (void)showRelationFieldError;
+- (void)showNameFieldError;
+- (void)hideNameFieldError;
 - (void)takeAPicture;
 - (void)closePopover;
 

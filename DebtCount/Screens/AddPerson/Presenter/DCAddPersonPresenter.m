@@ -6,15 +6,24 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "DCAddPersonPresenter.h"
 #import "DCAddPersonViewController.h"
 #import "DCPerson.h"
-#import <UIKit/UIKit.h>
+#import "DCValidator.h"
 
 @interface DCAddPersonPresenter ()
 
 @property (weak) DCAddPersonViewController *view;
 @property DCPerson *person;
+@property BOOL nameFieldErrorStatus;
+@property BOOL relationFieldErrorStatus;
+
+@end
+
+@interface DCAddPersonPresenter (PrivateCollection)
+
+- (void)saveData:(DCPerson *)person;
 
 @end
 
@@ -28,20 +37,51 @@
 }
 
 - (void)viewIsReady {
-    
+    self.person = [[DCPerson alloc] init];
 }
 
 - (void)userChangedNameString:(NSString *)string {
-    
+    [self.person setName:string];
 }
 
 - (void)userChangedRelationString:(NSString *)string {
-    
+    [self.person setRelation:string];
 }
 
 - (void)okPressed {
-    // TODO: - Save data
-    [self.view closePopover];
+    // Validating data
+    self.relationFieldErrorStatus = NO;
+    self.nameFieldErrorStatus = NO;
+    DCValidationResponse *nameValidationResponse = [DCValidator checkName:self.person.name];
+    switch (nameValidationResponse.errorType) {
+        case DCValidationResponseTypeValid:
+            self.nameFieldErrorStatus = NO;
+            [self.view hideNameFieldError];
+            break;
+        case DCValidationResponseTypeIncorrectName:
+            self.nameFieldErrorStatus = YES;
+            [self.view showNameFieldError];
+            break;
+        case DCValidationResponseTypeIncorrectRelation:
+            break;
+    }
+    DCValidationResponse *relationValidationResponse = [DCValidator checkRelation:self.person.relation];
+    switch (relationValidationResponse.errorType) {
+        case DCValidationResponseTypeValid:
+            self.relationFieldErrorStatus = NO;
+            [self.view hideRelationFieldError];
+            break;
+        case DCValidationResponseTypeIncorrectName:
+            break;
+        case DCValidationResponseTypeIncorrectRelation:
+            self.relationFieldErrorStatus = YES;
+            [self.view showRelationFieldError];
+            break;
+    }
+    if (!self.relationFieldErrorStatus && !self.nameFieldErrorStatus) {
+        [self saveData:self.person];
+        [self.view closePopover];
+    }
 }
 
 - (void)cancelPressed {
@@ -50,6 +90,16 @@
 
 - (void)changePicturePressed {
     [self.view takeAPicture];
+}
+
+@end
+
+// MARK: - Private Collection
+
+@implementation DCAddPersonPresenter (Private)
+
+- (void)saveData:(DCPerson *)person {
+    // TODO: - Save data
 }
 
 @end
