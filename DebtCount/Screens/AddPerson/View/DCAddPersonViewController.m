@@ -18,6 +18,14 @@
 @interface DCAddPersonViewController (UISetup)
 
 - (void)setupUI;
+- (void)setupNotifications;
+
+@end
+
+@interface DCAddPersonViewController (HandlingKeyboardNotifications)
+
+- (void)keyboardWasShown:(NSNotification*)aNotification;
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification;
 
 @end
 
@@ -25,7 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.presenter = [[DCAddPersonPresenter alloc] initWithView:self];
+    DCValidator *validator = [[DCValidator alloc] init];
+    self.presenter = [[DCAddPersonPresenter alloc] initWithView:self validator:validator];
     [self setupUI];
     [self.presenter viewIsReady];
 }
@@ -50,7 +59,6 @@
     [self.presenter userChangedRelationString:sender.text];
 }
 
-
 @end
 
 // MARK: - UI Setup
@@ -60,19 +68,23 @@
 - (void)setupUI {
     [self.addPictureButton.layer setCornerRadius:(self.addPictureButton.bounds.size.width / 2)];
     [self.addPictureButton.layer setMasksToBounds:true];
+    [self setupNotifications];
+}
 
-    [self.nameTextField.layer setBorderWidth:1.0];
-    [self.nameTextField.layer setBorderColor:UIColor.blueColor.CGColor];
-    [self.nameTextField.layer setCornerRadius:self.relationTextField.bounds.size.height / 2];
-    [self.nameTextField.layer setMasksToBounds:true];
+- (void)setupNotifications {
+    if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad ) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWasShown:)
+                                                     name:UIKeyboardDidShowNotification object:nil];
 
-    [self.relationTextField.layer setBorderWidth:1.0];
-    [self.relationTextField.layer setBorderColor:UIColor.blueColor.CGColor];
-    [self.relationTextField.layer setCornerRadius:self.relationTextField.bounds.size.height / 2];
-    [self.relationTextField.layer setMasksToBounds:true];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillBeHidden:)
+                                                     name:UIKeyboardWillHideNotification object:nil];
+    }
 }
 
 @end
+
 // MARK: - Signals from Presenter
 
 @implementation DCAddPersonViewController (AddPersonPresenter)
@@ -99,6 +111,41 @@
 
 - (void)takeAPicture {
     NSLog(@"open image picker controller");
+}
+
+@end
+
+// MARK: - Handling KeyboardNotifications
+
+@implementation DCAddPersonViewController (HandlingKeyboardNotifications)
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.activeField = nil;
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification {
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
+        [self.scrollView scrollRectToVisible:self.activeField.frame animated:YES];
+    }
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification {
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
 }
 
 @end

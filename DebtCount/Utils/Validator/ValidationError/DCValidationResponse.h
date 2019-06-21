@@ -10,18 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, DCValidationResponseType) {
-    DCValidationResponseTypeValid,
-    DCValidationResponseTypeIncorrectName,
-    DCValidationResponseTypeIncorrectRelation
-};
-
-@interface DCValidationResponse : NSError
+@interface DCValidationResponse : NSObject
 
 - (instancetype)init;
-- (instancetype)initWithType:(DCValidationResponseType)type;
 
-@property DCValidationResponseType errorType;
+@property BOOL isValid;
+@property BOOL isNameValid;
+@property BOOL isRelationValid;
 
 @end
 

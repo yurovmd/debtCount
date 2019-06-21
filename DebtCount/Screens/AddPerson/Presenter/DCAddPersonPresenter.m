@@ -8,16 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "DCAddPersonPresenter.h"
-#import "DCAddPersonViewController.h"
+
 #import "DCPerson.h"
 #import "DCValidator.h"
 
 @interface DCAddPersonPresenter ()
 
+@property id<DCValidatorProtocol> validator;
 @property (weak) DCAddPersonViewController *view;
 @property DCPerson *person;
-@property BOOL nameFieldErrorStatus;
-@property BOOL relationFieldErrorStatus;
 
 @end
 
@@ -29,8 +28,9 @@
 
 @implementation DCAddPersonPresenter
 
-- (instancetype)initWithView:(DCAddPersonViewController *)view {
+- (instancetype)initWithView:(DCAddPersonViewController *)view validator:(id<DCValidatorProtocol>)validator {
     if (self = [super init]) {
+        self.validator = validator;
         self.view = view;
     }
     return self;
@@ -50,38 +50,24 @@
 
 - (void)okPressed {
     // Validating data
-    self.relationFieldErrorStatus = NO;
-    self.nameFieldErrorStatus = NO;
-    DCValidationResponse *nameValidationResponse = [DCValidator checkName:self.person.name];
-    switch (nameValidationResponse.errorType) {
-        case DCValidationResponseTypeValid:
-            self.nameFieldErrorStatus = NO;
-            [self.view hideNameFieldError];
-            break;
-        case DCValidationResponseTypeIncorrectName:
-            self.nameFieldErrorStatus = YES;
-            [self.view showNameFieldError];
-            break;
-        case DCValidationResponseTypeIncorrectRelation:
-            break;
-    }
-    DCValidationResponse *relationValidationResponse = [DCValidator checkRelation:self.person.relation];
-    switch (relationValidationResponse.errorType) {
-        case DCValidationResponseTypeValid:
-            self.relationFieldErrorStatus = NO;
-            [self.view hideRelationFieldError];
-            break;
-        case DCValidationResponseTypeIncorrectName:
-            break;
-        case DCValidationResponseTypeIncorrectRelation:
-            self.relationFieldErrorStatus = YES;
-            [self.view showRelationFieldError];
-            break;
-    }
-    if (!self.relationFieldErrorStatus && !self.nameFieldErrorStatus) {
-        [self saveData:self.person];
-        [self.view closePopover];
-    }
+    void (^responseCompletion)(DCValidationResponse *) = ^(DCValidationResponse *response) {
+        if (response.isValid) {
+            [self saveData:self.person];
+            [self.view closePopover];
+        } else {
+            if (response.isNameValid) {
+                [self.view hideNameFieldError];
+            } else {
+                [self.view showNameFieldError];
+            }
+            if (response.isRelationValid) {
+                [self.view hideRelationFieldError];
+            } else {
+                [self.view showRelationFieldError];
+            }
+        }
+    };
+    [self.validator validatePerson:self.person completion:(responseCompletion)];
 }
 
 - (void)cancelPressed {

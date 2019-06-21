@@ -9,13 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "DCPerson.h"
 #import "DCValidationResponse.h"
+#import "DCValidatorProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DCValidator : NSObject
-
-+ (DCValidationResponse *)checkName:(NSString *)name;
-+ (DCValidationResponse *)checkRelation:(NSString *)relation;
+@interface DCValidator : NSObject <DCValidatorProtocol>
 
 @end
 

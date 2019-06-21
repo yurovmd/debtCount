@@ -7,7 +7,6 @@
 //
 
 #import "DCPerson.h"
-#import <UIKit/UIKit.h>
 
 @implementation DCPerson
 

@@ -6,17 +6,20 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DCValidator.h"
+#import "AddPersonTextField.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCAddPersonViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIButton *cancelButtonPressed;
-@property (weak, nonatomic) IBOutlet UIButton *okButtonPressed;
+@property (nullable) UITextField *activeField;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *addPictureButton;
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *relationTextField;
+@property (weak, nonatomic) IBOutlet AddPersonTextField *nameTextField;
+@property (weak, nonatomic) IBOutlet AddPersonTextField *relationTextField;
 
 @end
 
