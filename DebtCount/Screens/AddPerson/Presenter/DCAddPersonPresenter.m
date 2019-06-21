@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "DCAddPersonPresenter.h"
+
+#warning No need forre-importing DCAddPersonViewController.h as it has already been imported in DCAddPersonPresenter.h
 #import "DCAddPersonViewController.h"
 #import "DCPerson.h"
 #import "DCValidator.h"
@@ -48,6 +50,7 @@
     [self.person setRelation:string];
 }
 
+#warning Can we avoid using static methods (for DCValidator) and use protocol-oriented pattern with dependency injection? Would be safer and more flexible solution. Also, let's assume that in the nearest future we could also have validation of fileds on the server side. So the good idea would be to return validation result in block
 - (void)okPressed {
     // Validating data
     self.relationFieldErrorStatus = NO;

@@ -10,6 +10,8 @@
 
 @implementation DCValidator
 
+#warning What about whitespaces?
+
 + (DCValidationResponse *)checkName:(NSString *)name {
     if (name.length > 1) {
         return [[DCValidationResponse alloc] initWithType:DCValidationResponseTypeValid];
