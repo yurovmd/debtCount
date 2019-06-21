@@ -27,14 +27,16 @@
 }
 
 - (BOOL)checkName:(NSString *)name {
-    if (name.length > 1) {
+    NSRange whiteSpaceRange = [name rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (name.length > 1 && !(whiteSpaceRange.location != NSNotFound)) {
         return YES;
     }
     return NO;
 }
 
 - (BOOL)checkRelation:(NSString *)relation {
-    if (relation.length > 0) {
+    NSRange whiteSpaceRange = [relation rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (relation.length > 0 && !(whiteSpaceRange.location != NSNotFound)) {
         return YES;
     }
     return NO;
