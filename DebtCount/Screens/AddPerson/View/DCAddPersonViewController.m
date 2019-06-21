@@ -61,17 +61,6 @@
 - (void)setupUI {
     [self.addPictureButton.layer setCornerRadius:(self.addPictureButton.bounds.size.width / 2)];
     [self.addPictureButton.layer setMasksToBounds:true];
-
-#warning Same styling for two textFields. Looks like it's following Design guidelines of your App. Subclassing such textFields would be rather good idea.
-    [self.nameTextField.layer setBorderWidth:1.0];
-    [self.nameTextField.layer setBorderColor:UIColor.blueColor.CGColor];
-    [self.nameTextField.layer setCornerRadius:self.relationTextField.bounds.size.height / 2];
-    [self.nameTextField.layer setMasksToBounds:true];
-
-    [self.relationTextField.layer setBorderWidth:1.0];
-    [self.relationTextField.layer setBorderColor:UIColor.blueColor.CGColor];
-    [self.relationTextField.layer setCornerRadius:self.relationTextField.bounds.size.height / 2];
-    [self.relationTextField.layer setMasksToBounds:true];
 }
 
 @end

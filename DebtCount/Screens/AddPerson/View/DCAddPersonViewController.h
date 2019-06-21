@@ -6,8 +6,8 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "DCValidator.h"
+#import "AddPersonTextField.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *cancelButtonPressed;
 @property (weak, nonatomic) IBOutlet UIButton *okButtonPressed;
 @property (weak, nonatomic) IBOutlet UIButton *addPictureButton;
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *relationTextField;
+@property (weak, nonatomic) IBOutlet AddPersonTextField *nameTextField;
+@property (weak, nonatomic) IBOutlet AddPersonTextField *relationTextField;
 
 @end
 

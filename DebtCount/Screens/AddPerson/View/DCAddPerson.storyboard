@@ -65,7 +65,7 @@
                                     <constraint firstAttribute="height" constant="1" id="wrp-uC-HQW"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thl-dv-5Nb">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thl-dv-5Nb" customClass="AddPersonTextField">
                                 <rect key="frame" x="324" y="128" width="498" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kbD-KI-fAg"/>
@@ -74,10 +74,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="nameTextChanged:" destination="oPM-ez-QMT" eventType="editingChanged" id="id3-sC-lzm"/>
+                                    <action selector="nameTextChanged:" destination="oPM-ez-QMT" eventType="editingChanged" id="Nml-QB-dp5"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n4n-Q4-RUd">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n4n-Q4-RUd" customClass="AddPersonTextField">
                                 <rect key="frame" x="324" y="239" width="498" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="jrN-Ub-wml"/>
@@ -86,7 +86,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="relationTextChanged:" destination="oPM-ez-QMT" eventType="editingChanged" id="mdC-vr-4Z0"/>
+                                    <action selector="relationTextChanged:" destination="oPM-ez-QMT" eventType="editingChanged" id="wk5-ee-Y6T"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQe-G0-fOf">
@@ -155,6 +155,8 @@
                                 <exclude reference="eRi-0e-FPE"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="dyG-ms-p26"/>
+                                <exclude reference="Cqt-J0-0j0"/>
                                 <include reference="ejp-As-n84"/>
                                 <include reference="PQh-UL-6NL"/>
                                 <include reference="yys-tc-Eu9"/>
@@ -178,9 +180,9 @@
                     <connections>
                         <outlet property="addPictureButton" destination="Q1v-XV-rUB" id="bwa-gf-aqr"/>
                         <outlet property="cancelButtonPressed" destination="3Sj-EN-wlQ" id="vxc-5u-kJC"/>
-                        <outlet property="nameTextField" destination="Thl-dv-5Nb" id="Aj0-J6-kzQ"/>
+                        <outlet property="nameTextField" destination="Thl-dv-5Nb" id="cVx-nc-Clq"/>
                         <outlet property="okButtonPressed" destination="6Fo-jl-9mJ" id="3gD-bh-Yvh"/>
-                        <outlet property="relationTextField" destination="n4n-Q4-RUd" id="Dht-lo-ZSN"/>
+                        <outlet property="relationTextField" destination="n4n-Q4-RUd" id="BKH-yW-VlV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xO-Ie-E2e" userLabel="First Responder" sceneMemberID="firstResponder"/>

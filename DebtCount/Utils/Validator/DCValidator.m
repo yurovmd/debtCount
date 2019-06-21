@@ -17,8 +17,6 @@
 
 @implementation DCValidator
 
-#warning What about whitespaces?
-
 - (void)validatePerson:(DCPerson *)person completion:(void (^)(DCValidationResponse *))completion {
     DCValidationResponse *response = [[DCValidationResponse alloc] init];
     response.isNameValid = [self checkName:person.name];
