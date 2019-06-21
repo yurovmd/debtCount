@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "DCAddPersonViewController.h"
+#import "DCValidatorProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCAddPersonPresenter : NSObject
 
-- (instancetype)initWithView:(DCAddPersonViewController *)view;
+- (instancetype)initWithView:(DCAddPersonViewController *)view validator:(id<DCValidatorProtocol>)validator;
 
 - (void)viewIsReady;
 - (void)userChangedNameString:(NSString *)string;

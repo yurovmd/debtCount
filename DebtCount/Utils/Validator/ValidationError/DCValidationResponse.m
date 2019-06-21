@@ -11,14 +11,12 @@
 @implementation DCValidationResponse
 
 - (instancetype)init {
-    self = [super init];
+    if (self = [super init]) {
+        self.isValid = false;
+        self.isNameValid = false;
+        self.isRelationValid = false;
+    };
     return self;
 }
 
-- (instancetype)initWithType:(DCValidationResponseType)type {
-    if (self = [super init]) {
-        self.errorType = type;
-    }
-    return self;
-}
 @end

@@ -8,22 +8,36 @@
 
 #import "DCValidator.h"
 
+@interface DCValidator ()
+
+- (BOOL)checkName:(NSString *)name;
+- (BOOL)checkRelation:(NSString *)relation;
+
+@end
+
 @implementation DCValidator
 
 #warning What about whitespaces?
 
-+ (DCValidationResponse *)checkName:(NSString *)name {
-    if (name.length > 1) {
-        return [[DCValidationResponse alloc] initWithType:DCValidationResponseTypeValid];
-    }
-    return [[DCValidationResponse alloc] initWithType:DCValidationResponseTypeIncorrectName];
+- (void)validatePerson:(DCPerson *)person completion:(void (^)(DCValidationResponse *))completion {
+    DCValidationResponse *response = [[DCValidationResponse alloc] init];
+    response.isNameValid = [self checkName:person.name];
+    response.isRelationValid = [self checkRelation:person.relation];
+    completion(response);
 }
 
-+ (DCValidationResponse *)checkRelation:(NSString *)relation {
-    if (relation.length > 0) {
-        return [[DCValidationResponse alloc] initWithType:DCValidationResponseTypeValid];
+- (BOOL)checkName:(NSString *)name {
+    if (name.length > 1) {
+        return YES;
     }
-    return [[DCValidationResponse alloc] initWithType:DCValidationResponseTypeIncorrectRelation];
+    return NO;
+}
+
+- (BOOL)checkRelation:(NSString *)relation {
+    if (relation.length > 0) {
+        return YES;
+    }
+    return NO;
 }
 
 @end

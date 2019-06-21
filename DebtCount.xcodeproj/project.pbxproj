@@ -27,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FAA3B21422BCE4EA00625B29 /* DCValidatorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCValidatorProtocol.h; sourceTree = "<group>"; };
 		FAF847E522BA39BF009FDD55 /* DebtCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebtCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF847E822BA39BF009FDD55 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAF847E922BA39BF009FDD55 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -70,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FAA3B21322BCE4DE00625B29 /* DCValidatorProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				FAA3B21422BCE4EA00625B29 /* DCValidatorProtocol.h */,
+			);
+			path = DCValidatorProtocol;
+			sourceTree = "<group>";
+		};
 		FAF847DC22BA39BF009FDD55 = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +243,7 @@
 		FAF8483322BB97BB009FDD55 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
+				FAA3B21322BCE4DE00625B29 /* DCValidatorProtocol */,
 				FAF8483722BBB796009FDD55 /* ValidationError */,
 				FAF8483422BB97F8009FDD55 /* DCValidator.h */,
 				FAF8483522BB97F8009FDD55 /* DCValidator.m */,

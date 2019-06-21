@@ -25,7 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.presenter = [[DCAddPersonPresenter alloc] initWithView:self];
+    DCValidator *validator = [[DCValidator alloc] init];
+    self.presenter = [[DCAddPersonPresenter alloc] initWithView:self validator:validator];
     [self setupUI];
     [self.presenter viewIsReady];
 }

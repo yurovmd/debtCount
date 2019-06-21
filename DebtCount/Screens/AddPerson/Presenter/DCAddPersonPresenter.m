@@ -9,17 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "DCAddPersonPresenter.h"
 
-#warning No need forre-importing DCAddPersonViewController.h as it has already been imported in DCAddPersonPresenter.h
-#import "DCAddPersonViewController.h"
 #import "DCPerson.h"
 #import "DCValidator.h"
 
 @interface DCAddPersonPresenter ()
 
+@property id<DCValidatorProtocol> validator;
 @property (weak) DCAddPersonViewController *view;
 @property DCPerson *person;
-@property BOOL nameFieldErrorStatus;
-@property BOOL relationFieldErrorStatus;
 
 @end
 
@@ -31,8 +28,9 @@
 
 @implementation DCAddPersonPresenter
 
-- (instancetype)initWithView:(DCAddPersonViewController *)view {
+- (instancetype)initWithView:(DCAddPersonViewController *)view validator:(id<DCValidatorProtocol>)validator {
     if (self = [super init]) {
+        self.validator = validator;
         self.view = view;
     }
     return self;
@@ -50,41 +48,26 @@
     [self.person setRelation:string];
 }
 
-#warning Can we avoid using static methods (for DCValidator) and use protocol-oriented pattern with dependency injection? Would be safer and more flexible solution. Also, let's assume that in the nearest future we could also have validation of fileds on the server side. So the good idea would be to return validation result in block
 - (void)okPressed {
     // Validating data
-    self.relationFieldErrorStatus = NO;
-    self.nameFieldErrorStatus = NO;
-    DCValidationResponse *nameValidationResponse = [DCValidator checkName:self.person.name];
-    switch (nameValidationResponse.errorType) {
-        case DCValidationResponseTypeValid:
-            self.nameFieldErrorStatus = NO;
-            [self.view hideNameFieldError];
-            break;
-        case DCValidationResponseTypeIncorrectName:
-            self.nameFieldErrorStatus = YES;
-            [self.view showNameFieldError];
-            break;
-        case DCValidationResponseTypeIncorrectRelation:
-            break;
-    }
-    DCValidationResponse *relationValidationResponse = [DCValidator checkRelation:self.person.relation];
-    switch (relationValidationResponse.errorType) {
-        case DCValidationResponseTypeValid:
-            self.relationFieldErrorStatus = NO;
-            [self.view hideRelationFieldError];
-            break;
-        case DCValidationResponseTypeIncorrectName:
-            break;
-        case DCValidationResponseTypeIncorrectRelation:
-            self.relationFieldErrorStatus = YES;
-            [self.view showRelationFieldError];
-            break;
-    }
-    if (!self.relationFieldErrorStatus && !self.nameFieldErrorStatus) {
-        [self saveData:self.person];
-        [self.view closePopover];
-    }
+    void (^responseCompletion)(DCValidationResponse *) = ^(DCValidationResponse *response) {
+        if (response.isValid) {
+            [self saveData:self.person];
+            [self.view closePopover];
+        } else {
+            if (response.isNameValid) {
+                [self.view hideNameFieldError];
+            } else {
+                [self.view showNameFieldError];
+            }
+            if (response.isRelationValid) {
+                [self.view hideRelationFieldError];
+            } else {
+                [self.view showRelationFieldError];
+            }
+        }
+    };
+    [self.validator validatePerson:self.person completion:(responseCompletion)];
 }
 
 - (void)cancelPressed {
