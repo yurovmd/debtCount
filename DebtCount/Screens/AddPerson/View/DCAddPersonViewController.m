@@ -18,6 +18,14 @@
 @interface DCAddPersonViewController (UISetup)
 
 - (void)setupUI;
+- (void)setupNotifications;
+
+@end
+
+@interface DCAddPersonViewController (HandlingKeyboardNotifications)
+
+- (void)keyboardWasShown:(NSNotification*)aNotification;
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification;
 
 @end
 
@@ -51,7 +59,6 @@
     [self.presenter userChangedRelationString:sender.text];
 }
 
-
 @end
 
 // MARK: - UI Setup
@@ -61,9 +68,23 @@
 - (void)setupUI {
     [self.addPictureButton.layer setCornerRadius:(self.addPictureButton.bounds.size.width / 2)];
     [self.addPictureButton.layer setMasksToBounds:true];
+    [self setupNotifications];
+}
+
+- (void)setupNotifications {
+    if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad ) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWasShown:)
+                                                     name:UIKeyboardDidShowNotification object:nil];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillBeHidden:)
+                                                     name:UIKeyboardWillHideNotification object:nil];
+    }
 }
 
 @end
+
 // MARK: - Signals from Presenter
 
 @implementation DCAddPersonViewController (AddPersonPresenter)
@@ -90,6 +111,41 @@
 
 - (void)takeAPicture {
     NSLog(@"open image picker controller");
+}
+
+@end
+
+// MARK: - Handling KeyboardNotifications
+
+@implementation DCAddPersonViewController (HandlingKeyboardNotifications)
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.activeField = nil;
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification {
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.activeField.frame.origin) ) {
+        [self.scrollView scrollRectToVisible:self.activeField.frame animated:YES];
+    }
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification {
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
 }
 
 @end
