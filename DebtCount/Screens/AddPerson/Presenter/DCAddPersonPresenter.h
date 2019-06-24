@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "DCAddPersonViewController.h"
 #import "DCValidatorProtocol.h"
+#import "DCPersonDataController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

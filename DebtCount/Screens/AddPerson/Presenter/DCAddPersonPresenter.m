@@ -85,7 +85,7 @@
 @implementation DCAddPersonPresenter (Private)
 
 - (void)saveData:(DCPerson *)person {
-    // TODO: - Save data
+    [DCPersonDataController.shared savePersonData:person];
 }
 
 @end

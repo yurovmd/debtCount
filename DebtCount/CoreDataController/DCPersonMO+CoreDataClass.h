@@ -1,0 +1,21 @@
+//
+//  DCPersonMO+CoreDataClass.h
+//  DebtCount
+//
+//  Created by MAKSIM YUROV on 24/06/2019.
+//  Copyright © 2019 MAKSIM YUROV. All rights reserved.
+//
+//
+
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface DCPersonMO : NSManagedObject
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+#import "DCPersonMO+CoreDataProperties.h"
