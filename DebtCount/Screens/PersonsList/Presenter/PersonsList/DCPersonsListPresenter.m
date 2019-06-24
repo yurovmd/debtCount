@@ -36,4 +36,12 @@
     [self.view showAddPersonPopover];
 }
 
+- (void)popoverClosedAndNeedReload {
+    void (^completion)(NSMutableArray *) = ^(NSMutableArray *persons) {
+        self.persons = persons;
+        [self.view reloadTableView];
+    };
+    [DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];
+}
+
 @end

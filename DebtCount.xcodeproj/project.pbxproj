@@ -31,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA97821B22C115A600FDCEBB /* DCAddPersonDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddPersonDelegateProtocol.h; sourceTree = "<group>"; };
 		FA9DE0A322C0BB25006C024F /* DCPersonDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonDataController.h; sourceTree = "<group>"; };
 		FA9DE0A422C0BB25006C024F /* DCPersonDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonDataController.m; sourceTree = "<group>"; };
 		FA9DE0B222C10656006C024F /* DCPersonMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DCPersonMO+CoreDataProperties.h"; path = "DebtCount/CoreDataController/DCPersonMO+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -83,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA97821A22C1158100FDCEBB /* AddPersonDelegateProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				FA97821B22C115A600FDCEBB /* DCAddPersonDelegateProtocol.h */,
+			);
+			path = AddPersonDelegateProtocol;
+			sourceTree = "<group>";
+		};
 		FA9DE0A122C0BAF4006C024F /* CoreDataController */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +258,7 @@
 		FAF8481E22BA891E009FDD55 /* AddPerson */ = {
 			isa = PBXGroup;
 			children = (
+				FA97821A22C1158100FDCEBB /* AddPersonDelegateProtocol */,
 				FAF8482122BA893B009FDD55 /* Model */,
 				FAF8482022BA8937009FDD55 /* Presenter */,
 				FAF8481F22BA8933009FDD55 /* View */,

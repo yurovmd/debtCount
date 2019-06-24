@@ -35,7 +35,7 @@
     return self;
 }
 
-- (void)savePersonData:(DCPerson *)person {
+- (void)savePersonData:(DCPerson *)person completion:(void(^)(void))completion {
 
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSError *error = nil;
@@ -49,7 +49,12 @@
         if ([context save:&error] == NO) {
             NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
         }
+        completion();
     }];
+}
+
+- (void)fetchPersonsWithCompletion:(void (^)(NSMutableArray *persons))completion {
+
 }
 
 @end

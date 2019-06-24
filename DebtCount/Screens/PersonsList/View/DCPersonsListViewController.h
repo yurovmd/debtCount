@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DCAddPersonDelegateProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonsListViewController (PresenterSignals)
 
--(void)showAddPersonPopover;
+- (void)showAddPersonPopover;
+- (void)reloadTableView;
 
 @end
 

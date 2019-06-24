@@ -8,12 +8,15 @@
 
 #import "DCValidator.h"
 #import "AddPersonTextField.h"
+#import "DCAddPersonDelegateProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCAddPersonViewController : UIViewController
 
 @property (nullable) UITextField *activeField;
+
+@property id<DCAddPersonDelegateProtocol> delegate;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *addPictureButton;
@@ -32,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)hideNameFieldError;
 - (void)takeAPicture;
 - (void)closePopover;
+- (void)closePopoverAndReload;
 
 @end
 

@@ -8,17 +8,21 @@
 
 #import "DCPersonCell.h"
 
+@interface DCPersonCell ()
+
+- (void)setupUI;
+
+@end
+
 @implementation DCPersonCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    [self setupUI];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)setupUI {
 
-    // Configure the view for the selected state
 }
 
 @end

@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (id)shared;
 - (id)init;
-- (void)savePersonData:(DCPerson *)person;
+- (void)savePersonData:(DCPerson *)person completion:(void(^)(void))completion;
+- (void)fetchPersonsWithCompletion:(void (^)(NSMutableArray *persons))completion;
 
 @end
 

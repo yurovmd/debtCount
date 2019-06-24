@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DCPerson.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonCell : UITableViewCell
+
+@property DCPerson *person;
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
