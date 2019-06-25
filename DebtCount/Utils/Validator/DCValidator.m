@@ -19,8 +19,11 @@
 
 - (void)validatePerson:(DCPerson *)person completion:(void (^)(DCValidationResponse *))completion {
     DCValidationResponse *response = [[DCValidationResponse alloc] init];
-    response.isNameValid = [self checkName:person.name];
-    response.isRelationValid = [self checkRelation:person.relation];
+    BOOL isNameValid = [self checkName:person.name];
+    BOOL isRelationValid = [self checkRelation:person.relation];
+    response.isNameValid = isNameValid;
+    response.isRelationValid = isRelationValid;
+    response.isValid = isNameValid && isRelationValid;
     completion(response);
 }
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DCPersonsListViewController.h"
+#import "DCPersonDataController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,8 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithView:(DCPersonsListViewController *)view;
 
+@property NSMutableArray *persons;
+
 - (void)viewIsReady;
 - (void)addPersonButtonPressed;
+- (void)popoverClosedAndNeedReload;
 
 @end
 
