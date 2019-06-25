@@ -13,6 +13,8 @@
 
 @interface DCPersonsListPresenter ()
 
+- (void)getPersons;
+
 @property (weak) DCPersonsListViewController *view;
 
 @end
@@ -29,11 +31,25 @@
 }
 
 - (void)viewIsReady {
-    
+    [self getPersons];
 }
 
 - (void)addPersonButtonPressed {
     [self.view showAddPersonPopover];
+}
+
+- (void)popoverClosedAndNeedReload {
+    [self getPersons];
+}
+
+- (void)getPersons {
+    void (^completion)(NSMutableArray *) = ^(NSMutableArray *persons) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.persons = persons;
+            [self.view reloadTableView];
+        });
+    };
+    [DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];
 }
 
 @end

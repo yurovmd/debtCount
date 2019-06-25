@@ -53,7 +53,6 @@
     void (^responseCompletion)(DCValidationResponse *) = ^(DCValidationResponse *response) {
         if (response.isValid) {
             [self saveData:self.person];
-            [self.view closePopover];
         } else {
             if (response.isNameValid) {
                 [self.view hideNameFieldError];
@@ -85,7 +84,11 @@
 @implementation DCAddPersonPresenter (Private)
 
 - (void)saveData:(DCPerson *)person {
-    // TODO: - Save data
+    void (^completion)(void) = ^(void) {
+        [self.view closePopoverAndReload];
+    };
+    [DCPersonDataController.shared savePersonData:person completion:(completion)];
+
 }
 
 @end

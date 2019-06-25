@@ -109,6 +109,10 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (void)closePopoverAndReload {
+    [self.delegate closePopoverAndReload];
+}
+
 - (void)takeAPicture {
     NSLog(@"open image picker controller");
 }
