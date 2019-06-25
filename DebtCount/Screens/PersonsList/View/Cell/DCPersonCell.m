@@ -16,13 +16,24 @@
 
 @implementation DCPersonCell
 
+@synthesize person = _person;
+
+- (void)setPerson:(DCPerson *)person {
+    _person = person;
+    self.avatarImageView.image = person.avatar;
+    self.relationsLabel.text = person.relation;
+    self.nameLabel.text = person.name;
+    self.debtLabel.text = person.debt.stringValue;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self setupUI];
 }
 
 - (void)setupUI {
-
+    [self.avatarImageView.layer setCornerRadius:(self.avatarImageView.bounds.size.height / 2)];
+    [self.avatarImageView.layer setMasksToBounds:true];
 }
 
 @end

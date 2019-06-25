@@ -52,6 +52,7 @@
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fbo-bO-gke">
                                             <rect key="frame" x="15" y="15" width="40" height="40"/>
+                                            <color key="backgroundColor" red="0.69140452146530151" green="0.74960476160049438" blue="0.79928714036941528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="5fz-sl-wT0"/>
                                                 <constraint firstAttribute="width" constant="40" id="OSG-F7-UjP"/>
@@ -136,10 +137,10 @@
             </objects>
             <point key="canvasLocation" x="273" y="-515"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Custom Split View Controller-->
         <scene sceneID="TV6-v4-3R4">
             <objects>
-                <splitViewController id="KAB-t9-iGL" sceneMemberID="viewController">
+                <splitViewController id="KAB-t9-iGL" customClass="DCCustomSplitViewController" sceneMemberID="viewController">
                     <connections>
                         <segue destination="Ytt-ku-Qy4" kind="relationship" relationship="masterViewController" id="woa-QF-Yno"/>
                         <segue destination="DNj-6h-uRH" kind="relationship" relationship="detailViewController" id="wTe-SO-a3V"/>

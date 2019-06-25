@@ -39,7 +39,6 @@
 - (void)setupUI {
     [self.tableView.dataSource self];
     [self.tableView.delegate self];
-    [self.tableView registerNib:[UINib nibWithNibName:@"DCPersonCell" bundle:nil] forCellReuseIdentifier:@"DCPersonCell"];
 }
 
 @end

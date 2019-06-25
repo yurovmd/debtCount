@@ -55,6 +55,25 @@
 
 - (void)fetchPersonsWithCompletion:(void (^)(NSMutableArray *persons))completion {
 
+    [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:request error:&error];
+        if (!results) {
+            NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+        NSMutableArray *persons = [[NSMutableArray alloc] init];
+        for (DCPersonMO *personMO in results) {
+            DCPerson *person = [DCPerson alloc];
+            person.name = personMO.name;
+            person.relation = personMO.relation;
+            person.avatar = [[UIImage alloc] initWithData:personMO.avatar];
+            person.debt = personMO.debt;
+            [persons addObject:person];
+        }
+        completion(persons);
+    }];
 }
 
 @end

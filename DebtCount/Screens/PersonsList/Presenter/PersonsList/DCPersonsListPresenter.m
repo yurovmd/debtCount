@@ -13,6 +13,8 @@
 
 @interface DCPersonsListPresenter ()
 
+- (void)getPersons;
+
 @property (weak) DCPersonsListViewController *view;
 
 @end
@@ -29,7 +31,7 @@
 }
 
 - (void)viewIsReady {
-    
+    [self getPersons];
 }
 
 - (void)addPersonButtonPressed {
@@ -37,6 +39,10 @@
 }
 
 - (void)popoverClosedAndNeedReload {
+    [self getPersons];
+}
+
+- (void)getPersons {
     void (^completion)(NSMutableArray *) = ^(NSMutableArray *persons) {
         self.persons = persons;
         [self.view reloadTableView];
