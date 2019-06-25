@@ -44,8 +44,10 @@
 
 - (void)getPersons {
     void (^completion)(NSMutableArray *) = ^(NSMutableArray *persons) {
-        self.persons = persons;
-        [self.view reloadTableView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.persons = persons;
+            [self.view reloadTableView];
+        });
     };
     [DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];
 }

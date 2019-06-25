@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FA97823A22C21EE900FDCEBB /* DCCustomSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA97823922C21EE900FDCEBB /* DCCustomSplitViewController.m */; };
+		FA97824122C235C400FDCEBB /* DCPersonCellPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA97824022C235C400FDCEBB /* DCPersonCellPresenter.m */; };
+		FA97824522C241DE00FDCEBB /* DCDebtFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA97824422C241DD00FDCEBB /* DCDebtFormatter.m */; };
 		FA9DE0A522C0BB25006C024F /* DCPersonDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0A422C0BB25006C024F /* DCPersonDataController.m */; };
 		FA9DE0B622C10656006C024F /* DCPersonMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0B422C10656006C024F /* DCPersonMO+CoreDataClass.m */; };
 		FA9DE0B722C10656006C024F /* DCPersonMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0B522C10656006C024F /* DCPersonMO+CoreDataProperties.m */; };
@@ -34,6 +36,10 @@
 		FA97821B22C115A600FDCEBB /* DCAddPersonDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddPersonDelegateProtocol.h; sourceTree = "<group>"; };
 		FA97823822C21EE900FDCEBB /* DCCustomSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCCustomSplitViewController.h; sourceTree = "<group>"; };
 		FA97823922C21EE900FDCEBB /* DCCustomSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCCustomSplitViewController.m; sourceTree = "<group>"; };
+		FA97823F22C235C400FDCEBB /* DCPersonCellPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonCellPresenter.h; sourceTree = "<group>"; };
+		FA97824022C235C400FDCEBB /* DCPersonCellPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonCellPresenter.m; sourceTree = "<group>"; };
+		FA97824322C241DD00FDCEBB /* DCDebtFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCDebtFormatter.h; sourceTree = "<group>"; };
+		FA97824422C241DD00FDCEBB /* DCDebtFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCDebtFormatter.m; sourceTree = "<group>"; };
 		FA9DE0A322C0BB25006C024F /* DCPersonDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonDataController.h; sourceTree = "<group>"; };
 		FA9DE0A422C0BB25006C024F /* DCPersonDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonDataController.m; sourceTree = "<group>"; };
 		FA9DE0B222C10656006C024F /* DCPersonMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DCPersonMO+CoreDataProperties.h"; path = "DebtCount/CoreDataController/DCPersonMO+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -99,6 +105,24 @@
 				FA97823922C21EE900FDCEBB /* DCCustomSplitViewController.m */,
 			);
 			path = CustomSplitViewController;
+			sourceTree = "<group>";
+		};
+		FA97823B22C2351400FDCEBB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FA97823F22C235C400FDCEBB /* DCPersonCellPresenter.h */,
+				FA97824022C235C400FDCEBB /* DCPersonCellPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA97824222C241C400FDCEBB /* DebtFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				FA97824322C241DD00FDCEBB /* DCDebtFormatter.h */,
+				FA97824422C241DD00FDCEBB /* DCDebtFormatter.m */,
+			);
+			path = DebtFormatter;
 			sourceTree = "<group>";
 		};
 		FA9DE0A122C0BAF4006C024F /* CoreDataController */ = {
@@ -240,6 +264,7 @@
 		FAF8481222BA836C009FDD55 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				FA97823B22C2351400FDCEBB /* Presenter */,
 				FAF8481622BA83E0009FDD55 /* DCPersonCell.h */,
 				FAF8481722BA83E0009FDD55 /* DCPersonCell.m */,
 			);
@@ -297,6 +322,7 @@
 		FAF8483222BB9772009FDD55 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FA97824222C241C400FDCEBB /* DebtFormatter */,
 				FAF8483322BB97BB009FDD55 /* Validator */,
 			);
 			path = Utils;
@@ -403,8 +429,10 @@
 				FA9DE0B722C10656006C024F /* DCPersonMO+CoreDataProperties.m in Sources */,
 				FAF847F322BA39BF009FDD55 /* DebtCount.xcdatamodeld in Sources */,
 				FAF847FB22BA39C0009FDD55 /* main.m in Sources */,
+				FA97824522C241DE00FDCEBB /* DCDebtFormatter.m in Sources */,
 				FA97823A22C21EE900FDCEBB /* DCCustomSplitViewController.m in Sources */,
 				FAF8481122BA71BC009FDD55 /* DCPersonsListPresenter.m in Sources */,
+				FA97824122C235C400FDCEBB /* DCPersonCellPresenter.m in Sources */,
 				FAF847EA22BA39BF009FDD55 /* AppDelegate.m in Sources */,
 				FAF8480322BA5B1C009FDD55 /* DCPersonsListViewController.m in Sources */,
 				FA9DE0A522C0BB25006C024F /* DCPersonDataController.m in Sources */,

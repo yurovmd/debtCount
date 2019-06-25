@@ -37,8 +37,8 @@
 }
 
 - (void)setupUI {
-    [self.tableView.dataSource self];
-    [self.tableView.delegate self];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
 
 @end
@@ -64,7 +64,9 @@
 }
 
 - (void)reloadTableView {
-    [self.tableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 @end
@@ -111,7 +113,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DCPersonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DCPersonCell"];
-    cell.person = self.presenter.persons[indexPath.row];
+    [cell configure:self.presenter.persons[indexPath.row]];
     return cell;
 }
 

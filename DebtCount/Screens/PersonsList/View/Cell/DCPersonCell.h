@@ -22,4 +22,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+// MARK: - Cell Configuration After dequeue stage
+
+@interface DCPersonCell (Configuration)
+
+- (void)configure:(DCPerson *)person;
+
+@end
+
+// MARK: - SignalsFromPresenter
+
+@interface DCPersonCell (SignalsFromPresenter)
+
+- (void)setAvatarValue:(UIImage *)avatar;
+- (void)setNameValue:(NSString *)name;
+- (void)setRelationValue:(NSString *)relation;
+- (void)setDebtValue:(NSString *)debt;
+
+- (void)setDebtGreen;
+- (void)setDebtRed;
+
+@end
+
 NS_ASSUME_NONNULL_END
