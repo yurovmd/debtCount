@@ -41,6 +41,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)takeAPicture;
 - (void)closePopover;
 - (void)closePopoverAndReload;
+- (void)setAvatar:(UIImage *)avatarImage;
+
+@end
+
+// MARK: - UIImagePickerControllerDelegate
+
+@interface DCAddPersonViewController (UIImagePickerControllerDelegate) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+- (void)openImagePickerController;
 
 @end
 

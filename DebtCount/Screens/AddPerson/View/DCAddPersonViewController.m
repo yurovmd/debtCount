@@ -124,7 +124,11 @@
 }
 
 - (void)takeAPicture {
-    NSLog(@"open image picker controller");
+    [self openImagePickerController];
+}
+
+- (void)setAvatar:(UIImage *)avatarImage {
+    [self.addPictureButton setImage:avatarImage forState:normal];
 }
 
 @end
@@ -163,3 +167,28 @@
 }
 
 @end
+
+// MARK: - UIImagePickerControllerDelegate
+
+@implementation DCAddPersonViewController (UIImagePickerControllerDelegate)
+
+- (void)openImagePickerController {
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.delegate = self;
+    controller.allowsEditing = YES;
+    controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+
+    [self presentViewController:controller animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    [self.presenter pictureTaken:chosenImage];
+
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+
+}
+
+@end
+
