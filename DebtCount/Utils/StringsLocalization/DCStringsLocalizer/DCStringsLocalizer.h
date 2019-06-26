@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSDictionary *dictionary;
 
++ (id)shared;
+- (id)init;
 - (NSString *)localizedForKey:(NSString *)key;
 
 @end

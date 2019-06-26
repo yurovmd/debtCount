@@ -11,8 +11,7 @@
 @implementation NSString (Localizer)
 
 - (NSString *)localized {
-    DCStringsLocalizer *localizer = [[DCStringsLocalizer alloc] init];
-    return [localizer localizedForKey:self];
+    return [DCStringsLocalizer.shared localizedForKey:self];
 }
 
 @end
