@@ -19,6 +19,7 @@
 
 - (void)setupUI;
 - (void)setupNotifications;
+- (void)setupLabels;
 
 @end
 
@@ -69,6 +70,8 @@
     [self.addPictureButton.layer setCornerRadius:(self.addPictureButton.bounds.size.width / 2)];
     [self.addPictureButton.layer setMasksToBounds:true];
     [self setupNotifications];
+    [self setupLabels];
+
 }
 
 - (void)setupNotifications {
@@ -81,6 +84,13 @@
                                                  selector:@selector(keyboardWillBeHidden:)
                                                      name:UIKeyboardWillHideNotification object:nil];
     }
+}
+
+- (void)setupLabels {
+    self.nameTextFieldLabel.text = [@"ADD_NEW_OBJECTS_CREEN.TEXTFIELDS.NAME" localized];
+    self.relationTextFIeldLabel.text = [@"ADD_NEW_OBJECTS_CREEN.TEXTFIELDS.RELATION" localized];
+    [self.cancelButton setTitle:[@"ADD_NEW_OBJECTS_CREEN.BUTTONS.CANCEL" localized] forState:normal];
+    [self.okButton setTitle:[@"ADD_NEW_OBJECTS_CREEN.BUTTONS.OK" localized] forState:normal];
 }
 
 @end

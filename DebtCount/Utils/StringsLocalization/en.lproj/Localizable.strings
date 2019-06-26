@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  DebtCount
+
+  Created by MAKSIM YUROV on 26/06/2019.
+  Copyright © 2019 MAKSIM YUROV. All rights reserved.
+*/
+
+// MARK: - Add New Object Screen
+
+"ADD_NEW_OBJECTS_CREEN.TEXTFIELDS.NAME" = "Name";
+"ADD_NEW_OBJECTS_CREEN.TEXTFIELDS.RELATION" = "Relation";
+"ADD_NEW_OBJECTS_CREEN.BUTTONS.OK" = "OK";
+"ADD_NEW_OBJECTS_CREEN.BUTTONS.CANCEL" = "Cancel";
+
+// MARK: - Persons List Screen
+
+"PERSONS_LIST_SCREEN.TITLE" = "People";

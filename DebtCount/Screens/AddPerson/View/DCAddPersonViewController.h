@@ -9,6 +9,7 @@
 #import "DCValidator.h"
 #import "AddPersonTextField.h"
 #import "DCAddPersonDelegateProtocol.h"
+#import "NSString+Localized.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,6 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *addPictureButton;
 @property (weak, nonatomic) IBOutlet AddPersonTextField *nameTextField;
 @property (weak, nonatomic) IBOutlet AddPersonTextField *relationTextField;
+@property (weak, nonatomic) IBOutlet UILabel *nameTextFieldLabel;
+@property (weak, nonatomic) IBOutlet UILabel *relationTextFIeldLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *okButton;
 
 @end
 

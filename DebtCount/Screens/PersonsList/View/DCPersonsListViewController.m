@@ -39,6 +39,7 @@
 - (void)setupUI {
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.navigationItem.title = [@"PERSONS_LIST_SCREEN.TITLE" localized];
 }
 
 @end

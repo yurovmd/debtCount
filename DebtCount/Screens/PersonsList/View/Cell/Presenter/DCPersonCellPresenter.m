@@ -61,6 +61,9 @@
 }
 
 - (UIImage *)getAvatar {
+    if (self.person.avatar == nil) {
+        return [UIImage imageNamed:@"avatarDefault"];
+    }
     return self.person.avatar;
 }
 
