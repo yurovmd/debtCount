@@ -60,6 +60,7 @@
 		FAAFAC6122C374D700C866A8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FAAFAC6522C3753B00C866A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FAAFAC6722C3754200C866A8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FAAFAC6922C3B8FB00C866A8 /* Prefix-DebtCount.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix-DebtCount.pch"; sourceTree = "<group>"; };
 		FAF847E522BA39BF009FDD55 /* DebtCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebtCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF847E822BA39BF009FDD55 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAF847E922BA39BF009FDD55 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 		FAF847E722BA39BF009FDD55 /* DebtCount */ = {
 			isa = PBXGroup;
 			children = (
+				FAAFAC6922C3B8FB00C866A8 /* Prefix-DebtCount.pch */,
 				FA9DE0A122C0BAF4006C024F /* CoreDataController */,
 				FAA3B21722BCEEEB00625B29 /* Reusables */,
 				FAF8483222BB9772009FDD55 /* Utils */,
@@ -638,6 +640,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 375U32WX29;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "./DebtCount/Prefix-DebtCount.pch";
 				INFOPLIST_FILE = DebtCount/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -656,6 +660,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 375U32WX29;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "./DebtCount/Prefix-DebtCount.pch";
 				INFOPLIST_FILE = DebtCount/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

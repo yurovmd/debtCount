@@ -9,7 +9,7 @@
 #import "DCValidator.h"
 #import "AddPersonTextField.h"
 #import "DCAddPersonDelegateProtocol.h"
-#import "NSString+Localized.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
