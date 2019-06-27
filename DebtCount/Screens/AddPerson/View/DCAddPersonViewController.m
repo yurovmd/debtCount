@@ -19,6 +19,7 @@
 
 - (void)setupUI;
 - (void)setupNotifications;
+- (void)setupLabels;
 
 @end
 
@@ -69,6 +70,8 @@
     [self.addPictureButton.layer setCornerRadius:(self.addPictureButton.bounds.size.width / 2)];
     [self.addPictureButton.layer setMasksToBounds:true];
     [self setupNotifications];
+    [self setupLabels];
+
 }
 
 - (void)setupNotifications {
@@ -81,6 +84,13 @@
                                                  selector:@selector(keyboardWillBeHidden:)
                                                      name:UIKeyboardWillHideNotification object:nil];
     }
+}
+
+- (void)setupLabels {
+    self.nameTextFieldLabel.text = [@"ADD_NEW_OBJECTS_CREEN.TEXTFIELDS.NAME" localized];
+    self.relationTextFIeldLabel.text = [@"ADD_NEW_OBJECTS_CREEN.TEXTFIELDS.RELATION" localized];
+    [self.cancelButton setTitle:[@"ADD_NEW_OBJECTS_CREEN.BUTTONS.CANCEL" localized] forState:normal];
+    [self.okButton setTitle:[@"ADD_NEW_OBJECTS_CREEN.BUTTONS.OK" localized] forState:normal];
 }
 
 @end
@@ -114,7 +124,11 @@
 }
 
 - (void)takeAPicture {
-    NSLog(@"open image picker controller");
+    [self openImagePickerController];
+}
+
+- (void)setAvatar:(UIImage *)avatarImage {
+    [self.addPictureButton setImage:avatarImage forState:normal];
 }
 
 @end
@@ -153,3 +167,27 @@
 }
 
 @end
+
+// MARK: - UIImagePickerControllerDelegate
+
+@implementation DCAddPersonViewController (UIImagePickerControllerDelegate)
+
+- (void)openImagePickerController {
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.delegate = self;
+    controller.allowsEditing = YES;
+
+    [self presentViewController:controller animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    [self.presenter pictureTaken:chosenImage];
+
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+
+}
+
+@end
+

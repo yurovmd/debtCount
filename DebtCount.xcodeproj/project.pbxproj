@@ -14,6 +14,10 @@
 		FA9DE0B622C10656006C024F /* DCPersonMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0B422C10656006C024F /* DCPersonMO+CoreDataClass.m */; };
 		FA9DE0B722C10656006C024F /* DCPersonMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0B522C10656006C024F /* DCPersonMO+CoreDataProperties.m */; };
 		FAA3B21B22BCEF1E00625B29 /* AddPersonTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA3B21A22BCEF1E00625B29 /* AddPersonTextField.m */; };
+		FAAFAC5C22C35A7700C866A8 /* NSString+Localized.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFAC5B22C35A7700C866A8 /* NSString+Localized.m */; };
+		FAAFAC5F22C364FE00C866A8 /* DCStringsLocalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFAC5E22C364FE00C866A8 /* DCStringsLocalizer.m */; };
+		FAAFAC6422C3753B00C866A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAAFAC6622C3753B00C866A8 /* Localizable.strings */; };
+		FAAFAC6822C3783A00C866A8 /* DCAddPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482322BA8955009FDD55 /* DCAddPersonViewController.m */; };
 		FAF847EA22BA39BF009FDD55 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF847E922BA39BF009FDD55 /* AppDelegate.m */; };
 		FAF847F022BA39BF009FDD55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF847EE22BA39BF009FDD55 /* Main.storyboard */; };
 		FAF847F322BA39BF009FDD55 /* DebtCount.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAF847F122BA39BF009FDD55 /* DebtCount.xcdatamodeld */; };
@@ -24,7 +28,6 @@
 		FAF8480A22BA5B7E009FDD55 /* DCPersonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8480922BA5B7E009FDD55 /* DCPersonDetailViewController.m */; };
 		FAF8481122BA71BC009FDD55 /* DCPersonsListPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8481022BA71BC009FDD55 /* DCPersonsListPresenter.m */; };
 		FAF8481822BA83E0009FDD55 /* DCPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8481722BA83E0009FDD55 /* DCPersonCell.m */; };
-		FAF8482422BA8955009FDD55 /* DCAddPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482322BA8955009FDD55 /* DCAddPersonViewController.m */; };
 		FAF8482622BA8963009FDD55 /* DCAddPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF8482522BA8963009FDD55 /* DCAddPerson.storyboard */; };
 		FAF8482E22BB7F2A009FDD55 /* DCAddPersonPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482D22BB7F2A009FDD55 /* DCAddPersonPresenter.m */; };
 		FAF8483122BB9304009FDD55 /* DCPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483022BB9304009FDD55 /* DCPerson.m */; };
@@ -49,6 +52,15 @@
 		FAA3B21422BCE4EA00625B29 /* DCValidatorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCValidatorProtocol.h; sourceTree = "<group>"; };
 		FAA3B21922BCEF1E00625B29 /* AddPersonTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPersonTextField.h; sourceTree = "<group>"; };
 		FAA3B21A22BCEF1E00625B29 /* AddPersonTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPersonTextField.m; sourceTree = "<group>"; };
+		FAAFAC5A22C35A5700C866A8 /* NSString+Localized.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Localized.h"; sourceTree = "<group>"; };
+		FAAFAC5B22C35A7700C866A8 /* NSString+Localized.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Localized.m"; sourceTree = "<group>"; };
+		FAAFAC5D22C364FE00C866A8 /* DCStringsLocalizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCStringsLocalizer.h; sourceTree = "<group>"; };
+		FAAFAC5E22C364FE00C866A8 /* DCStringsLocalizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCStringsLocalizer.m; sourceTree = "<group>"; };
+		FAAFAC6022C374D700C866A8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		FAAFAC6122C374D700C866A8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FAAFAC6522C3753B00C866A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FAAFAC6722C3754200C866A8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FAAFAC6922C3B8FB00C866A8 /* Prefix-DebtCount.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix-DebtCount.pch"; sourceTree = "<group>"; };
 		FAF847E522BA39BF009FDD55 /* DebtCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebtCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF847E822BA39BF009FDD55 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAF847E922BA39BF009FDD55 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -168,6 +180,34 @@
 			path = AddPersonTextField;
 			sourceTree = "<group>";
 		};
+		FAAFAC5722C3569C00C866A8 /* StringsLocalization */ = {
+			isa = PBXGroup;
+			children = (
+				FAAFAC5922C35A2500C866A8 /* NSString+Localized */,
+				FAAFAC5822C35A1000C866A8 /* DCStringsLocalizer */,
+				FAAFAC6622C3753B00C866A8 /* Localizable.strings */,
+			);
+			path = StringsLocalization;
+			sourceTree = "<group>";
+		};
+		FAAFAC5822C35A1000C866A8 /* DCStringsLocalizer */ = {
+			isa = PBXGroup;
+			children = (
+				FAAFAC5D22C364FE00C866A8 /* DCStringsLocalizer.h */,
+				FAAFAC5E22C364FE00C866A8 /* DCStringsLocalizer.m */,
+			);
+			path = DCStringsLocalizer;
+			sourceTree = "<group>";
+		};
+		FAAFAC5922C35A2500C866A8 /* NSString+Localized */ = {
+			isa = PBXGroup;
+			children = (
+				FAAFAC5A22C35A5700C866A8 /* NSString+Localized.h */,
+				FAAFAC5B22C35A7700C866A8 /* NSString+Localized.m */,
+			);
+			path = "NSString+Localized";
+			sourceTree = "<group>";
+		};
 		FAF847DC22BA39BF009FDD55 = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +231,7 @@
 		FAF847E722BA39BF009FDD55 /* DebtCount */ = {
 			isa = PBXGroup;
 			children = (
+				FAAFAC6922C3B8FB00C866A8 /* Prefix-DebtCount.pch */,
 				FA9DE0A122C0BAF4006C024F /* CoreDataController */,
 				FAA3B21722BCEEEB00625B29 /* Reusables */,
 				FAF8483222BB9772009FDD55 /* Utils */,
@@ -322,6 +363,7 @@
 		FAF8483222BB9772009FDD55 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FAAFAC5722C3569C00C866A8 /* StringsLocalization */,
 				FA97824222C241C400FDCEBB /* DebtFormatter */,
 				FAF8483322BB97BB009FDD55 /* Validator */,
 			);
@@ -389,6 +431,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = FAF847DC22BA39BF009FDD55;
 			productRefGroup = FAF847E622BA39BF009FDD55 /* Products */;
@@ -405,6 +448,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAAFAC6422C3753B00C866A8 /* Localizable.strings in Resources */,
 				FAF847F822BA39C0009FDD55 /* LaunchScreen.storyboard in Resources */,
 				FAF847F522BA39C0009FDD55 /* Assets.xcassets in Resources */,
 				FAF847F022BA39BF009FDD55 /* Main.storyboard in Resources */,
@@ -420,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA3B21B22BCEF1E00625B29 /* AddPersonTextField.m in Sources */,
+				FAAFAC5F22C364FE00C866A8 /* DCStringsLocalizer.m in Sources */,
 				FAF8480A22BA5B7E009FDD55 /* DCPersonDetailViewController.m in Sources */,
 				FAF8483622BB97F8009FDD55 /* DCValidator.m in Sources */,
 				FA9DE0B622C10656006C024F /* DCPersonMO+CoreDataClass.m in Sources */,
@@ -428,26 +473,37 @@
 				FAF8481822BA83E0009FDD55 /* DCPersonCell.m in Sources */,
 				FA9DE0B722C10656006C024F /* DCPersonMO+CoreDataProperties.m in Sources */,
 				FAF847F322BA39BF009FDD55 /* DebtCount.xcdatamodeld in Sources */,
+				FAAFAC5C22C35A7700C866A8 /* NSString+Localized.m in Sources */,
 				FAF847FB22BA39C0009FDD55 /* main.m in Sources */,
 				FA97824522C241DE00FDCEBB /* DCDebtFormatter.m in Sources */,
 				FA97823A22C21EE900FDCEBB /* DCCustomSplitViewController.m in Sources */,
+				FAAFAC6822C3783A00C866A8 /* DCAddPersonViewController.m in Sources */,
 				FAF8481122BA71BC009FDD55 /* DCPersonsListPresenter.m in Sources */,
 				FA97824122C235C400FDCEBB /* DCPersonCellPresenter.m in Sources */,
 				FAF847EA22BA39BF009FDD55 /* AppDelegate.m in Sources */,
 				FAF8480322BA5B1C009FDD55 /* DCPersonsListViewController.m in Sources */,
 				FA9DE0A522C0BB25006C024F /* DCPersonDataController.m in Sources */,
 				FAF8483A22BBBAB1009FDD55 /* DCValidationResponse.m in Sources */,
-				FAF8482422BA8955009FDD55 /* DCAddPersonViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		FAAFAC6622C3753B00C866A8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAAFAC6522C3753B00C866A8 /* en */,
+				FAAFAC6722C3754200C866A8 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		FAF847EE22BA39BF009FDD55 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FAF847EF22BA39BF009FDD55 /* Base */,
+				FAAFAC6022C374D700C866A8 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -456,6 +512,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FAF847F722BA39C0009FDD55 /* Base */,
+				FAAFAC6122C374D700C866A8 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -467,6 +524,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -526,6 +584,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -581,6 +640,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 375U32WX29;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "./DebtCount/Prefix-DebtCount.pch";
 				INFOPLIST_FILE = DebtCount/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -599,6 +660,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 375U32WX29;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "./DebtCount/Prefix-DebtCount.pch";
 				INFOPLIST_FILE = DebtCount/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

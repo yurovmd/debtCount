@@ -1,0 +1,19 @@
+//
+//  Prefix.pch
+//  DebtCount
+//
+//  Created by MAKSIM YUROV on 26/06/2019.
+//  Copyright © 2019 MAKSIM YUROV. All rights reserved.
+//
+
+#ifndef DebtCount-Prefix_pch
+#define DebtCount-Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "NSString+Localized.h"
+
+#endif /* Prefix_pch */
+
+

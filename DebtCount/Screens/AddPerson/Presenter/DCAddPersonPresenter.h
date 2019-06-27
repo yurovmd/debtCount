@@ -6,7 +6,7 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "DCAddPersonViewController.h"
 #import "DCValidatorProtocol.h"
@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)okPressed;
 - (void)cancelPressed;
 - (void)changePicturePressed;
+- (void)pictureTaken:(UIImage *)picture;
 
 @end
 

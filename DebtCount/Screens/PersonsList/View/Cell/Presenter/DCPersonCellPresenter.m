@@ -57,10 +57,15 @@
 }
 
 - (NSString *)getDebt {
-    return [DCDebtFormatter string:self.person.debt];
+    NSString *debtStringNumber = [DCDebtFormatter string:self.person.debt];
+    NSString *localizedDebt =  [NSString stringWithFormat:[@"PERSON_CELL.DEBT" localized], debtStringNumber];
+    return localizedDebt;
 }
 
 - (UIImage *)getAvatar {
+    if (self.person.avatar == nil) {
+        return [UIImage imageNamed:@"avatarDefault"];
+    }
     return self.person.avatar;
 }
 

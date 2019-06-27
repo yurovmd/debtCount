@@ -10,6 +10,7 @@
 #import "AddPersonTextField.h"
 #import "DCAddPersonDelegateProtocol.h"
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCAddPersonViewController : UIViewController
@@ -22,6 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *addPictureButton;
 @property (weak, nonatomic) IBOutlet AddPersonTextField *nameTextField;
 @property (weak, nonatomic) IBOutlet AddPersonTextField *relationTextField;
+@property (weak, nonatomic) IBOutlet UILabel *nameTextFieldLabel;
+@property (weak, nonatomic) IBOutlet UILabel *relationTextFIeldLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *okButton;
 
 @end
 
@@ -36,6 +41,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)takeAPicture;
 - (void)closePopover;
 - (void)closePopoverAndReload;
+- (void)setAvatar:(UIImage *)avatarImage;
+
+@end
+
+// MARK: - UIImagePickerControllerDelegate
+
+@interface DCAddPersonViewController (UIImagePickerControllerDelegate) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+- (void)openImagePickerController;
 
 @end
 

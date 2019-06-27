@@ -77,6 +77,11 @@
     [self.view takeAPicture];
 }
 
+- (void)pictureTaken:(UIImage *)picture {
+    self.person.avatar = picture;
+    [self.view setAvatar:picture];
+}
+
 @end
 
 // MARK: - Private Collection
