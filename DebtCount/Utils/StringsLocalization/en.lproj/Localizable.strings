@@ -17,3 +17,7 @@
 
 "PERSONS_LIST_SCREEN.TITLE" = "People";
 "PERSON_CELL.DEBT" = "%@ Rub";
+
+// MARK: - Person Details Screen
+
+"PERSON_DETAILS.CELL.AMOUNT" = "%@ Rub";

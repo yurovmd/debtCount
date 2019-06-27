@@ -10,6 +10,11 @@
 		FA6E623022C4FB5E009FDAFA /* DCPersonDetailsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E622F22C4FB5E009FDAFA /* DCPersonDetailsPresenter.m */; };
 		FA6E623622C50039009FDAFA /* DCTransactionMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623422C50039009FDAFA /* DCTransactionMO+CoreDataClass.m */; };
 		FA6E623722C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623522C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m */; };
+		FA6E623A22C509BE009FDAFA /* DCTransactionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623922C509BE009FDAFA /* DCTransactionCellModel.m */; };
+		FA6E623F22C50A01009FDAFA /* DCTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623E22C50A01009FDAFA /* DCTransaction.m */; };
+		FA6E624222C50EC1009FDAFA /* DCTransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E624122C50EC1009FDAFA /* DCTransactionCell.m */; };
+		FA6E624622C50F08009FDAFA /* DCTransactionCellPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E624522C50F08009FDAFA /* DCTransactionCellPresenter.m */; };
+		FA6E624822C5128C009FDAFA /* DCTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA6E624722C5128C009FDAFA /* DCTransactionCell.xib */; };
 		FA97823A22C21EE900FDCEBB /* DCCustomSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA97823922C21EE900FDCEBB /* DCCustomSplitViewController.m */; };
 		FA97824122C235C400FDCEBB /* DCPersonCellPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA97824022C235C400FDCEBB /* DCPersonCellPresenter.m */; };
 		FA97824522C241DE00FDCEBB /* DCDebtFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA97824422C241DD00FDCEBB /* DCDebtFormatter.m */; };
@@ -45,6 +50,15 @@
 		FA6E623322C50039009FDAFA /* DCTransactionMO+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DCTransactionMO+CoreDataClass.h"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataClass.h"; sourceTree = "<group>"; };
 		FA6E623422C50039009FDAFA /* DCTransactionMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DCTransactionMO+CoreDataClass.m"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataClass.m"; sourceTree = "<group>"; };
 		FA6E623522C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DCTransactionMO+CoreDataProperties.m"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataProperties.m"; sourceTree = "<group>"; };
+		FA6E623822C509BE009FDAFA /* DCTransactionCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCTransactionCellModel.h; sourceTree = "<group>"; };
+		FA6E623922C509BE009FDAFA /* DCTransactionCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCTransactionCellModel.m; sourceTree = "<group>"; };
+		FA6E623D22C50A01009FDAFA /* DCTransaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCTransaction.h; sourceTree = "<group>"; };
+		FA6E623E22C50A01009FDAFA /* DCTransaction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCTransaction.m; sourceTree = "<group>"; };
+		FA6E624022C50EC1009FDAFA /* DCTransactionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCTransactionCell.h; sourceTree = "<group>"; };
+		FA6E624122C50EC1009FDAFA /* DCTransactionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCTransactionCell.m; sourceTree = "<group>"; };
+		FA6E624422C50F08009FDAFA /* DCTransactionCellPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCTransactionCellPresenter.h; sourceTree = "<group>"; };
+		FA6E624522C50F08009FDAFA /* DCTransactionCellPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCTransactionCellPresenter.m; sourceTree = "<group>"; };
+		FA6E624722C5128C009FDAFA /* DCTransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DCTransactionCell.xib; sourceTree = "<group>"; };
 		FA97821B22C115A600FDCEBB /* DCAddPersonDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddPersonDelegateProtocol.h; sourceTree = "<group>"; };
 		FA97823822C21EE900FDCEBB /* DCCustomSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCCustomSplitViewController.h; sourceTree = "<group>"; };
 		FA97823922C21EE900FDCEBB /* DCCustomSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCCustomSplitViewController.m; sourceTree = "<group>"; };
@@ -133,6 +147,10 @@
 		FA6E622B22C4E73A009FDAFA /* TransactionCell */ = {
 			isa = PBXGroup;
 			children = (
+				FA6E624322C50EE8009FDAFA /* Presenter */,
+				FA6E624022C50EC1009FDAFA /* DCTransactionCell.h */,
+				FA6E624122C50EC1009FDAFA /* DCTransactionCell.m */,
+				FA6E624722C5128C009FDAFA /* DCTransactionCell.xib */,
 			);
 			path = TransactionCell;
 			sourceTree = "<group>";
@@ -140,8 +158,37 @@
 		FA6E623122C4FC61009FDAFA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA6E623822C509BE009FDAFA /* DCTransactionCellModel.h */,
+				FA6E623922C509BE009FDAFA /* DCTransactionCellModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FA6E623B22C509CE009FDAFA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E623C22C509E9009FDAFA /* DCTransaction */,
+				FAF8482122BA893B009FDD55 /* DCPerson */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FA6E623C22C509E9009FDAFA /* DCTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E623D22C50A01009FDAFA /* DCTransaction.h */,
+				FA6E623E22C50A01009FDAFA /* DCTransaction.m */,
+			);
+			path = DCTransaction;
+			sourceTree = "<group>";
+		};
+		FA6E624322C50EE8009FDAFA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E624422C50F08009FDAFA /* DCTransactionCellPresenter.h */,
+				FA6E624522C50F08009FDAFA /* DCTransactionCellPresenter.m */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		FA97821A22C1158100FDCEBB /* AddPersonDelegateProtocol */ = {
@@ -278,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				FAAFAC6922C3B8FB00C866A8 /* Prefix-DebtCount.pch */,
+				FA6E623B22C509CE009FDAFA /* Models */,
 				FA9DE0A122C0BAF4006C024F /* CoreDataController */,
 				FAA3B21722BCEEEB00625B29 /* Reusables */,
 				FAF8483222BB9772009FDD55 /* Utils */,
@@ -372,7 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				FA97821A22C1158100FDCEBB /* AddPersonDelegateProtocol */,
-				FAF8482122BA893B009FDD55 /* Model */,
 				FAF8482022BA8937009FDD55 /* Presenter */,
 				FAF8481F22BA8933009FDD55 /* View */,
 			);
@@ -398,13 +445,13 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		FAF8482122BA893B009FDD55 /* Model */ = {
+		FAF8482122BA893B009FDD55 /* DCPerson */ = {
 			isa = PBXGroup;
 			children = (
 				FAF8482F22BB9304009FDD55 /* DCPerson.h */,
 				FAF8483022BB9304009FDD55 /* DCPerson.m */,
 			);
-			path = Model;
+			path = DCPerson;
 			sourceTree = "<group>";
 		};
 		FAF8483222BB9772009FDD55 /* Utils */ = {
@@ -496,6 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAAFAC6422C3753B00C866A8 /* Localizable.strings in Resources */,
+				FA6E624822C5128C009FDAFA /* DCTransactionCell.xib in Resources */,
 				FAF847F822BA39C0009FDD55 /* LaunchScreen.storyboard in Resources */,
 				FAF847F522BA39C0009FDD55 /* Assets.xcassets in Resources */,
 				FAF847F022BA39BF009FDD55 /* Main.storyboard in Resources */,
@@ -513,6 +561,7 @@
 				FAA3B21B22BCEF1E00625B29 /* AddPersonTextField.m in Sources */,
 				FAAFAC5F22C364FE00C866A8 /* DCStringsLocalizer.m in Sources */,
 				FAF8480A22BA5B7E009FDD55 /* DCPersonDetailViewController.m in Sources */,
+				FA6E623F22C50A01009FDAFA /* DCTransaction.m in Sources */,
 				FAF8483622BB97F8009FDD55 /* DCValidator.m in Sources */,
 				FA9DE0B622C10656006C024F /* DCPersonMO+CoreDataClass.m in Sources */,
 				FAF8482E22BB7F2A009FDD55 /* DCAddPersonPresenter.m in Sources */,
@@ -524,6 +573,7 @@
 				FA6E623722C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m in Sources */,
 				FAF847FB22BA39C0009FDD55 /* main.m in Sources */,
 				FA6E623622C50039009FDAFA /* DCTransactionMO+CoreDataClass.m in Sources */,
+				FA6E624222C50EC1009FDAFA /* DCTransactionCell.m in Sources */,
 				FA97824522C241DE00FDCEBB /* DCDebtFormatter.m in Sources */,
 				FA6E623022C4FB5E009FDAFA /* DCPersonDetailsPresenter.m in Sources */,
 				FA97823A22C21EE900FDCEBB /* DCCustomSplitViewController.m in Sources */,
@@ -532,6 +582,8 @@
 				FA97824122C235C400FDCEBB /* DCPersonCellPresenter.m in Sources */,
 				FAF847EA22BA39BF009FDD55 /* AppDelegate.m in Sources */,
 				FAF8480322BA5B1C009FDD55 /* DCPersonsListViewController.m in Sources */,
+				FA6E624622C50F08009FDAFA /* DCTransactionCellPresenter.m in Sources */,
+				FA6E623A22C509BE009FDAFA /* DCTransactionCellModel.m in Sources */,
 				FA9DE0A522C0BB25006C024F /* DCPersonDataController.m in Sources */,
 				FAF8483A22BBBAB1009FDD55 /* DCValidationResponse.m in Sources */,
 			);
