@@ -6,8 +6,16 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="relation" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DCTransactionMO" syncable="YES"/>
+    </entity>
+    <entity name="DCTransactionMO" representedClassName="DCTransactionMO" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="transactionDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DCPersonMO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DCPersonMO" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="DCPersonMO" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="DCTransactionMO" positionX="210.5859375" positionY="-130.31640625" width="128" height="103"/>
     </elements>
 </model>

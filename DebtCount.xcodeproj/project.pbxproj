@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA6E623022C4FB5E009FDAFA /* DCPersonDetailsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E622F22C4FB5E009FDAFA /* DCPersonDetailsPresenter.m */; };
+		FA6E623622C50039009FDAFA /* DCTransactionMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623422C50039009FDAFA /* DCTransactionMO+CoreDataClass.m */; };
+		FA6E623722C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623522C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m */; };
 		FA97823A22C21EE900FDCEBB /* DCCustomSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA97823922C21EE900FDCEBB /* DCCustomSplitViewController.m */; };
 		FA97824122C235C400FDCEBB /* DCPersonCellPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA97824022C235C400FDCEBB /* DCPersonCellPresenter.m */; };
 		FA97824522C241DE00FDCEBB /* DCDebtFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA97824422C241DD00FDCEBB /* DCDebtFormatter.m */; };
@@ -36,6 +39,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA6E622E22C4FB5E009FDAFA /* DCPersonDetailsPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonDetailsPresenter.h; sourceTree = "<group>"; };
+		FA6E622F22C4FB5E009FDAFA /* DCPersonDetailsPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonDetailsPresenter.m; sourceTree = "<group>"; };
+		FA6E623222C50039009FDAFA /* DCTransactionMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DCTransactionMO+CoreDataProperties.h"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		FA6E623322C50039009FDAFA /* DCTransactionMO+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DCTransactionMO+CoreDataClass.h"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataClass.h"; sourceTree = "<group>"; };
+		FA6E623422C50039009FDAFA /* DCTransactionMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DCTransactionMO+CoreDataClass.m"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataClass.m"; sourceTree = "<group>"; };
+		FA6E623522C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DCTransactionMO+CoreDataProperties.m"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataProperties.m"; sourceTree = "<group>"; };
 		FA97821B22C115A600FDCEBB /* DCAddPersonDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddPersonDelegateProtocol.h; sourceTree = "<group>"; };
 		FA97823822C21EE900FDCEBB /* DCCustomSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCCustomSplitViewController.h; sourceTree = "<group>"; };
 		FA97823922C21EE900FDCEBB /* DCCustomSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCCustomSplitViewController.m; sourceTree = "<group>"; };
@@ -102,6 +111,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA6E622922C4E720009FDAFA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E622E22C4FB5E009FDAFA /* DCPersonDetailsPresenter.h */,
+				FA6E622F22C4FB5E009FDAFA /* DCPersonDetailsPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA6E622A22C4E729009FDAFA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E622B22C4E73A009FDAFA /* TransactionCell */,
+				FAF8480822BA5B7E009FDD55 /* DCPersonDetailViewController.h */,
+				FAF8480922BA5B7E009FDD55 /* DCPersonDetailViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA6E622B22C4E73A009FDAFA /* TransactionCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TransactionCell;
+			sourceTree = "<group>";
+		};
+		FA6E623122C4FC61009FDAFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FA97821A22C1158100FDCEBB /* AddPersonDelegateProtocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +253,10 @@
 		FAF847DC22BA39BF009FDD55 = {
 			isa = PBXGroup;
 			children = (
+				FA6E623222C50039009FDAFA /* DCTransactionMO+CoreDataProperties.h */,
+				FA6E623322C50039009FDAFA /* DCTransactionMO+CoreDataClass.h */,
+				FA6E623422C50039009FDAFA /* DCTransactionMO+CoreDataClass.m */,
+				FA6E623522C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m */,
 				FA9DE0B222C10656006C024F /* DCPersonMO+CoreDataProperties.h */,
 				FA9DE0B322C10656006C024F /* DCPersonMO+CoreDataClass.h */,
 				FA9DE0B422C10656006C024F /* DCPersonMO+CoreDataClass.m */,
@@ -271,8 +317,9 @@
 		FAF8480722BA5B45009FDD55 /* PersonDetail */ = {
 			isa = PBXGroup;
 			children = (
-				FAF8480822BA5B7E009FDD55 /* DCPersonDetailViewController.h */,
-				FAF8480922BA5B7E009FDD55 /* DCPersonDetailViewController.m */,
+				FA6E623122C4FC61009FDAFA /* Model */,
+				FA6E622A22C4E729009FDAFA /* View */,
+				FA6E622922C4E720009FDAFA /* Presenter */,
 			);
 			path = PersonDetail;
 			sourceTree = "<group>";
@@ -474,8 +521,11 @@
 				FA9DE0B722C10656006C024F /* DCPersonMO+CoreDataProperties.m in Sources */,
 				FAF847F322BA39BF009FDD55 /* DebtCount.xcdatamodeld in Sources */,
 				FAAFAC5C22C35A7700C866A8 /* NSString+Localized.m in Sources */,
+				FA6E623722C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m in Sources */,
 				FAF847FB22BA39C0009FDD55 /* main.m in Sources */,
+				FA6E623622C50039009FDAFA /* DCTransactionMO+CoreDataClass.m in Sources */,
 				FA97824522C241DE00FDCEBB /* DCDebtFormatter.m in Sources */,
+				FA6E623022C4FB5E009FDAFA /* DCPersonDetailsPresenter.m in Sources */,
 				FA97823A22C21EE900FDCEBB /* DCCustomSplitViewController.m in Sources */,
 				FAAFAC6822C3783A00C866A8 /* DCAddPersonViewController.m in Sources */,
 				FAF8481122BA71BC009FDD55 /* DCPersonsListPresenter.m in Sources */,
