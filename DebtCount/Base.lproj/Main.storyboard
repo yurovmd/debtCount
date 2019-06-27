@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="275" y="134"/>
         </scene>
-        <!--People-->
+        <!--Persons List View Controller-->
         <scene sceneID="Y5L-qh-tRU">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="JrV-gJ-S0a" customClass="DCPersonsListViewController" sceneMemberID="viewController">
@@ -52,7 +52,6 @@
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fbo-bO-gke">
                                             <rect key="frame" x="15" y="15" width="40" height="40"/>
-                                            <color key="backgroundColor" red="0.69140452146530151" green="0.74960476160049438" blue="0.79928714036941528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="5fz-sl-wT0"/>
                                                 <constraint firstAttribute="width" constant="40" id="OSG-F7-UjP"/>
@@ -106,7 +105,7 @@
                             <outlet property="delegate" destination="JrV-gJ-S0a" id="eS3-85-HzG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="People" id="MEH-vL-jsy">
+                    <navigationItem key="navigationItem" id="MEH-vL-jsy">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MSA-qz-ErM">
                             <connections>
                                 <action selector="addPersonButtonPressed:" destination="JrV-gJ-S0a" id="TtD-xt-6LW"/>

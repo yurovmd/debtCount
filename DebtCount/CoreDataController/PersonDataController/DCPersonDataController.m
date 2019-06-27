@@ -44,7 +44,7 @@
         personManagedObject.relation = person.relation;
         NSData *avatarData = UIImagePNGRepresentation(person.avatar);
         personManagedObject.avatar = [[NSData alloc] initWithData:avatarData] ;
-        personManagedObject.debt = 0;
+        personManagedObject.debt = [NSDecimalNumber zero];
         personManagedObject.personId = [[NSUUID UUID] UUIDString];;
         if ([context save:&error] == NO) {
             NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
