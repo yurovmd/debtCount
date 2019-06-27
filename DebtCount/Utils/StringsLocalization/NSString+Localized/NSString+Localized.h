@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSString (Localizer)
 
 - (NSString *)localized;
+- (NSString *)localizedForKeyWithParams:(NSString *)key, ...;
 
 @end
 

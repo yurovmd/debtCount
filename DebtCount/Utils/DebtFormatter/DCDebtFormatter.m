@@ -18,9 +18,9 @@
     [formatter setGroupingSeparator:@" "];
     [formatter setDecimalSeparator:@","];
 
-    NSString *finalValue = [formatter stringFromNumber:value];
+    NSString *stringValue = [formatter stringFromNumber:value];
 
-    return finalValue;
+    return stringValue;
 }
 
 @end

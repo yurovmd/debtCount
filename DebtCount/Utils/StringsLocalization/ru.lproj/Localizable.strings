@@ -14,3 +14,4 @@
 // MARK: - Persons List Screen
 
 "PERSONS_LIST_SCREEN.TITLE" = "Люди";
+"PERSON_CELL.DEBT" = "%@ руб.";
