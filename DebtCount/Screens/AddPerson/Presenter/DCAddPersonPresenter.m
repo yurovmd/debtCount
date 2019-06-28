@@ -50,7 +50,7 @@
 
 - (void)okPressed {
     // Validating data
-    void (^responseCompletion)(DCValidationResponse *) = ^(DCValidationResponse *response) {
+    void (^responseCompletion)(DCPersonValidationResponse *) = ^(DCPersonValidationResponse *response) {
         if (response.isValid) {
             [self saveData:self.person];
         } else {

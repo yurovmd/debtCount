@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DCPerson.h"
-#import "DCValidationResponse.h"
+#import "DCPersonValidationResponse.h"
 #import "DCValidatorProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN

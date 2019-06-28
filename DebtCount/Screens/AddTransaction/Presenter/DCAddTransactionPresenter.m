@@ -11,13 +11,19 @@
 @interface DCAddTransactionPresenter ()
 
 @property (weak) DCAddTransactionViewController *view;
+@property id<DCValidatorProtocol> validator;
+@property DCTransaction *transaction;
+
+@property NSString *amount;
+@property BOOL isAmountNegative;
 
 @end
 
 @implementation DCAddTransactionPresenter
 
-- (instancetype)initWithView:(DCAddTransactionViewController *)view {
+- (instancetype)initWithView:(DCAddTransactionViewController *)view validator:(id<DCValidatorProtocol>)validator {
     if (self = [super init]) {
+        self.validator = validator;
         self.view = view;
     }
     return self;
@@ -30,6 +36,9 @@
 @implementation DCAddTransactionPresenter (ViewInputs)
 
 - (void)viewIsReady {
+    self.transaction = [[DCTransaction alloc] init];
+    self.isAmountNegative = NO;
+    [self.view setAmountGreen];
     [self.view setupCancelButtonWithText:[@"ADD_TRANSACTION_SCREEN.BUTTONS.CANCEL" localized]];
     [self.view setupOKButtonWithText:[@"ADD_TRANSACTION_SCREEN.BUTTONS.OK" localized]];
     [self.view setupAmountLabelTitle:[@"ADD_TRANSACTION_SCREEN.LABELS.AMOUNT" localized]];
@@ -39,27 +48,61 @@
 }
 
 - (void)cancelButtonPressed {
-
+    [self.view closePopover];
 }
 
 - (void)okButtonPressed {
-
+    // Validating data
+    if (self.isAmountNegative) {
+        self.amount = [NSString stringWithFormat:@"-%@", self.amount];
+    } else {
+        self.amount = [NSString stringWithFormat:@"+%@", self.amount];
+    }
+    self.transaction.amount = [NSDecimalNumber decimalNumberWithString:self.amount];
+    void (^responseCompletion)(DCTransactionValidationResponse *) = ^(DCTransactionValidationResponse *response) {
+        if (response.isValid) {
+            [self.view closePopoverWithTransaction:self.transaction];
+        } else {
+            if (response.isAmountValid) {
+                [self.view setAmountValid];
+            } else {
+                [self.view setAmountError];
+            }
+            if (response.isDateValid) {
+                [self.view setDateValid];
+            } else {
+                [self.view setDateError];
+            }
+            if (response.isDescriptionValid) {
+                [self.view setDescriptionValid];
+            } else {
+                [self.view setDescriptionError];
+            }
+        }
+    };
+    [self.validator validateTransaction:self.transaction completion:(responseCompletion)];
 }
 
 - (void)amountChangedWithText:(NSString *)text {
-
+    self.amount = text;
 }
 
 - (void)dateTextFieldPressed {
-
+    [self.view openDatePicker];
 }
 
 - (void)descriptionChangedText:(NSString *)text {
-
+    self.transaction.transactionDescription = text;
 }
 
 - (void)plusMinusButtonPressed {
-
+    if (self.isAmountNegative) {
+        [self.view setAmountGreen];
+        self.isAmountNegative = NO;
+    } else {
+        [self.view setAmountRed];
+        self.isAmountNegative = YES;
+    }
 }
 
 @end

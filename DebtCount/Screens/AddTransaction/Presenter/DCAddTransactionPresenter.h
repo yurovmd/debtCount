@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DCAddTransactionPresenter : NSObject
 
-- (instancetype)initWithView:(DCAddTransactionViewController *)view;
+- (instancetype)initWithView:(DCAddTransactionViewController *)view validator:(id<DCValidatorProtocol>)validator;
 
 @end
 

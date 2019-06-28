@@ -21,7 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.presenter = [[DCAddTransactionPresenter alloc] initWithView:self];
+    DCValidator *validator = [[DCValidator alloc] init];
+    self.presenter = [[DCAddTransactionPresenter alloc] initWithView:self validator:validator];
     [self setupUI];
     [self.presenter viewIsReady];
 }
@@ -98,6 +99,35 @@
 
 - (void)setDescriptionValid {
     [self.descriptionTextField changeStyleToValid];
+}
+
+- (void)setDateError {
+    [self.dateTextField changeStyleToError];
+}
+
+- (void)setDateValid {
+    [self.dateTextField changeStyleToValid];
+}
+
+- (void)closePopover {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)closePopoverWithTransaction:(DCTransaction *)transaction {
+    [self.delegate addTransaction:transaction];
+    [self closePopover];
+}
+
+- (void)openDatePicker {
+
+}
+
+- (void)setAmountGreen {
+    [self.amountTextField setTextColor:UIColor.greenColor];
+}
+
+- (void)setAmountRed {
+    [self.amountTextField setTextColor:UIColor.redColor];
 }
 
 @end

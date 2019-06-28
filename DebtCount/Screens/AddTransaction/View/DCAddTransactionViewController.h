@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DCAddTransactionDelegateProtocol.h"
 #import "AddTextField.h"
+#import "DCValidator.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -42,7 +43,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setAmountValid;
 - (void)setDescriptionError;
 - (void)setDescriptionValid;
+- (void)setDateError;
+- (void)setDateValid;
 
+- (void)closePopover;
+- (void)closePopoverWithTransaction:(DCTransaction *)transaction;
+
+- (void)openDatePicker;
+
+- (void)setAmountGreen;
+- (void)setAmountRed;
 
 @end
 

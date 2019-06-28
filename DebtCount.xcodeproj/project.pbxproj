@@ -11,6 +11,7 @@
 		FA2FB8FA22C62E740085F894 /* DCAddTransactionPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FB8F922C62E740085F894 /* DCAddTransactionPresenter.m */; };
 		FA2FB8FD22C62E9A0085F894 /* DCAddTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FB8FC22C62E9A0085F894 /* DCAddTransactionViewController.m */; };
 		FA2FB8FF22C62EA80085F894 /* DCAddTransaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2FB8FE22C62EA80085F894 /* DCAddTransaction.storyboard */; };
+		FA2FB90422C657940085F894 /* DCTransactionValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FB90322C657940085F894 /* DCTransactionValidationResponse.m */; };
 		FA6E623022C4FB5E009FDAFA /* DCPersonDetailsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E622F22C4FB5E009FDAFA /* DCPersonDetailsPresenter.m */; };
 		FA6E623622C50039009FDAFA /* DCTransactionMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623422C50039009FDAFA /* DCTransactionMO+CoreDataClass.m */; };
 		FA6E623722C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623522C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m */; };
@@ -43,7 +44,7 @@
 		FAF8482E22BB7F2A009FDD55 /* DCAddPersonPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482D22BB7F2A009FDD55 /* DCAddPersonPresenter.m */; };
 		FAF8483122BB9304009FDD55 /* DCPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483022BB9304009FDD55 /* DCPerson.m */; };
 		FAF8483622BB97F8009FDD55 /* DCValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483522BB97F8009FDD55 /* DCValidator.m */; };
-		FAF8483A22BBBAB1009FDD55 /* DCValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483922BBBAB1009FDD55 /* DCValidationResponse.m */; };
+		FAF8483A22BBBAB1009FDD55 /* DCPersonValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8483922BBBAB1009FDD55 /* DCPersonValidationResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		FA2FB8FB22C62E9A0085F894 /* DCAddTransactionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddTransactionViewController.h; sourceTree = "<group>"; };
 		FA2FB8FC22C62E9A0085F894 /* DCAddTransactionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCAddTransactionViewController.m; sourceTree = "<group>"; };
 		FA2FB8FE22C62EA80085F894 /* DCAddTransaction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DCAddTransaction.storyboard; sourceTree = "<group>"; };
+		FA2FB90222C657940085F894 /* DCTransactionValidationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCTransactionValidationResponse.h; sourceTree = "<group>"; };
+		FA2FB90322C657940085F894 /* DCTransactionValidationResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCTransactionValidationResponse.m; sourceTree = "<group>"; };
 		FA6E622E22C4FB5E009FDAFA /* DCPersonDetailsPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonDetailsPresenter.h; sourceTree = "<group>"; };
 		FA6E622F22C4FB5E009FDAFA /* DCPersonDetailsPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonDetailsPresenter.m; sourceTree = "<group>"; };
 		FA6E623222C50039009FDAFA /* DCTransactionMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DCTransactionMO+CoreDataProperties.h"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -120,8 +123,8 @@
 		FAF8483022BB9304009FDD55 /* DCPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPerson.m; sourceTree = "<group>"; };
 		FAF8483422BB97F8009FDD55 /* DCValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCValidator.h; sourceTree = "<group>"; };
 		FAF8483522BB97F8009FDD55 /* DCValidator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCValidator.m; sourceTree = "<group>"; };
-		FAF8483822BBBAB1009FDD55 /* DCValidationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCValidationResponse.h; sourceTree = "<group>"; };
-		FAF8483922BBBAB1009FDD55 /* DCValidationResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCValidationResponse.m; sourceTree = "<group>"; };
+		FAF8483822BBBAB1009FDD55 /* DCPersonValidationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonValidationResponse.h; sourceTree = "<group>"; };
+		FAF8483922BBBAB1009FDD55 /* DCPersonValidationResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonValidationResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +198,24 @@
 				FA2FB8F722C62A9E0085F894 /* DCAddTransactionDelegateProtocol.h */,
 			);
 			path = AddTransactionDelegate;
+			sourceTree = "<group>";
+		};
+		FA2FB90022C6574F0085F894 /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				FAF8483822BBBAB1009FDD55 /* DCPersonValidationResponse.h */,
+				FAF8483922BBBAB1009FDD55 /* DCPersonValidationResponse.m */,
+			);
+			path = Person;
+			sourceTree = "<group>";
+		};
+		FA2FB90122C6575F0085F894 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				FA2FB90222C657940085F894 /* DCTransactionValidationResponse.h */,
+				FA2FB90322C657940085F894 /* DCTransactionValidationResponse.m */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 		FA6E622922C4E720009FDAFA /* Presenter */ = {
@@ -543,8 +564,8 @@
 		FAF8483722BBB796009FDD55 /* ValidationError */ = {
 			isa = PBXGroup;
 			children = (
-				FAF8483822BBBAB1009FDD55 /* DCValidationResponse.h */,
-				FAF8483922BBBAB1009FDD55 /* DCValidationResponse.m */,
+				FA2FB90122C6575F0085F894 /* Transaction */,
+				FA2FB90022C6574F0085F894 /* Person */,
 			);
 			path = ValidationError;
 			sourceTree = "<group>";
@@ -632,6 +653,7 @@
 				FA9DE0B622C10656006C024F /* DCPersonMO+CoreDataClass.m in Sources */,
 				FAF8482E22BB7F2A009FDD55 /* DCAddPersonPresenter.m in Sources */,
 				FAF8483122BB9304009FDD55 /* DCPerson.m in Sources */,
+				FA2FB90422C657940085F894 /* DCTransactionValidationResponse.m in Sources */,
 				FAF8481822BA83E0009FDD55 /* DCPersonCell.m in Sources */,
 				FA9DE0B722C10656006C024F /* DCPersonMO+CoreDataProperties.m in Sources */,
 				FAF847F322BA39BF009FDD55 /* DebtCount.xcdatamodeld in Sources */,
@@ -653,7 +675,7 @@
 				FA2FB8FA22C62E740085F894 /* DCAddTransactionPresenter.m in Sources */,
 				FA2FB8F222C618050085F894 /* CALayer+Shadow.m in Sources */,
 				FA9DE0A522C0BB25006C024F /* DCPersonDataController.m in Sources */,
-				FAF8483A22BBBAB1009FDD55 /* DCValidationResponse.m in Sources */,
+				FAF8483A22BBBAB1009FDD55 /* DCPersonValidationResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
