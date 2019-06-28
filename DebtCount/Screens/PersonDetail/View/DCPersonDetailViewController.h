@@ -9,15 +9,19 @@
 #import "DCPerson.h"
 #import "DCTransactionCell.h"
 #import "DCPersonsListDelegate.h"
+#import "DCPersonDetailViewController.h"
+#import "DCAddTransactionDelegateProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DCPersonDetailViewController : UIViewController
+@interface DCPersonDetailViewController : UIViewController <UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic) DCPerson *person;
 
 @property (weak, nonatomic) IBOutlet UIView *chartView;
 @property (weak, nonatomic) IBOutlet UITableView *detailsTableView;
+@property (weak, nonatomic) IBOutlet UIView *addButtonView;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
 
 @end
 
@@ -27,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)updateTableViewWithModels:(NSMutableArray *)cellModels;
 - (void)setTitleViewTitle:(NSString *)title;
+- (void)openTransactionPopover;
 
 @end
 
@@ -35,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DCPersonDetailViewController (Private)
 
 - (void)setupUI;
+- (void)setupAddButton;
 
 @end
 
@@ -53,6 +59,12 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: - DCPersonsListDelegate
 
 @interface DCPersonDetailViewController (PersonsListDelegate) <DCPersonsListDelegate>
+
+@end
+
+// MARK: - DCPersonDetailViewController
+
+@interface DCPersonDetailViewController (AddTransactionDelegate) <DCAddTransactionDelegateProtocol>
 
 @end
 

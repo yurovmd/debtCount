@@ -48,4 +48,8 @@
     // More to come when we will use chart
 }
 
+- (void)addButtonTapped {
+    [self.view openTransactionPopover];
+}
+
 @end

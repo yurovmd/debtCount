@@ -8,6 +8,7 @@
 
 #import "DCPersonDetailViewController.h"
 #import "DCPersonDetailsPresenter.h"
+#import "DCAddTransactionViewController.h"
 
 @interface DCPersonDetailViewController ()
 
@@ -31,6 +32,10 @@
     [self.presenter viewIsReady];
 }
 
+- (IBAction)addButtonTapped:(id)sender {
+    [self.presenter addButtonTapped];
+}
+
 @end
 
 // MARK: - Signals from Presenter
@@ -46,6 +51,33 @@
     self.title = title;
 }
 
+- (void)openTransactionPopover {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"DCAddTransaction" bundle:nil];
+    UIViewController *controller = [storyboard instantiateInitialViewController];
+    if ( [controller isKindOfClass:([DCAddTransactionViewController class])] ) {
+        [(DCAddTransactionViewController *)controller setDelegate:self];
+    }
+
+    controller.modalPresentationStyle = UIModalPresentationPopover;
+
+    controller.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    controller.popoverPresentationController.sourceView = self.addButtonView;
+    controller.popoverPresentationController.delegate = self;
+
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+@end
+
+// MARK: -  UIPopoverPresentationControllerDelegate
+
+@implementation DCPersonDetailViewController (PopoverDelegate)
+
+- (BOOL)popoverPresentationControllerShouldDismissPopover:
+(UIPopoverPresentationController *)popoverPresentationController {
+    return NO;
+}
+
 @end
 
 // MARK: - Private Category
@@ -55,6 +87,18 @@
 - (void)setupUI {
     self.detailsTableView.dataSource = self;
     self.detailsTableView.delegate = self;
+    [self setupAddButton];
+}
+
+- (void)setupAddButton {
+    [self.addButtonView.layer applyShadowWithColor:UIColor.grayColor
+                                             alpha:1.0
+                                             xAxis:0
+                                             yAxis:4
+                                              blur:8
+                                            spread:0];
+    [self.addButton.layer setCornerRadius:self.addButton.bounds.size.height / 2];
+    [self.addButton.layer setMasksToBounds:YES];
 }
 
 @end
@@ -87,6 +131,16 @@
 
 - (void)personSelected:(DCPerson *)person {
     [self.presenter personChanged:person];
+}
+
+@end
+
+// MARK: - DCAddTransactionDelegateProtocol
+
+@implementation DCPersonDetailViewController (AddTransactionDelegate)
+
+- (void)addTransaction:(DCTransaction *)transaction {
+    // TODO: - Implement saving secieved data and update tableView
 }
 
 @end

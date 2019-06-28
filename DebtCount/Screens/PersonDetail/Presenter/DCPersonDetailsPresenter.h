@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)viewIsReady;
 - (void)personChanged:(DCPerson *)person;
+- (void)addButtonTapped;
 
 @end
 
