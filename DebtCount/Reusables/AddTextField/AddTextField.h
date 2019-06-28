@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddPersonTextField : UITextField
+@interface AddTextField : UITextField
+
+- (void)changeStyleToError;
+- (void)changeStyleToValid;
 
 @end
 

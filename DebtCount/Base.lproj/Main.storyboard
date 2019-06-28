@@ -28,7 +28,7 @@
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="50"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4FL-0Q-5V5">
-                                <rect key="frame" x="344" y="762" width="50" height="50"/>
+                                <rect key="frame" x="324" y="772" width="50" height="50"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jML-Ys-3ta">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -55,11 +55,11 @@
                             <constraint firstItem="g9H-Ku-xrC" firstAttribute="top" secondItem="lFU-cB-bEE" secondAttribute="bottom" id="1KU-hf-PYU"/>
                             <constraint firstItem="lFU-cB-bEE" firstAttribute="leading" secondItem="mFS-M7-PRs" secondAttribute="leading" id="Feu-5v-Cgx"/>
                             <constraint firstAttribute="bottom" secondItem="g9H-Ku-xrC" secondAttribute="bottom" id="IVT-rP-1S3"/>
-                            <constraint firstItem="mFS-M7-PRs" firstAttribute="trailing" secondItem="4FL-0Q-5V5" secondAttribute="trailing" constant="20" id="Ieg-sX-Pk2"/>
+                            <constraint firstItem="mFS-M7-PRs" firstAttribute="trailing" secondItem="4FL-0Q-5V5" secondAttribute="trailing" constant="40" id="Ieg-sX-Pk2"/>
                             <constraint firstItem="g9H-Ku-xrC" firstAttribute="leading" secondItem="mFS-M7-PRs" secondAttribute="leading" id="hiV-Dg-003"/>
                             <constraint firstItem="lFU-cB-bEE" firstAttribute="height" secondItem="dco-qk-3ap" secondAttribute="height" multiplier="1:4" id="iny-7F-KsT"/>
                             <constraint firstItem="mFS-M7-PRs" firstAttribute="trailing" secondItem="lFU-cB-bEE" secondAttribute="trailing" id="m6J-vC-3nf"/>
-                            <constraint firstItem="mFS-M7-PRs" firstAttribute="bottom" secondItem="4FL-0Q-5V5" secondAttribute="bottom" constant="50" id="tPp-Sl-xOJ"/>
+                            <constraint firstItem="mFS-M7-PRs" firstAttribute="bottom" secondItem="4FL-0Q-5V5" secondAttribute="bottom" constant="40" id="tPp-Sl-xOJ"/>
                             <constraint firstItem="lFU-cB-bEE" firstAttribute="top" secondItem="mFS-M7-PRs" secondAttribute="top" id="xnV-Uk-xAc"/>
                             <constraint firstItem="mFS-M7-PRs" firstAttribute="trailing" secondItem="g9H-Ku-xrC" secondAttribute="trailing" id="yx2-Fj-7Oy"/>
                         </constraints>

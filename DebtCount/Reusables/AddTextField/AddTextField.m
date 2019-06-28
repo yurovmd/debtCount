@@ -6,23 +6,31 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "AddPersonTextField.h"
+#import "AddTextField.h"
 
-@interface AddPersonTextField (AddPersonTextFieldUISetup)
+@interface AddTextField (AddPersonTextFieldUISetup)
 
 - (void)setupUI;
 
 @end
 
-@implementation AddPersonTextField
+@implementation AddTextField
 
 - (void)drawRect:(CGRect)rect {
     [self setupUI];
 }
 
+- (void)changeStyleToError {
+    [self.layer setBorderColor:UIColor.redColor.CGColor];
+}
+
+- (void)changeStyleToValid {
+    [self.layer setBorderColor:UIColor.blueColor.CGColor];
+}
+
 @end
 
-@implementation AddPersonTextField (AddPersonTextFieldUISetup)
+@implementation AddTextField (AddPersonTextFieldUISetup)
 
 - (void)setupUI {
     [self.layer setBorderWidth:1.0];

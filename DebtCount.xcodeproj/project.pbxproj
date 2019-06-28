@@ -24,7 +24,7 @@
 		FA9DE0A522C0BB25006C024F /* DCPersonDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0A422C0BB25006C024F /* DCPersonDataController.m */; };
 		FA9DE0B622C10656006C024F /* DCPersonMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0B422C10656006C024F /* DCPersonMO+CoreDataClass.m */; };
 		FA9DE0B722C10656006C024F /* DCPersonMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0B522C10656006C024F /* DCPersonMO+CoreDataProperties.m */; };
-		FAA3B21B22BCEF1E00625B29 /* AddPersonTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA3B21A22BCEF1E00625B29 /* AddPersonTextField.m */; };
+		FAA3B21B22BCEF1E00625B29 /* AddTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA3B21A22BCEF1E00625B29 /* AddTextField.m */; };
 		FAAFAC5C22C35A7700C866A8 /* NSString+Localized.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFAC5B22C35A7700C866A8 /* NSString+Localized.m */; };
 		FAAFAC5F22C364FE00C866A8 /* DCStringsLocalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFAC5E22C364FE00C866A8 /* DCStringsLocalizer.m */; };
 		FAAFAC6422C3753B00C866A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAAFAC6622C3753B00C866A8 /* Localizable.strings */; };
@@ -83,8 +83,8 @@
 		FA9DE0B422C10656006C024F /* DCPersonMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DCPersonMO+CoreDataClass.m"; path = "DebtCount/CoreDataController/DCPersonMO+CoreDataClass.m"; sourceTree = "<group>"; };
 		FA9DE0B522C10656006C024F /* DCPersonMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DCPersonMO+CoreDataProperties.m"; path = "DebtCount/CoreDataController/DCPersonMO+CoreDataProperties.m"; sourceTree = "<group>"; };
 		FAA3B21422BCE4EA00625B29 /* DCValidatorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCValidatorProtocol.h; sourceTree = "<group>"; };
-		FAA3B21922BCEF1E00625B29 /* AddPersonTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPersonTextField.h; sourceTree = "<group>"; };
-		FAA3B21A22BCEF1E00625B29 /* AddPersonTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPersonTextField.m; sourceTree = "<group>"; };
+		FAA3B21922BCEF1E00625B29 /* AddTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTextField.h; sourceTree = "<group>"; };
+		FAA3B21A22BCEF1E00625B29 /* AddTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTextField.m; sourceTree = "<group>"; };
 		FAAFAC5A22C35A5700C866A8 /* NSString+Localized.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Localized.h"; sourceTree = "<group>"; };
 		FAAFAC5B22C35A7700C866A8 /* NSString+Localized.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Localized.m"; sourceTree = "<group>"; };
 		FAAFAC5D22C364FE00C866A8 /* DCStringsLocalizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCStringsLocalizer.h; sourceTree = "<group>"; };
@@ -318,18 +318,18 @@
 			isa = PBXGroup;
 			children = (
 				FA97823722C21EAF00FDCEBB /* CustomSplitViewController */,
-				FAA3B21822BCEEF300625B29 /* AddPersonTextField */,
+				FAA3B21822BCEEF300625B29 /* AddTextField */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
 		};
-		FAA3B21822BCEEF300625B29 /* AddPersonTextField */ = {
+		FAA3B21822BCEEF300625B29 /* AddTextField */ = {
 			isa = PBXGroup;
 			children = (
-				FAA3B21922BCEF1E00625B29 /* AddPersonTextField.h */,
-				FAA3B21A22BCEF1E00625B29 /* AddPersonTextField.m */,
+				FAA3B21922BCEF1E00625B29 /* AddTextField.h */,
+				FAA3B21A22BCEF1E00625B29 /* AddTextField.m */,
 			);
-			path = AddPersonTextField;
+			path = AddTextField;
 			sourceTree = "<group>";
 		};
 		FAAFAC5722C3569C00C866A8 /* StringsLocalization */ = {
@@ -624,7 +624,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA3B21B22BCEF1E00625B29 /* AddPersonTextField.m in Sources */,
+				FAA3B21B22BCEF1E00625B29 /* AddTextField.m in Sources */,
 				FAAFAC5F22C364FE00C866A8 /* DCStringsLocalizer.m in Sources */,
 				FAF8480A22BA5B7E009FDD55 /* DCPersonDetailViewController.m in Sources */,
 				FA6E623F22C50A01009FDAFA /* DCTransaction.m in Sources */,

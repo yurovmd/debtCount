@@ -7,10 +7,28 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DCAddTransactionViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCAddTransactionPresenter : NSObject
+
+- (instancetype)initWithView:(DCAddTransactionViewController *)view;
+
+@end
+
+// MARK: - Signals From View
+
+@interface DCAddTransactionPresenter (ViewInputs)
+
+- (void)viewIsReady;
+
+- (void)cancelButtonPressed;
+- (void)okButtonPressed;
+- (void)amountChangedWithText:(NSString *)text;
+- (void)dateTextFieldPressed;
+- (void)descriptionChangedText:(NSString *)text;
+- (void)plusMinusButtonPressed;
 
 @end
 
