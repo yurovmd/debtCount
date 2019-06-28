@@ -19,6 +19,7 @@
 - (instancetype)initWithViewCell:(DCTransactionCell *)cellView forTransaction:(DCTransaction *)transaction{
     if (self = [super init]) {
         self.cellView = cellView;
+        self.transaction = [[DCTransaction alloc] init];
         self.transaction = transaction;
     }
     return self;
@@ -35,7 +36,8 @@
     [self.cellView setDescriptionText:self.getDescription];
     [self.cellView setDateText:self.getDate];
 
-    if (self.transaction.amount >= 0) {
+    NSDecimalNumber *zero = [NSDecimalNumber zero];
+    if (self.transaction.amount >= zero) {
         [self.cellView setAmountLabelColor:UIColor.greenColor];
     } else {
         [self.cellView setAmountLabelColor:UIColor.redColor];

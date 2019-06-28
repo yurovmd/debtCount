@@ -36,7 +36,7 @@
 @implementation DCPersonDetailsPresenter (ViewInputs)
 
 - (void) viewIsReady {
-
+    self.cellModels = [[NSMutableArray alloc] init];
 }
 
 - (void)personChanged:(DCPerson *)person {
@@ -50,6 +50,11 @@
 
 - (void)addButtonTapped {
     [self.view openTransactionPopover];
+}
+
+- (void)addedTransaction:(DCTransaction *)transaction {
+    [self.cellModels addObject:transaction];
+    [self.view updateTableViewWithModels:self.cellModels];
 }
 
 @end

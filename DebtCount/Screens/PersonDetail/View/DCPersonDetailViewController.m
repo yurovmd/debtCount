@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.presenter = [[DCPersonDetailsPresenter alloc] initWithView:self];
+    self.cellModels = [[NSMutableArray alloc] init];
     [self setupUI];
     [self.presenter viewIsReady];
 }
@@ -87,6 +88,8 @@
 - (void)setupUI {
     self.detailsTableView.dataSource = self;
     self.detailsTableView.delegate = self;
+    [self.detailsTableView registerNib:[UINib nibWithNibName:@"DCTransactionCell" bundle:NSBundle.mainBundle]
+                                        forCellReuseIdentifier:@"DCTransactionCell"];
     [self setupAddButton];
 }
 
@@ -141,6 +144,7 @@
 
 - (void)addTransaction:(DCTransaction *)transaction {
     // TODO: - Implement saving secieved data and update tableView
+    [self.presenter addedTransaction:transaction];
 }
 
 @end

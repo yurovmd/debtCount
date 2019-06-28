@@ -29,7 +29,7 @@
 @implementation DCTransactionCell (Configuration)
 
 - (void)configure:(DCTransaction *)transaction {
-    self.presenter = [[DCTransactionCellPresenter alloc] initWithViewCell:self forTransaction:self.transaction];
+    self.presenter = [[DCTransactionCellPresenter alloc] initWithViewCell:self forTransaction:transaction];
     [self.presenter viewIsReadyForData];
 }
 
