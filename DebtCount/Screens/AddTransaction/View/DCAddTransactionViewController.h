@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (weak, nonatomic) IBOutlet AddTextField *amountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet AddTextField *dateTextField;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet AddTextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
@@ -43,13 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setAmountValid;
 - (void)setDescriptionError;
 - (void)setDescriptionValid;
-- (void)setDateError;
-- (void)setDateValid;
 
 - (void)closePopover;
 - (void)closePopoverWithTransaction:(DCTransaction *)transaction;
-
-- (void)openDatePicker;
 
 - (void)setAmountGreen;
 - (void)setAmountRed;

@@ -14,7 +14,6 @@
     if (self = [super init]) {
         self.isValid = false;
         self.isAmountValid = false;
-        self.isDateValid = false;
         self.isDescriptionValid = false;
     };
     return self;

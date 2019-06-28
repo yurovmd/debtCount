@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property BOOL isValid;
 @property BOOL isAmountValid;
-@property BOOL isDateValid;
 @property BOOL isDescriptionValid;
 
 @end

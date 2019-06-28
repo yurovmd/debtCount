@@ -39,10 +39,6 @@
     [self.presenter amountChangedWithText:sender.text];
 }
 
-- (IBAction)dateTextFieldTapped:(UITextField *)sender {
-    [self.presenter dateTextFieldPressed];
-}
-
 - (IBAction)descriptionTextFieldTapped:(UITextField *)sender {
     [self.presenter descriptionChangedText:sender.text];
 }
@@ -51,12 +47,19 @@
     [self.presenter plusMinusButtonPressed];
 }
 
+- (IBAction)dateChanged:(UIDatePicker *)sender {
+    [self.presenter dateChanged:sender.date];
+}
+
+
+
 - (void)setupUI {
     [self.plusMinusButton.layer setCornerRadius: self.plusMinusButton.bounds.size.height / 2];
     [self.plusMinusButton.layer setMasksToBounds:YES];
     [self.amountTextField changeStyleToValid];
-    [self.dateTextField changeStyleToValid];
     [self.descriptionTextField changeStyleToValid];
+    self.datePickerView.datePickerMode = UIDatePickerModeDate;
+    self.datePickerView.maximumDate = [[NSDate alloc] init];
 }
 
 @end
@@ -99,14 +102,6 @@
 
 - (void)setDescriptionValid {
     [self.descriptionTextField changeStyleToValid];
-}
-
-- (void)setDateError {
-    [self.dateTextField changeStyleToError];
-}
-
-- (void)setDateValid {
-    [self.dateTextField changeStyleToValid];
 }
 
 - (void)closePopover {

@@ -26,9 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)cancelButtonPressed;
 - (void)okButtonPressed;
 - (void)amountChangedWithText:(NSString *)text;
-- (void)dateTextFieldPressed;
 - (void)descriptionChangedText:(NSString *)text;
 - (void)plusMinusButtonPressed;
+- (void)dateChanged:(NSDate *)date;
 
 @end
 

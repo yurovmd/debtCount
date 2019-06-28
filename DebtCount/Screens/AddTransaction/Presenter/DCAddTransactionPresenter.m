@@ -37,6 +37,7 @@
 
 - (void)viewIsReady {
     self.transaction = [[DCTransaction alloc] init];
+    self.transaction.date = [[NSDate alloc] init];
     self.isAmountNegative = NO;
     [self.view setAmountGreen];
     [self.view setupCancelButtonWithText:[@"ADD_TRANSACTION_SCREEN.BUTTONS.CANCEL" localized]];
@@ -68,11 +69,6 @@
             } else {
                 [self.view setAmountError];
             }
-            if (response.isDateValid) {
-                [self.view setDateValid];
-            } else {
-                [self.view setDateError];
-            }
             if (response.isDescriptionValid) {
                 [self.view setDescriptionValid];
             } else {
@@ -87,10 +83,6 @@
     self.amount = text;
 }
 
-- (void)dateTextFieldPressed {
-    [self.view openDatePicker];
-}
-
 - (void)descriptionChangedText:(NSString *)text {
     self.transaction.transactionDescription = text;
 }
@@ -103,6 +95,10 @@
         [self.view setAmountRed];
         self.isAmountNegative = YES;
     }
+}
+
+- (void)dateChanged:(NSDate *)date {
+    self.transaction.date = date;
 }
 
 @end
