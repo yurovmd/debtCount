@@ -31,6 +31,7 @@
 }
 
 - (void)viewIsReady {
+    [self.view assignDetailsDelegate];
     [self getPersons];
 }
 
@@ -47,6 +48,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.persons = persons;
             [self.view reloadTableView];
+            [self.view openDetailsWithPerson:persons.firstObject];
         });
     };
     [DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];

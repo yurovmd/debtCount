@@ -8,6 +8,12 @@
 
 #import "DCPersonDetailsPresenter.h"
 
+@interface DCPersonDetailsPresenter ()
+
+@property NSMutableArray *cellModels;
+
+@end
+
 @implementation DCPersonDetailsPresenter
 
 - (instancetype)initWithView:(DCPersonDetailViewController *)view {
@@ -31,6 +37,15 @@
 
 - (void) viewIsReady {
 
+}
+
+- (void)personChanged:(DCPerson *)person {
+    for (DCTransaction *transaction in person.transactions) {
+        [self.cellModels addObject: transaction];
+    }
+    [self.view updateTableViewWithModels:self.cellModels];
+    [self.view setTitleViewTitle:person.name];
+    // More to come when we will use chart
 }
 
 @end

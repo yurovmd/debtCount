@@ -70,6 +70,14 @@
     });
 }
 
+- (void)assignDetailsDelegate {
+    self.detailsDelegate = [self.splitViewController.viewControllers lastObject];
+}
+
+- (void)openDetailsWithPerson:(DCPerson *)person {
+    [self.detailsDelegate personSelected:person];
+}
+
 @end
 
 @implementation DCPersonsListViewController (PopoverDelegate)
@@ -115,9 +123,14 @@
 // MARK: - UITableViewDelegate
 
 @interface DCPersonsListViewController (UITableViewDelegate) <UITableViewDelegate>
-
 @end
 
 @implementation DCPersonsListViewController (UITableViewDelegate)
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    DCPerson *person = self.presenter.persons[indexPath.row];
+    [self.detailsDelegate personSelected:person];
+}
 
 @end

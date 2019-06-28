@@ -10,7 +10,6 @@
 		FA6E623022C4FB5E009FDAFA /* DCPersonDetailsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E622F22C4FB5E009FDAFA /* DCPersonDetailsPresenter.m */; };
 		FA6E623622C50039009FDAFA /* DCTransactionMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623422C50039009FDAFA /* DCTransactionMO+CoreDataClass.m */; };
 		FA6E623722C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623522C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m */; };
-		FA6E623A22C509BE009FDAFA /* DCTransactionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623922C509BE009FDAFA /* DCTransactionCellModel.m */; };
 		FA6E623F22C50A01009FDAFA /* DCTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623E22C50A01009FDAFA /* DCTransaction.m */; };
 		FA6E624222C50EC1009FDAFA /* DCTransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E624122C50EC1009FDAFA /* DCTransactionCell.m */; };
 		FA6E624622C50F08009FDAFA /* DCTransactionCellPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E624522C50F08009FDAFA /* DCTransactionCellPresenter.m */; };
@@ -44,14 +43,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA2FB8ED22C6095E0085F894 /* DCPersonsListDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonsListDelegate.h; sourceTree = "<group>"; };
 		FA6E622E22C4FB5E009FDAFA /* DCPersonDetailsPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonDetailsPresenter.h; sourceTree = "<group>"; };
 		FA6E622F22C4FB5E009FDAFA /* DCPersonDetailsPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonDetailsPresenter.m; sourceTree = "<group>"; };
 		FA6E623222C50039009FDAFA /* DCTransactionMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DCTransactionMO+CoreDataProperties.h"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataProperties.h"; sourceTree = "<group>"; };
 		FA6E623322C50039009FDAFA /* DCTransactionMO+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DCTransactionMO+CoreDataClass.h"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataClass.h"; sourceTree = "<group>"; };
 		FA6E623422C50039009FDAFA /* DCTransactionMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DCTransactionMO+CoreDataClass.m"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataClass.m"; sourceTree = "<group>"; };
 		FA6E623522C50039009FDAFA /* DCTransactionMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DCTransactionMO+CoreDataProperties.m"; path = "DebtCount/CoreDataController/DCTransactionMO+CoreDataProperties.m"; sourceTree = "<group>"; };
-		FA6E623822C509BE009FDAFA /* DCTransactionCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCTransactionCellModel.h; sourceTree = "<group>"; };
-		FA6E623922C509BE009FDAFA /* DCTransactionCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCTransactionCellModel.m; sourceTree = "<group>"; };
 		FA6E623D22C50A01009FDAFA /* DCTransaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCTransaction.h; sourceTree = "<group>"; };
 		FA6E623E22C50A01009FDAFA /* DCTransaction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCTransaction.m; sourceTree = "<group>"; };
 		FA6E624022C50EC1009FDAFA /* DCTransactionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCTransactionCell.h; sourceTree = "<group>"; };
@@ -125,6 +123,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA2FB8EC22C609430085F894 /* PersonsListDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FA2FB8ED22C6095E0085F894 /* DCPersonsListDelegate.h */,
+			);
+			path = PersonsListDelegate;
+			sourceTree = "<group>";
+		};
 		FA6E622922C4E720009FDAFA /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,15 +159,6 @@
 				FA6E624722C5128C009FDAFA /* DCTransactionCell.xib */,
 			);
 			path = TransactionCell;
-			sourceTree = "<group>";
-		};
-		FA6E623122C4FC61009FDAFA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				FA6E623822C509BE009FDAFA /* DCTransactionCellModel.h */,
-				FA6E623922C509BE009FDAFA /* DCTransactionCellModel.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		FA6E623B22C509CE009FDAFA /* Models */ = {
@@ -345,6 +342,7 @@
 		FAF8480522BA5B31009FDD55 /* PersonsList */ = {
 			isa = PBXGroup;
 			children = (
+				FA2FB8EC22C609430085F894 /* PersonsListDelegate */,
 				FAF8480E22BA7181009FDD55 /* Model */,
 				FAF8480D22BA715F009FDD55 /* Presenter */,
 				FAF8480B22BA714F009FDD55 /* View */,
@@ -365,7 +363,6 @@
 		FAF8480722BA5B45009FDD55 /* PersonDetail */ = {
 			isa = PBXGroup;
 			children = (
-				FA6E623122C4FC61009FDAFA /* Model */,
 				FA6E622A22C4E729009FDAFA /* View */,
 				FA6E622922C4E720009FDAFA /* Presenter */,
 			);
@@ -583,7 +580,6 @@
 				FAF847EA22BA39BF009FDD55 /* AppDelegate.m in Sources */,
 				FAF8480322BA5B1C009FDD55 /* DCPersonsListViewController.m in Sources */,
 				FA6E624622C50F08009FDAFA /* DCTransactionCellPresenter.m in Sources */,
-				FA6E623A22C509BE009FDAFA /* DCTransactionCellModel.m in Sources */,
 				FA9DE0A522C0BB25006C024F /* DCPersonDataController.m in Sources */,
 				FAF8483A22BBBAB1009FDD55 /* DCValidationResponse.m in Sources */,
 			);

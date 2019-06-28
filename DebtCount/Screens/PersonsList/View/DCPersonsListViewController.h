@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "DCAddPersonDelegateProtocol.h"
+#import "DCPersonsListDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonsListViewController : UITableViewController <UIPopoverPresentationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addPersonButton;
+@property (weak) id<DCPersonsListDelegate> detailsDelegate;
 
 @end
 
@@ -23,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)showAddPersonPopover;
 - (void)reloadTableView;
+
+- (void)assignDetailsDelegate;
+- (void)openDetailsWithPerson:(DCPerson *)person;
 
 @end
 

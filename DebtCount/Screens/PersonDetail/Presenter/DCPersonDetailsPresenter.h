@@ -6,8 +6,8 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "DCPersonDetailViewController.h"
+#import "DCTransaction.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,7 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonDetailsPresenter (ViewInputs)
 
-- (void) viewIsReady;
+- (void)viewIsReady;
+- (void)personChanged:(DCPerson *)person;
 
 @end
 
