@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZZd-7u-6js">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina6_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,17 +15,17 @@
             <objects>
                 <viewController id="ZZd-7u-6js" customClass="DCAddPersonViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Kk-zn-DKG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8B-CT-UnG">
-                                <rect key="frame" x="0.0" y="44" width="414" height="784"/>
+                                <rect key="frame" x="44" y="0.0" width="808" height="359"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UKp-pz-gcj">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="533"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="896" height="323"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LS-IB-HmX">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="533"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="896" height="323"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYW-gS-gxj">
                                                         <rect key="frame" x="15" y="15" width="100" height="21"/>
@@ -38,7 +38,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiJ-8P-OC3">
-                                                        <rect key="frame" x="299" y="15" width="100" height="21"/>
+                                                        <rect key="frame" x="781" y="15" width="100" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" id="Ild-c0-ii5"/>
                                                             <constraint firstAttribute="height" constant="21" id="ffS-EX-Kki"/>
@@ -48,7 +48,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xud-CQ-fgw">
-                                                        <rect key="frame" x="132" y="97" width="150" height="150"/>
+                                                        <rect key="frame" x="100" y="97" width="150" height="150"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="ITF-cH-KfM"/>
                                                             <constraint firstAttribute="height" constant="150" id="rKY-Sx-75Y"/>
@@ -59,7 +59,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZi-WH-qUY">
-                                                        <rect key="frame" x="0.0" y="66" width="414" height="1"/>
+                                                        <rect key="frame" x="0.0" y="66" width="896" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Sv8-Ow-49N"/>
@@ -72,8 +72,8 @@
                                                             <constraint firstAttribute="height" constant="1" id="BgB-f9-Zmw"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s25-TA-GZK" customClass="AddPersonTextField">
-                                                        <rect key="frame" x="30" y="338" width="354" height="50"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s25-TA-GZK" customClass="AddTextField">
+                                                        <rect key="frame" x="280" y="128" width="586" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Ca3-kO-Rcl"/>
                                                         </constraints>
@@ -84,8 +84,8 @@
                                                             <action selector="nameTextChanged:" destination="ZZd-7u-6js" eventType="editingChanged" id="EXK-9g-ihl"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GsB-Y1-dBK" customClass="AddPersonTextField">
-                                                        <rect key="frame" x="30" y="449" width="354" height="50"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GsB-Y1-dBK" customClass="AddTextField">
+                                                        <rect key="frame" x="280" y="239" width="586" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="gsl-go-Url"/>
                                                         </constraints>
@@ -97,7 +97,7 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnL-IC-fTc">
-                                                        <rect key="frame" x="30" y="307" width="354" height="21"/>
+                                                        <rect key="frame" x="280" y="97" width="586" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="ktN-Ja-3tO"/>
                                                         </constraints>
@@ -106,7 +106,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mX3-eB-hpN">
-                                                        <rect key="frame" x="30" y="418" width="354" height="21"/>
+                                                        <rect key="frame" x="280" y="208" width="586" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="51k-7j-kRs"/>
                                                         </constraints>
@@ -153,8 +153,8 @@
                                                         <exclude reference="fdp-6W-cLa"/>
                                                     </mask>
                                                     <mask key="constraints">
-                                                        <exclude reference="I4U-pZ-NtP"/>
                                                         <exclude reference="ZAC-Mb-RBw"/>
+                                                        <exclude reference="I4U-pZ-NtP"/>
                                                         <exclude reference="ReH-QB-FcZ"/>
                                                         <exclude reference="uoO-dr-v5H"/>
                                                     </mask>
@@ -164,11 +164,11 @@
                                                         <exclude reference="fdp-6W-cLa"/>
                                                     </mask>
                                                     <mask key="constraints">
+                                                        <exclude reference="OaT-Qa-Wk2"/>
                                                         <exclude reference="44f-vq-iHZ"/>
                                                         <exclude reference="XNN-gB-zzv"/>
                                                         <include reference="iB3-IE-zSQ"/>
                                                         <include reference="3so-Qz-y8c"/>
-                                                        <exclude reference="OaT-Qa-Wk2"/>
                                                         <include reference="m7m-93-E0i"/>
                                                         <include reference="nrW-Aa-e0x"/>
                                                     </mask>
@@ -178,11 +178,11 @@
                                                         <include reference="fdp-6W-cLa"/>
                                                     </mask>
                                                     <mask key="constraints">
+                                                        <include reference="ZAC-Mb-RBw"/>
                                                         <include reference="XNN-gB-zzv"/>
                                                         <exclude reference="iB3-IE-zSQ"/>
                                                         <exclude reference="3so-Qz-y8c"/>
                                                         <include reference="I4U-pZ-NtP"/>
-                                                        <include reference="ZAC-Mb-RBw"/>
                                                         <exclude reference="m7m-93-E0i"/>
                                                         <include reference="ReH-QB-FcZ"/>
                                                         <exclude reference="nrW-Aa-e0x"/>

@@ -6,9 +6,9 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "DCValidationResponse.h"
+#import "DCPersonValidationResponse.h"
 
-@implementation DCValidationResponse
+@implementation DCPersonValidationResponse
 
 - (instancetype)init {
     if (self = [super init]) {

@@ -17,13 +17,64 @@
                     <view key="view" contentMode="scaleToFill" id="dco-qk-3ap">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFU-cB-bEE">
+                                <rect key="frame" x="0.0" y="88" width="414" height="224"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="g9H-Ku-xrC">
+                                <rect key="frame" x="0.0" y="312" width="414" height="584"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="50"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4FL-0Q-5V5">
+                                <rect key="frame" x="324" y="772" width="50" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jML-Ys-3ta">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <color key="backgroundColor" red="0.071026332679999998" green="0.30618292089999999" blue="0.66590988640000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="plus"/>
+                                        <connections>
+                                            <action selector="addButtonTapped:" destination="DNj-6h-uRH" eventType="touchUpInside" id="O0t-EL-yhW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="jML-Ys-3ta" firstAttribute="top" secondItem="4FL-0Q-5V5" secondAttribute="top" id="3bT-4J-Ky8"/>
+                                    <constraint firstAttribute="width" constant="50" id="L8i-Op-ltr"/>
+                                    <constraint firstItem="jML-Ys-3ta" firstAttribute="leading" secondItem="4FL-0Q-5V5" secondAttribute="leading" id="NI3-WV-RTB"/>
+                                    <constraint firstAttribute="height" constant="50" id="OoX-Jc-Ihg"/>
+                                    <constraint firstAttribute="trailing" secondItem="jML-Ys-3ta" secondAttribute="trailing" id="g8i-H1-kt8"/>
+                                    <constraint firstAttribute="bottom" secondItem="jML-Ys-3ta" secondAttribute="bottom" id="r9f-t3-ukI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="g9H-Ku-xrC" firstAttribute="top" secondItem="lFU-cB-bEE" secondAttribute="bottom" id="1KU-hf-PYU"/>
+                            <constraint firstItem="lFU-cB-bEE" firstAttribute="leading" secondItem="mFS-M7-PRs" secondAttribute="leading" id="Feu-5v-Cgx"/>
+                            <constraint firstAttribute="bottom" secondItem="g9H-Ku-xrC" secondAttribute="bottom" id="IVT-rP-1S3"/>
+                            <constraint firstItem="mFS-M7-PRs" firstAttribute="trailing" secondItem="4FL-0Q-5V5" secondAttribute="trailing" constant="40" id="Ieg-sX-Pk2"/>
+                            <constraint firstItem="g9H-Ku-xrC" firstAttribute="leading" secondItem="mFS-M7-PRs" secondAttribute="leading" id="hiV-Dg-003"/>
+                            <constraint firstItem="lFU-cB-bEE" firstAttribute="height" secondItem="dco-qk-3ap" secondAttribute="height" multiplier="1:4" id="iny-7F-KsT"/>
+                            <constraint firstItem="mFS-M7-PRs" firstAttribute="trailing" secondItem="lFU-cB-bEE" secondAttribute="trailing" id="m6J-vC-3nf"/>
+                            <constraint firstItem="mFS-M7-PRs" firstAttribute="bottom" secondItem="4FL-0Q-5V5" secondAttribute="bottom" constant="40" id="tPp-Sl-xOJ"/>
+                            <constraint firstItem="lFU-cB-bEE" firstAttribute="top" secondItem="mFS-M7-PRs" secondAttribute="top" id="xnV-Uk-xAc"/>
+                            <constraint firstItem="mFS-M7-PRs" firstAttribute="trailing" secondItem="g9H-Ku-xrC" secondAttribute="trailing" id="yx2-Fj-7Oy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mFS-M7-PRs"/>
                     </view>
+                    <connections>
+                        <outlet property="addButton" destination="jML-Ys-3ta" id="ffz-So-dIk"/>
+                        <outlet property="addButtonView" destination="4FL-0Q-5V5" id="91L-gS-0y9"/>
+                        <outlet property="chartView" destination="lFU-cB-bEE" id="6W3-Vd-kGF"/>
+                        <outlet property="detailsTableView" destination="g9H-Ku-xrC" id="1TA-kq-6hE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wvy-JF-laL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="134"/>
+            <point key="canvasLocation" x="272" y="214"/>
         </scene>
         <!--Persons List View Controller-->
         <scene sceneID="Y5L-qh-tRU">
@@ -114,6 +165,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addPersonButton" destination="MSA-qz-ErM" id="com-go-tLE"/>
+                        <segue destination="DNj-6h-uRH" kind="showDetail" identifier="showDetail" id="X10-aZ-RQi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6g5-Ve-f1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -150,4 +202,10 @@
             <point key="canvasLocation" x="-645" y="-191"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="plus" width="100" height="100"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="X10-aZ-RQi"/>
+    </inferredMetricsTieBreakers>
 </document>

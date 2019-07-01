@@ -10,6 +10,7 @@
 #import "DCPersonsListPresenter.h"
 #import "DCAddPersonViewController.h"
 #import "DCPersonCell.h"
+#import "DCPersonDetailViewController.h"
 
 @interface DCPersonsListViewController ()
 
@@ -70,7 +71,13 @@
     });
 }
 
+- (void)openDetailsWithPerson:(DCPerson *)person {
+    [self performSegueWithIdentifier:@"showDetail" sender:person];
+}
+
 @end
+
+// MARK: -  UIPopoverPresentationControllerDelegate
 
 @implementation DCPersonsListViewController (PopoverDelegate)
 
@@ -115,9 +122,32 @@
 // MARK: - UITableViewDelegate
 
 @interface DCPersonsListViewController (UITableViewDelegate) <UITableViewDelegate>
-
 @end
 
 @implementation DCPersonsListViewController (UITableViewDelegate)
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    DCPerson *person = self.presenter.persons[indexPath.row];
+    [self performSegueWithIdentifier:@"showDetail" sender:person];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showDetail"]) {
+        DCPersonDetailViewController * controller = [segue destinationViewController];
+        controller.person = sender;
+        controller.delegate = self;
+    }
+}
+
+@end
+
+// MARK: - DCDetailsViewControllerDelegate
+
+@implementation DCPersonsListViewController (UpdateDataSource)
+
+- (void)updateData {
+    [self.presenter transactionAddedAndNeedReload];
+}
 
 @end
