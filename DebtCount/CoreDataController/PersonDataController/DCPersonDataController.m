@@ -42,8 +42,7 @@
         DCPersonMO *personManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"DCPersonMO" inManagedObjectContext:context];
         personManagedObject.name = person.name;
         personManagedObject.relation = person.relation;
-        NSData *avatarData = UIImagePNGRepresentation(person.avatar);
-        personManagedObject.avatar = [[NSData alloc] initWithData:avatarData] ;
+        personManagedObject.avatarUrl = [self saveImageToFileManager:person.avatar];
         personManagedObject.debt = [NSDecimalNumber zero];
         personManagedObject.personId = person.personId;
         if ([context save:&error] == NO) {
@@ -51,6 +50,19 @@
         }
         completion();
     }];
+}
+
+- (NSString *)saveImageToFileManager:(UIImage *)image {
+    NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    NSData *avatarData = UIImagePNGRepresentation(image);
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"dd-MM-yyyy-HH-mm-ss";
+    NSDate *currentDate = [[NSDate alloc] init];
+    NSString *imageName = [[formatter stringFromDate:currentDate] stringByAppendingString:@".png"];
+    NSString *imagePath = [basePath stringByAppendingPathComponent:imageName];
+    [avatarData writeToFile:imagePath atomically:YES];
+    return imagePath;
 }
 
 - (void)saveTransactionData:(DCTransaction *)transaction
@@ -98,7 +110,7 @@
             DCPerson *person = [DCPerson alloc];
             person.name = personMO.name;
             person.relation = personMO.relation;
-            person.avatar = [[UIImage alloc] initWithData:personMO.avatar];
+            person.avatar = [[UIImage alloc] initWithContentsOfFile:personMO.avatarUrl];
             person.debt = personMO.debt;
             person.personId = personMO.personId;
             NSSet *transactions = [[NSSet alloc] init];

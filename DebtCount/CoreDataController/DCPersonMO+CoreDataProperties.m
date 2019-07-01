@@ -2,7 +2,7 @@
 //  DCPersonMO+CoreDataProperties.m
 //  DebtCount
 //
-//  Created by MAKSIM YUROV on 27/06/2019.
+//  Created by MAKSIM YUROV on 01/07/2019.
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 //
@@ -15,7 +15,7 @@
 	return [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
 }
 
-@dynamic avatar;
+@dynamic avatarUrl;
 @dynamic debt;
 @dynamic name;
 @dynamic personId;

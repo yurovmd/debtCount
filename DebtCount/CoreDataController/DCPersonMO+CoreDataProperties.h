@@ -2,7 +2,7 @@
 //  DCPersonMO+CoreDataProperties.h
 //  DebtCount
 //
-//  Created by MAKSIM YUROV on 27/06/2019.
+//  Created by MAKSIM YUROV on 01/07/2019.
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 //
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<DCPersonMO *> *)fetchRequest;
 
-@property (nullable, nonatomic, retain) NSData *avatar;
+@property (nullable, nonatomic, copy) NSString *avatarUrl;
 @property (nullable, nonatomic, copy) NSDecimalNumber *debt;
 @property (nullable, nonatomic, copy) NSString *name;
 @property (nullable, nonatomic, copy) NSString *personId;
