@@ -8,7 +8,6 @@
 
 #import "DCPerson.h"
 #import "DCTransactionCell.h"
-#import "DCPersonsListDelegate.h"
 #import "DCPersonDetailViewController.h"
 #import "DCAddTransactionDelegateProtocol.h"
 
@@ -53,12 +52,6 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: - UITableViewDelegate
 
 @interface DCPersonDetailViewController (UITableViewDelegate) <UITableViewDelegate>
-
-@end
-
-// MARK: - DCPersonsListDelegate
-
-@interface DCPersonDetailViewController (PersonsListDelegate) <DCPersonsListDelegate>
 
 @end
 

@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak) id<DCAddTransactionDelegateProtocol> delegate;
 
+@property (nullable) UITextField *activeField;
+
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (weak, nonatomic) IBOutlet AddTextField *amountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -26,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusMinusButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 

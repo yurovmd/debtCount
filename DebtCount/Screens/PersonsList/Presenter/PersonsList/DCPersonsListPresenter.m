@@ -31,7 +31,6 @@
 }
 
 - (void)viewIsReady {
-    [self.view assignDetailsDelegate];
     [self getPersons];
 }
 

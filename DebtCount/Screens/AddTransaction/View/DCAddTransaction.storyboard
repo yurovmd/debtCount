@@ -195,6 +195,7 @@
                         <outlet property="descriptionTextField" destination="Qzf-YJ-TOd" id="hbt-f2-1i0"/>
                         <outlet property="okButton" destination="96m-vT-yO4" id="qa4-iN-H3D"/>
                         <outlet property="plusMinusButton" destination="dGJ-l7-86L" id="kvz-N6-Y7W"/>
+                        <outlet property="scrollView" destination="jPk-uy-oOO" id="Jqz-fv-TlA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtO-Xw-n1p" userLabel="First Responder" sceneMemberID="firstResponder"/>

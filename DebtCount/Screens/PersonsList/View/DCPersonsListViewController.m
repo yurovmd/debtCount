@@ -10,6 +10,7 @@
 #import "DCPersonsListPresenter.h"
 #import "DCAddPersonViewController.h"
 #import "DCPersonCell.h"
+#import "DCPersonDetailViewController.h"
 
 @interface DCPersonsListViewController ()
 
@@ -70,12 +71,8 @@
     });
 }
 
-- (void)assignDetailsDelegate {
-    self.detailsDelegate = [self.splitViewController.viewControllers lastObject];
-}
-
 - (void)openDetailsWithPerson:(DCPerson *)person {
-    [self.detailsDelegate personSelected:person];
+    [self performSegueWithIdentifier:@"showDetail" sender:person];
 }
 
 @end
@@ -132,7 +129,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DCPerson *person = self.presenter.persons[indexPath.row];
-    [self.detailsDelegate personSelected:person];
+    [self performSegueWithIdentifier:@"showDetail" sender:person];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showDetail"]) {
+        DCPersonDetailViewController * controller = [segue destinationViewController];
+        controller.person = sender;
+    }
 }
 
 @end

@@ -74,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wvy-JF-laL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="134"/>
+            <point key="canvasLocation" x="272" y="214"/>
         </scene>
         <!--Persons List View Controller-->
         <scene sceneID="Y5L-qh-tRU">
@@ -165,6 +165,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addPersonButton" destination="MSA-qz-ErM" id="com-go-tLE"/>
+                        <segue destination="DNj-6h-uRH" kind="showDetail" identifier="showDetail" id="X10-aZ-RQi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6g5-Ve-f1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -204,4 +205,7 @@
     <resources>
         <image name="plus" width="100" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="X10-aZ-RQi"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -48,7 +48,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FA2FB8ED22C6095E0085F894 /* DCPersonsListDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonsListDelegate.h; sourceTree = "<group>"; };
 		FA2FB8F022C618050085F894 /* CALayer+Shadow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Shadow.h"; sourceTree = "<group>"; };
 		FA2FB8F122C618050085F894 /* CALayer+Shadow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Shadow.m"; sourceTree = "<group>"; };
 		FA2FB8F722C62A9E0085F894 /* DCAddTransactionDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddTransactionDelegateProtocol.h; sourceTree = "<group>"; };
@@ -138,14 +137,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA2FB8EC22C609430085F894 /* PersonsListDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				FA2FB8ED22C6095E0085F894 /* DCPersonsListDelegate.h */,
-			);
-			path = PersonsListDelegate;
-			sourceTree = "<group>";
-		};
 		FA2FB8EE22C617C80085F894 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,7 +421,6 @@
 		FAF8480522BA5B31009FDD55 /* PersonsList */ = {
 			isa = PBXGroup;
 			children = (
-				FA2FB8EC22C609430085F894 /* PersonsListDelegate */,
 				FAF8480E22BA7181009FDD55 /* Model */,
 				FAF8480D22BA715F009FDD55 /* Presenter */,
 				FAF8480B22BA714F009FDD55 /* View */,

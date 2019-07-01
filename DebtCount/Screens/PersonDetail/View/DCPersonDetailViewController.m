@@ -19,8 +19,6 @@
 
 @implementation DCPersonDetailViewController
 
-@synthesize person = _person;
-
 - (void)setPerson:(DCPerson *)person {
     [self.presenter personChanged:person];
 }
@@ -125,16 +123,6 @@
 // MARK: - UITableViewDelegate
 
 @implementation DCPersonDetailViewController (UITableViewDelegate)
-
-@end
-
-// MARK: - DCPersonsListDelegate
-
-@implementation DCPersonDetailViewController (PersonsListDelegate)
-
-- (void)personSelected:(DCPerson *)person {
-    [self.presenter personChanged:person];
-}
 
 @end
 
