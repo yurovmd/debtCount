@@ -11,6 +11,7 @@
 @interface DCPersonDetailsPresenter ()
 
 @property NSMutableArray *cellModels;
+@property DCPerson *person;
 
 @end
 
@@ -29,17 +30,22 @@
 
 @implementation DCPersonDetailsPresenter (Private)
 
+- (void) saveTransaction:(DCTransaction *)transaction completion:(void(^)(void))completion {
+    [DCPersonDataController.shared saveTransactionData:transaction
+                                             forPerson:self.person
+                                            completion:completion];
+}
+
 @end
 
 // MARK: - Signals From View
 
 @implementation DCPersonDetailsPresenter (ViewInputs)
 
-- (void) viewIsReady {
+- (void)viewIsReadyWithPerson:(DCPerson *)person {
     self.cellModels = [[NSMutableArray alloc] init];
-}
-
-- (void)personChanged:(DCPerson *)person {
+    self.person = [[DCPerson alloc] init];
+    self.person = person;
     for (DCTransaction *transaction in person.transactions) {
         [self.cellModels addObject: transaction];
     }
@@ -53,8 +59,15 @@
 }
 
 - (void)addedTransaction:(DCTransaction *)transaction {
-    [self.cellModels addObject:transaction];
-    [self.view updateTableViewWithModels:self.cellModels];
+    void (^completion)(void) = ^(void) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.cellModels addObject:transaction];
+            [self.view updateTableViewWithModels:self.cellModels];
+            [self.view sendUpdateMessageToMasterController];
+        });
+    };
+    [self saveTransaction:transaction completion:completion];
+
 }
 
 @end

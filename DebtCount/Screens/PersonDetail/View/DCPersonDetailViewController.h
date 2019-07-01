@@ -10,12 +10,15 @@
 #import "DCTransactionCell.h"
 #import "DCPersonDetailViewController.h"
 #import "DCAddTransactionDelegateProtocol.h"
+#import "DCDetailsViewControllerDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonDetailViewController : UIViewController <UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic) DCPerson *person;
+
+@property (weak) id<DCDetailsViewControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIView *chartView;
 @property (weak, nonatomic) IBOutlet UITableView *detailsTableView;
@@ -29,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DCPersonDetailViewController (Presenter)
 
 - (void)updateTableViewWithModels:(NSMutableArray *)cellModels;
+- (void)sendUpdateMessageToMasterController;
 - (void)setTitleViewTitle:(NSString *)title;
 - (void)openTransactionPopover;
 

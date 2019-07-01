@@ -45,12 +45,42 @@
         NSData *avatarData = UIImagePNGRepresentation(person.avatar);
         personManagedObject.avatar = [[NSData alloc] initWithData:avatarData] ;
         personManagedObject.debt = [NSDecimalNumber zero];
-        personManagedObject.personId = [[NSUUID UUID] UUIDString];;
+        personManagedObject.personId = person.personId;
         if ([context save:&error] == NO) {
             NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
         }
         completion();
     }];
+}
+
+- (void)saveTransactionData:(DCTransaction *)transaction
+                  forPerson:(DCPerson *)person
+                  completion:(void(^)(void))completion {
+    [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:request error:&error];
+        if (!results) {
+            NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+        for (DCPersonMO *personMO in results) {
+            if ([personMO.personId isEqualToString:person.personId]) {
+                DCTransactionMO *transactionManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"DCTransactionMO" inManagedObjectContext:context];
+                transactionManagedObject.date = transaction.date;
+                transactionManagedObject.transactionDescription = transaction.transactionDescription;
+                transactionManagedObject.amount = transaction.amount ;
+                transactionManagedObject.person = personMO;
+                [personMO addTransactionsObject:transactionManagedObject];
+                personMO.debt = [personMO.debt decimalNumberByAdding:transaction.amount];
+                if ([context save:&error] == NO) {
+                    NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+                }
+                completion();
+            }
+        };
+    }];
+
 }
 
 - (void)fetchPersonsWithCompletion:(void (^)(NSMutableArray *persons))completion {
@@ -70,6 +100,16 @@
             person.relation = personMO.relation;
             person.avatar = [[UIImage alloc] initWithData:personMO.avatar];
             person.debt = personMO.debt;
+            person.personId = personMO.personId;
+            NSSet *transactions = [[NSSet alloc] init];
+            for (DCTransactionMO *transactionMO in personMO.transactions) {
+                DCTransaction * transaction = [[DCTransaction alloc] init];
+                transaction.date = transactionMO.date;
+                transaction.transactionDescription = transactionMO.transactionDescription;
+                transaction.amount = transactionMO.amount;
+                transactions = [transactions setByAddingObject:transaction];
+            }
+            person.transactions = transactions;
             [persons addObject:person];
         }
         completion(persons);

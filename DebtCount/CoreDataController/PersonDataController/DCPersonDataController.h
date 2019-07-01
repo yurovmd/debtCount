@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "DCPerson.h"
+#import "DCTransaction.h"
+#import "DCTransactionMO+CoreDataClass.h"
 #import "DCPersonMO+CoreDataClass.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -21,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)init;
 - (void)savePersonData:(DCPerson *)person completion:(void(^)(void))completion;
 - (void)fetchPersonsWithCompletion:(void (^)(NSMutableArray *persons))completion;
+- (void)saveTransactionData:(DCTransaction *)transaction
+                  forPerson:(DCPerson *)person
+                 completion:(void(^)(void))completion;
 
 @end
 

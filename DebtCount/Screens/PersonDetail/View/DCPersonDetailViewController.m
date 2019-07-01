@@ -19,16 +19,12 @@
 
 @implementation DCPersonDetailViewController
 
-- (void)setPerson:(DCPerson *)person {
-    [self.presenter personChanged:person];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.presenter = [[DCPersonDetailsPresenter alloc] initWithView:self];
     self.cellModels = [[NSMutableArray alloc] init];
     [self setupUI];
-    [self.presenter viewIsReady];
+    [self.presenter viewIsReadyWithPerson:self.person];
 }
 
 - (IBAction)addButtonTapped:(id)sender {
@@ -44,6 +40,10 @@
 - (void)updateTableViewWithModels:(NSMutableArray *)cellModels {
     self.cellModels = cellModels;
     [self.detailsTableView reloadData];
+}
+
+- (void)sendUpdateMessageToMasterController {
+    [self.delegate updateData];
 }
 
 - (void)setTitleViewTitle:(NSString *)title {

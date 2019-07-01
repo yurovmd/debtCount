@@ -136,7 +136,18 @@
     if ([segue.identifier isEqualToString:@"showDetail"]) {
         DCPersonDetailViewController * controller = [segue destinationViewController];
         controller.person = sender;
+        controller.delegate = self;
     }
+}
+
+@end
+
+// MARK: - DCDetailsViewControllerDelegate
+
+@implementation DCPersonsListViewController (UpdateDataSource)
+
+- (void)updateData {
+    [self.presenter transactionAddedAndNeedReload];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DCPersonDetailViewController.h"
 #import "DCTransaction.h"
+#import "DCPersonDataController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,8 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonDetailsPresenter (ViewInputs)
 
-- (void)viewIsReady;
-- (void)personChanged:(DCPerson *)person;
+- (void)viewIsReadyWithPerson:(DCPerson *)person;
 - (void)addButtonTapped;
 - (void)addedTransaction:(DCTransaction *)transaction;
 

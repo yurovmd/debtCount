@@ -36,8 +36,7 @@
     [self.cellView setDescriptionText:self.getDescription];
     [self.cellView setDateText:self.getDate];
 
-    NSDecimalNumber *zero = [NSDecimalNumber zero];
-    if (self.transaction.amount >= zero) {
+    if (self.transaction.amount.integerValue  >= 0) {
         [self.cellView setAmountLabelColor:UIColor.greenColor];
     } else {
         [self.cellView setAmountLabelColor:UIColor.redColor];

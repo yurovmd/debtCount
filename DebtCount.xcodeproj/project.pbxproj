@@ -48,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA0D93AA22CA47DE009610D9 /* DCDetailsViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCDetailsViewControllerDelegate.h; sourceTree = "<group>"; };
 		FA2FB8F022C618050085F894 /* CALayer+Shadow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Shadow.h"; sourceTree = "<group>"; };
 		FA2FB8F122C618050085F894 /* CALayer+Shadow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Shadow.m"; sourceTree = "<group>"; };
 		FA2FB8F722C62A9E0085F894 /* DCAddTransactionDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddTransactionDelegateProtocol.h; sourceTree = "<group>"; };
@@ -137,6 +138,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA0D93A922CA47D0009610D9 /* DCDetailsViewControllerDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FA0D93AA22CA47DE009610D9 /* DCDetailsViewControllerDelegate.h */,
+			);
+			path = DCDetailsViewControllerDelegate;
+			sourceTree = "<group>";
+		};
 		FA2FB8EE22C617C80085F894 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +451,7 @@
 		FAF8480722BA5B45009FDD55 /* PersonDetail */ = {
 			isa = PBXGroup;
 			children = (
+				FA0D93A922CA47D0009610D9 /* DCDetailsViewControllerDelegate */,
 				FA6E622A22C4E729009FDAFA /* View */,
 				FA6E622922C4E720009FDAFA /* Presenter */,
 			);

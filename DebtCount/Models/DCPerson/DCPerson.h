@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString *relation;
 @property (nullable) UIImage *avatar;
 @property (nullable) NSDecimalNumber *debt;
-@property NSMutableArray *transactions;
+@property NSSet *transactions;
+@property NSString *personId;
 
 @end
 

@@ -16,6 +16,6 @@
     </entity>
     <elements>
         <element name="DCPersonMO" positionX="-63" positionY="-18" width="128" height="133"/>
-        <element name="DCTransactionMO" positionX="210.5859375" positionY="-130.31640625" width="128" height="103"/>
+        <element name="DCTransactionMO" positionX="210.5859375" positionY="-130.31640625" width="128" height="105"/>
     </elements>
 </model>

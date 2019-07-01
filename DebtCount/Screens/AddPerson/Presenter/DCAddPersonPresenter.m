@@ -38,6 +38,7 @@
 
 - (void)viewIsReady {
     self.person = [[DCPerson alloc] init];
+    self.person.personId = [[NSUUID UUID] UUIDString];
 }
 
 - (void)userChangedNameString:(NSString *)string {
