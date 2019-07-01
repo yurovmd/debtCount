@@ -26,6 +26,7 @@
 }
 
 - (void)setupUI {
+#warning There is a lot of duplication code with this two lines. It's okay as there's not a lot of stuff going on. Think about refactoring it thou
     [self.avatarImageView.layer setCornerRadius:(self.avatarImageView.bounds.size.height / 2)];
     [self.avatarImageView.layer setMasksToBounds:true];
 }

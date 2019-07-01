@@ -37,6 +37,7 @@
 
 - (void)viewIsReady {
     self.transaction = [[DCTransaction alloc] init];
+#warning There is simpler initializer for that: [NSDate date]
     self.transaction.date = [[NSDate alloc] init];
     self.isAmountNegative = NO;
     [self.view setAmountGreen];

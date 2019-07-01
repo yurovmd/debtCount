@@ -58,6 +58,7 @@
     NSData *avatarData = UIImagePNGRepresentation(image);
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"dd-MM-yyyy-HH-mm-ss";
+#warning [NSDate date] is nicer initializer
     NSDate *currentDate = [[NSDate alloc] init];
     NSString *imageName = [[formatter stringFromDate:currentDate] stringByAppendingString:@".png"];
     NSString *imagePath = [basePath stringByAppendingPathComponent:imageName];
@@ -105,8 +106,10 @@
             NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
             abort();
         }
+#warning Would be nicer to delegate this mapping work to some Fabric or something in order to separate business logic (both for DCPerson and DCTransaction). Swifty 'Convenience' type of init would also be suitable
         NSMutableArray *persons = [[NSMutableArray alloc] init];
         for (DCPersonMO *personMO in results) {
+#warning 'init' missing in [DCPerson alloc] call
             DCPerson *person = [DCPerson alloc];
             person.name = personMO.name;
             person.relation = personMO.relation;

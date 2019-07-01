@@ -65,7 +65,9 @@
     [self.plusMinusButton.layer setMasksToBounds:YES];
     [self.amountTextField changeStyleToValid];
     [self.descriptionTextField changeStyleToValid];
+#warning Are you sure it's a good idea to call another method inside? I would suggest renaming this method to "trackKeyboardAppearance" and call it outside in viewDidLoad
     [self setupNotifications];
+#warning That's not a View's responsibility
     self.datePickerView.datePickerMode = UIDatePickerModeDate;
     self.datePickerView.maximumDate = [[NSDate alloc] init];
 }

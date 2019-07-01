@@ -17,8 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak) id<DCAddTransactionDelegateProtocol> delegate;
 
+
+#warning It feels like that should have weak reference type
 @property (nullable) UITextField *activeField;
 
+#warning It's always better choice to store outlets in .m fileso they would not be accessible from the outside
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (weak, nonatomic) IBOutlet AddTextField *amountTextField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
