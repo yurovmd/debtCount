@@ -2,7 +2,7 @@
 //  DCPersonMO+CoreDataProperties.h
 //  DebtCount
 //
-//  Created by MAKSIM YUROV on 24/06/2019.
+//  Created by MAKSIM YUROV on 01/07/2019.
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 //
@@ -16,11 +16,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<DCPersonMO *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSString *name;
-@property (nullable, nonatomic, copy) NSString *relation;
+@property (nullable, nonatomic, copy) NSString *avatarUrl;
 @property (nullable, nonatomic, copy) NSDecimalNumber *debt;
-@property (nullable, nonatomic, retain) NSData *avatar;
+@property (nullable, nonatomic, copy) NSString *name;
 @property (nullable, nonatomic, copy) NSString *personId;
+@property (nullable, nonatomic, copy) NSString *relation;
+@property (nullable, nonatomic, retain) NSSet<DCTransactionMO *> *transactions;
+
+@end
+
+@interface DCPersonMO (CoreDataGeneratedAccessors)
+
+- (void)addTransactionsObject:(DCTransactionMO *)value;
+- (void)removeTransactionsObject:(DCTransactionMO *)value;
+- (void)addTransactions:(NSSet<DCTransactionMO *> *)values;
+- (void)removeTransactions:(NSSet<DCTransactionMO *> *)values;
 
 @end
 

@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.delegate = self;
+    self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
 }
 
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController

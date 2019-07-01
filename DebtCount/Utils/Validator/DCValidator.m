@@ -17,8 +17,8 @@
 
 @implementation DCValidator
 
-- (void)validatePerson:(DCPerson *)person completion:(void (^)(DCValidationResponse *))completion {
-    DCValidationResponse *response = [[DCValidationResponse alloc] init];
+- (void)validatePerson:(DCPerson *)person completion:(void (^)(DCPersonValidationResponse *))completion {
+    DCPersonValidationResponse *response = [[DCPersonValidationResponse alloc] init];
     BOOL isNameValid = [self checkName:person.name];
     BOOL isRelationValid = [self checkRelation:person.relation];
     response.isNameValid = isNameValid;
@@ -41,6 +41,14 @@
         return YES;
     }
     return NO;
+}
+
+- (void)validateTransaction:(DCTransaction *)transaction
+                 completion:(void (^)(DCTransactionValidationResponse *))completion {
+    DCTransactionValidationResponse *response = [[DCTransactionValidationResponse alloc] init];
+    response.isValid = YES;
+    // TODO: - Implement validation
+    completion(response);
 }
 
 @end

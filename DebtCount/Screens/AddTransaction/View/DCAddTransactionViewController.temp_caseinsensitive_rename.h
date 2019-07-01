@@ -1,8 +1,8 @@
 //
-//  AddPersonTextField.h
+//  DCAddTransactionVIewController.h
 //  DebtCount
 //
-//  Created by MAKSIM YUROV on 21/06/2019.
+//  Created by MAKSIM YUROV on 28/06/2019.
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddPersonTextField : UITextField
+@interface DCAddTransactionViewController : UIViewController
 
 @end
 

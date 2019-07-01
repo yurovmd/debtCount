@@ -38,6 +38,7 @@
 
 - (void)viewIsReady {
     self.person = [[DCPerson alloc] init];
+    self.person.personId = [[NSUUID UUID] UUIDString];
 }
 
 - (void)userChangedNameString:(NSString *)string {
@@ -50,7 +51,7 @@
 
 - (void)okPressed {
     // Validating data
-    void (^responseCompletion)(DCValidationResponse *) = ^(DCValidationResponse *response) {
+    void (^responseCompletion)(DCPersonValidationResponse *) = ^(DCPersonValidationResponse *response) {
         if (response.isValid) {
             [self saveData:self.person];
         } else {

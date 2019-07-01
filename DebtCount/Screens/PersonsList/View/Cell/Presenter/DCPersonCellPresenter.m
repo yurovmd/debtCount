@@ -29,6 +29,7 @@
 }
 
 - (void)viewIsReadyForPerson:(DCPerson *)person {
+    self.person = [[DCPerson alloc] init];
     self.person = person;
     [self.cellView setNameValue:[self getName]];
     [self.cellView setRelationValue:[self getRelation]];

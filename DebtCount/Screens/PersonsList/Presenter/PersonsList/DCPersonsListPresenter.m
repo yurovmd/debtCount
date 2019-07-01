@@ -42,12 +42,16 @@
     [self getPersons];
 }
 
+- (void)transactionAddedAndNeedReload {
+    [self getPersons];
+}
+
 - (void)getPersons {
     void (^completion)(NSMutableArray *) = ^(NSMutableArray *persons) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.persons = persons;
-            [self.view reloadTableView];
-        });
+        self.persons = persons;
+        [self.view reloadTableView];
+        //[self.view openDetailsWithPerson:persons.firstObject];
+
     };
     [DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];
 }

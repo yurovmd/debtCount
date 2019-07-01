@@ -10,6 +10,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class DCTransactionMO;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonMO : NSManagedObject

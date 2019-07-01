@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)viewIsReady;
 - (void)addPersonButtonPressed;
 - (void)popoverClosedAndNeedReload;
+- (void)transactionAddedAndNeedReload;
 
 @end
 

@@ -100,19 +100,19 @@
 @implementation DCAddPersonViewController (AddPersonPresenter)
 
 - (void)showRelationFieldError {
-    [self.relationTextField.layer setBorderColor:UIColor.redColor.CGColor];
+    [self.relationTextField changeStyleToError];
 }
 
 - (void)hideRelationFieldError {
-    [self.relationTextField.layer setBorderColor:UIColor.blueColor.CGColor];
+    [self.relationTextField changeStyleToValid];
 }
 
 - (void)showNameFieldError {
-    [self.nameTextField.layer setBorderColor:UIColor.redColor.CGColor];
+    [self.nameTextField changeStyleToError];
 }
 
 - (void)hideNameFieldError {
-    [self.nameTextField.layer setBorderColor:UIColor.blueColor.CGColor];
+    [self.nameTextField changeStyleToValid];
 }
 
 - (void)closePopover {
