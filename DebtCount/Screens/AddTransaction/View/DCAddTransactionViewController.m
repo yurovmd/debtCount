@@ -73,6 +73,9 @@
 
 
 - (void)setupUI {
+    [self.okButton setTitleColor:UIColor.lightCyan forState:normal];
+    [self.cancelButton setTitleColor:UIColor.fancyRed forState:normal];
+    self.view.backgroundColor = UIColor.iceBlue;
     [self.plusMinusButton.layer applyCornersValue: self.plusMinusButton.bounds.size.height / 2];
     [self.amountTextField changeStyleToValid];
     [self.descriptionTextField changeStyleToValid];
@@ -175,11 +178,11 @@
 }
 
 - (void)setAmountGreen {
-    [self.amountTextField setTextColor:UIColor.greenColor];
+    [self.amountTextField setTextColor:UIColor.lightCyan];
 }
 
 - (void)setAmountRed {
-    [self.amountTextField setTextColor:UIColor.redColor];
+    [self.amountTextField setTextColor:UIColor.fancyRed];
 }
 
 @end

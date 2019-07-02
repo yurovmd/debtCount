@@ -40,6 +40,7 @@
 }
 
 - (void)setupUI {
+    self.view.backgroundColor = UIColor.iceBlue;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.navigationItem.title = [@"PERSONS_LIST_SCREEN.TITLE" localized];
@@ -131,7 +132,6 @@
 @implementation DCPersonsListViewController (UITableViewDelegate)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DCPerson *person = self.presenter.persons[indexPath.row];
     [self performSegueWithIdentifier:@"showDetail" sender:person];
 }

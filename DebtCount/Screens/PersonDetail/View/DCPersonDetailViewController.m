@@ -89,6 +89,8 @@
 @implementation DCPersonDetailViewController (Private)
 
 - (void)setupUI {
+    self.view.backgroundColor = UIColor.iceBlue;
+    self.detailsTableView.backgroundColor = UIColor.iceBlue;
     self.detailsTableView.dataSource = self;
     self.detailsTableView.delegate = self;
     [self.detailsTableView registerNib:[UINib nibWithNibName:@"DCTransactionCell" bundle:NSBundle.mainBundle]

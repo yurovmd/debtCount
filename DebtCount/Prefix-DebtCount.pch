@@ -10,4 +10,5 @@
 #import "NSString+Localized.h"
 #import "CALayer+Shadow.h"
 #import "CALayer+Corners.h"
+#import "UIColor+pallete.h"
 

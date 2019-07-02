@@ -44,7 +44,9 @@
 @implementation DCTransactionCell (Private)
 
 - (void)setupUI {
-
+    self.backgroundColor = UIColor.iceBlue;
+    self.descriptionLabel.textColor = UIColor.darkViolet;
+    self.dateLabel.textColor = UIColor.darkViolet;
 }
 
 @end

@@ -76,6 +76,9 @@
 @implementation DCAddPersonViewController (UISetup)
 
 - (void)setupUI {
+    [self.okButton setTitleColor:UIColor.lightCyan forState:normal];
+    [self.cancelButton setTitleColor:UIColor.fancyRed forState:normal];
+    self.view.backgroundColor = UIColor.iceBlue;
     [self.addPictureButton.layer applyCornersValue:(self.addPictureButton.bounds.size.width / 2)];
     [self setupNotifications];
     [self setupLabels];

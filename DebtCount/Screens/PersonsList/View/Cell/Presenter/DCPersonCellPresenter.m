@@ -36,7 +36,7 @@
     [self.cellView setDebtValue:[self getDebt]];
     [self.cellView setAvatarValue:[self getAvatar]];
 
-    if (self.person.debt >=0) {
+    if (self.person.debt.integerValue >=0) {
         [self.cellView setDebtGreen];
     } else {
         [self.cellView setDebtRed];
