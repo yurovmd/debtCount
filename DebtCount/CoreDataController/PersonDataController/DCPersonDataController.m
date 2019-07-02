@@ -58,8 +58,7 @@
     NSData *avatarData = UIImagePNGRepresentation(image);
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"dd-MM-yyyy-HH-mm-ss";
-#warning [NSDate date] is nicer initializer
-    NSDate *currentDate = [[NSDate alloc] init];
+    NSDate *currentDate = [NSDate date];
     NSString *imageName = [[formatter stringFromDate:currentDate] stringByAppendingString:@".png"];
     NSString *imagePath = [basePath stringByAppendingPathComponent:imageName];
     [avatarData writeToFile:imagePath atomically:YES];
