@@ -15,8 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonsListViewController : UITableViewController <UIPopoverPresentationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addPersonButton;
-
 @end
 
 // MARK: - Signals from Presenter

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0D93AE22CB56F5009610D9 /* CALayer+Corners.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0D93AD22CB56F5009610D9 /* CALayer+Corners.m */; };
+		FA0D93B322CB604C009610D9 /* DCDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0D93B222CB604C009610D9 /* DCDataSerializer.m */; };
+		FA0D93B622CB605C009610D9 /* DCDataDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0D93B522CB605C009610D9 /* DCDataDeserializer.m */; };
+		FA0D93BA22CB658A009610D9 /* DCFilesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0D93B922CB658A009610D9 /* DCFilesManager.m */; };
+		FA0D93BE22CB83BB009610D9 /* UIColor+pallete.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0D93BD22CB83BB009610D9 /* UIColor+pallete.m */; };
 		FA2FB8F222C618050085F894 /* CALayer+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FB8F122C618050085F894 /* CALayer+Shadow.m */; };
 		FA2FB8FA22C62E740085F894 /* DCAddTransactionPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FB8F922C62E740085F894 /* DCAddTransactionPresenter.m */; };
 		FA2FB8FD22C62E9A0085F894 /* DCAddTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FB8FC22C62E9A0085F894 /* DCAddTransactionViewController.m */; };
@@ -25,7 +30,7 @@
 		FA9DE0A522C0BB25006C024F /* DCPersonDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0A422C0BB25006C024F /* DCPersonDataController.m */; };
 		FA9DE0B622C10656006C024F /* DCPersonMO+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0B422C10656006C024F /* DCPersonMO+CoreDataClass.m */; };
 		FA9DE0B722C10656006C024F /* DCPersonMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DE0B522C10656006C024F /* DCPersonMO+CoreDataProperties.m */; };
-		FAA3B21B22BCEF1E00625B29 /* AddTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA3B21A22BCEF1E00625B29 /* AddTextField.m */; };
+		FAA3B21B22BCEF1E00625B29 /* DCAddTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA3B21A22BCEF1E00625B29 /* DCAddTextField.m */; };
 		FAAFAC5C22C35A7700C866A8 /* NSString+Localized.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFAC5B22C35A7700C866A8 /* NSString+Localized.m */; };
 		FAAFAC5F22C364FE00C866A8 /* DCStringsLocalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFAC5E22C364FE00C866A8 /* DCStringsLocalizer.m */; };
 		FAAFAC6422C3753B00C866A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAAFAC6622C3753B00C866A8 /* Localizable.strings */; };
@@ -49,6 +54,16 @@
 
 /* Begin PBXFileReference section */
 		FA0D93AA22CA47DE009610D9 /* DCDetailsViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCDetailsViewControllerDelegate.h; sourceTree = "<group>"; };
+		FA0D93AC22CB56D9009610D9 /* CALayer+Corners.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Corners.h"; sourceTree = "<group>"; };
+		FA0D93AD22CB56F5009610D9 /* CALayer+Corners.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Corners.m"; sourceTree = "<group>"; };
+		FA0D93B122CB604C009610D9 /* DCDataSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCDataSerializer.h; sourceTree = "<group>"; };
+		FA0D93B222CB604C009610D9 /* DCDataSerializer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCDataSerializer.m; sourceTree = "<group>"; };
+		FA0D93B422CB605C009610D9 /* DCDataDeserializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCDataDeserializer.h; sourceTree = "<group>"; };
+		FA0D93B522CB605C009610D9 /* DCDataDeserializer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCDataDeserializer.m; sourceTree = "<group>"; };
+		FA0D93B822CB658A009610D9 /* DCFilesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCFilesManager.h; sourceTree = "<group>"; };
+		FA0D93B922CB658A009610D9 /* DCFilesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCFilesManager.m; sourceTree = "<group>"; };
+		FA0D93BC22CB83AF009610D9 /* UIColor+pallete.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+pallete.h"; sourceTree = "<group>"; };
+		FA0D93BD22CB83BB009610D9 /* UIColor+pallete.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+pallete.m"; sourceTree = "<group>"; };
 		FA2FB8F022C618050085F894 /* CALayer+Shadow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Shadow.h"; sourceTree = "<group>"; };
 		FA2FB8F122C618050085F894 /* CALayer+Shadow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Shadow.m"; sourceTree = "<group>"; };
 		FA2FB8F722C62A9E0085F894 /* DCAddTransactionDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddTransactionDelegateProtocol.h; sourceTree = "<group>"; };
@@ -86,8 +101,8 @@
 		FA9DE0B422C10656006C024F /* DCPersonMO+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DCPersonMO+CoreDataClass.m"; path = "DebtCount/CoreDataController/DCPersonMO+CoreDataClass.m"; sourceTree = "<group>"; };
 		FA9DE0B522C10656006C024F /* DCPersonMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "DCPersonMO+CoreDataProperties.m"; path = "DebtCount/CoreDataController/DCPersonMO+CoreDataProperties.m"; sourceTree = "<group>"; };
 		FAA3B21422BCE4EA00625B29 /* DCValidatorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCValidatorProtocol.h; sourceTree = "<group>"; };
-		FAA3B21922BCEF1E00625B29 /* AddTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTextField.h; sourceTree = "<group>"; };
-		FAA3B21A22BCEF1E00625B29 /* AddTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTextField.m; sourceTree = "<group>"; };
+		FAA3B21922BCEF1E00625B29 /* DCAddTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddTextField.h; sourceTree = "<group>"; };
+		FAA3B21A22BCEF1E00625B29 /* DCAddTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCAddTextField.m; sourceTree = "<group>"; };
 		FAAFAC5A22C35A5700C866A8 /* NSString+Localized.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Localized.h"; sourceTree = "<group>"; };
 		FAAFAC5B22C35A7700C866A8 /* NSString+Localized.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Localized.m"; sourceTree = "<group>"; };
 		FAAFAC5D22C364FE00C866A8 /* DCStringsLocalizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCStringsLocalizer.h; sourceTree = "<group>"; };
@@ -146,9 +161,46 @@
 			path = DCDetailsViewControllerDelegate;
 			sourceTree = "<group>";
 		};
+		FA0D93AF22CB5FD0009610D9 /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				FA0D93B122CB604C009610D9 /* DCDataSerializer.h */,
+				FA0D93B222CB604C009610D9 /* DCDataSerializer.m */,
+			);
+			path = Serialization;
+			sourceTree = "<group>";
+		};
+		FA0D93B022CB5FD9009610D9 /* Deserialization */ = {
+			isa = PBXGroup;
+			children = (
+				FA0D93B422CB605C009610D9 /* DCDataDeserializer.h */,
+				FA0D93B522CB605C009610D9 /* DCDataDeserializer.m */,
+			);
+			path = Deserialization;
+			sourceTree = "<group>";
+		};
+		FA0D93B722CB654B009610D9 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				FA0D93B822CB658A009610D9 /* DCFilesManager.h */,
+				FA0D93B922CB658A009610D9 /* DCFilesManager.m */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
+		FA0D93BB22CB8396009610D9 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				FA0D93BC22CB83AF009610D9 /* UIColor+pallete.h */,
+				FA0D93BD22CB83BB009610D9 /* UIColor+pallete.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
 		FA2FB8EE22C617C80085F894 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FA0D93BB22CB8396009610D9 /* UIColor */,
 				FA2FB8EF22C617D90085F894 /* CALayer */,
 			);
 			path = Extensions;
@@ -159,6 +211,8 @@
 			children = (
 				FA2FB8F022C618050085F894 /* CALayer+Shadow.h */,
 				FA2FB8F122C618050085F894 /* CALayer+Shadow.m */,
+				FA0D93AC22CB56D9009610D9 /* CALayer+Corners.h */,
+				FA0D93AD22CB56F5009610D9 /* CALayer+Corners.m */,
 			);
 			path = CALayer;
 			sourceTree = "<group>";
@@ -347,8 +401,8 @@
 		FAA3B21822BCEEF300625B29 /* AddTextField */ = {
 			isa = PBXGroup;
 			children = (
-				FAA3B21922BCEF1E00625B29 /* AddTextField.h */,
-				FAA3B21A22BCEF1E00625B29 /* AddTextField.m */,
+				FAA3B21922BCEF1E00625B29 /* DCAddTextField.h */,
+				FAA3B21A22BCEF1E00625B29 /* DCAddTextField.m */,
 			);
 			path = AddTextField;
 			sourceTree = "<group>";
@@ -543,6 +597,9 @@
 		FAF8483222BB9772009FDD55 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FA0D93B722CB654B009610D9 /* FileManager */,
+				FA0D93B022CB5FD9009610D9 /* Deserialization */,
+				FA0D93AF22CB5FD0009610D9 /* Serialization */,
 				FAAFAC5722C3569C00C866A8 /* StringsLocalization */,
 				FA97824222C241C400FDCEBB /* DebtFormatter */,
 				FAF8483322BB97BB009FDD55 /* Validator */,
@@ -645,14 +702,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA3B21B22BCEF1E00625B29 /* AddTextField.m in Sources */,
+				FAA3B21B22BCEF1E00625B29 /* DCAddTextField.m in Sources */,
 				FAAFAC5F22C364FE00C866A8 /* DCStringsLocalizer.m in Sources */,
 				FAF8480A22BA5B7E009FDD55 /* DCPersonDetailViewController.m in Sources */,
+				FA0D93B622CB605C009610D9 /* DCDataDeserializer.m in Sources */,
 				FA6E623F22C50A01009FDAFA /* DCTransaction.m in Sources */,
 				FAF8483622BB97F8009FDD55 /* DCValidator.m in Sources */,
 				FA9DE0B622C10656006C024F /* DCPersonMO+CoreDataClass.m in Sources */,
 				FAF8482E22BB7F2A009FDD55 /* DCAddPersonPresenter.m in Sources */,
 				FAF8483122BB9304009FDD55 /* DCPerson.m in Sources */,
+				FA0D93B322CB604C009610D9 /* DCDataSerializer.m in Sources */,
 				FA2FB90422C657940085F894 /* DCTransactionValidationResponse.m in Sources */,
 				FAF8481822BA83E0009FDD55 /* DCPersonCell.m in Sources */,
 				FA9DE0B722C10656006C024F /* DCPersonMO+CoreDataProperties.m in Sources */,
@@ -665,9 +724,12 @@
 				FA6E624222C50EC1009FDAFA /* DCTransactionCell.m in Sources */,
 				FA97824522C241DE00FDCEBB /* DCDebtFormatter.m in Sources */,
 				FA6E623022C4FB5E009FDAFA /* DCPersonDetailsPresenter.m in Sources */,
+				FA0D93AE22CB56F5009610D9 /* CALayer+Corners.m in Sources */,
 				FA97823A22C21EE900FDCEBB /* DCCustomSplitViewController.m in Sources */,
 				FAAFAC6822C3783A00C866A8 /* DCAddPersonViewController.m in Sources */,
+				FA0D93BA22CB658A009610D9 /* DCFilesManager.m in Sources */,
 				FAF8481122BA71BC009FDD55 /* DCPersonsListPresenter.m in Sources */,
+				FA0D93BE22CB83BB009610D9 /* UIColor+pallete.m in Sources */,
 				FA97824122C235C400FDCEBB /* DCPersonCellPresenter.m in Sources */,
 				FAF847EA22BA39BF009FDD55 /* AppDelegate.m in Sources */,
 				FAF8480322BA5B1C009FDD55 /* DCPersonsListViewController.m in Sources */,

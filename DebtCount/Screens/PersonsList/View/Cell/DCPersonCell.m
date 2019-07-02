@@ -26,8 +26,10 @@
 }
 
 - (void)setupUI {
-    [self.avatarImageView.layer setCornerRadius:(self.avatarImageView.bounds.size.height / 2)];
-    [self.avatarImageView.layer setMasksToBounds:true];
+    self.backgroundColor = UIColor.iceBlue;
+    self.nameLabel.textColor = UIColor.darkViolet;
+    self.relationsLabel.textColor = UIColor.darkViolet;
+    [self.avatarImageView.layer applyCornersValue:(self.avatarImageView.bounds.size.height / 2)];
 }
 
 @end
@@ -53,11 +55,11 @@
 }
 
 - (void)setDebtGreen {
-    self.debtLabel.textColor = UIColor.greenColor;
+    self.debtLabel.textColor = UIColor.lightCyan;
 }
 
 - (void)setDebtRed {
-    self.debtLabel.textColor = UIColor.redColor;
+    self.debtLabel.textColor = UIColor.fancyRed;
 }
 
 @end

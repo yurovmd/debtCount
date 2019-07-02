@@ -13,6 +13,10 @@
 
 @property DCTransactionCellPresenter *presenter;
 
+@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 @end
 
 @implementation DCTransactionCell
@@ -40,7 +44,9 @@
 @implementation DCTransactionCell (Private)
 
 - (void)setupUI {
-
+    self.backgroundColor = UIColor.iceBlue;
+    self.descriptionLabel.textColor = UIColor.darkViolet;
+    self.dateLabel.textColor = UIColor.darkViolet;
 }
 
 @end

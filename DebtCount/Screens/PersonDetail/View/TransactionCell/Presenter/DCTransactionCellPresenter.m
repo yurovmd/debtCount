@@ -37,9 +37,9 @@
     [self.cellView setDateText:self.getDate];
 
     if (self.transaction.amount.integerValue  >= 0) {
-        [self.cellView setAmountLabelColor:UIColor.greenColor];
+        [self.cellView setAmountLabelColor:UIColor.lightCyan];
     } else {
-        [self.cellView setAmountLabelColor:UIColor.redColor];
+        [self.cellView setAmountLabelColor:UIColor.fancyRed];
     }
 }
 

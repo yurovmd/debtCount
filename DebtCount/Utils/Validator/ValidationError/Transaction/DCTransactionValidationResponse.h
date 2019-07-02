@@ -14,9 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init;
 
-@property BOOL isValid;
 @property BOOL isAmountValid;
-@property BOOL isDescriptionValid;
 
 @end
 

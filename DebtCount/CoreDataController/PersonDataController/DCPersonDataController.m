@@ -7,6 +7,8 @@
 //
 
 #import "DCPersonDataController.h"
+#import "DCDataSerializer.h"
+#import "DCDataDeserializer.h"
 
 @implementation DCPersonDataController
 
@@ -40,29 +42,13 @@
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSError *error = nil;
         DCPersonMO *personManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"DCPersonMO" inManagedObjectContext:context];
-        personManagedObject.name = person.name;
-        personManagedObject.relation = person.relation;
-        personManagedObject.avatarUrl = [self saveImageToFileManager:person.avatar];
-        personManagedObject.debt = [NSDecimalNumber zero];
-        personManagedObject.personId = person.personId;
+        personManagedObject = [DCDataSerializer getManagedObject:personManagedObject
+                                                      fromPerson:person];
         if ([context save:&error] == NO) {
             NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
         }
         completion();
     }];
-}
-
-- (NSString *)saveImageToFileManager:(UIImage *)image {
-    NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString * basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-    NSData *avatarData = UIImagePNGRepresentation(image);
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"dd-MM-yyyy-HH-mm-ss";
-    NSDate *currentDate = [[NSDate alloc] init];
-    NSString *imageName = [[formatter stringFromDate:currentDate] stringByAppendingString:@".png"];
-    NSString *imagePath = [basePath stringByAppendingPathComponent:imageName];
-    [avatarData writeToFile:imagePath atomically:YES];
-    return imagePath;
 }
 
 - (void)saveTransactionData:(DCTransaction *)transaction
@@ -79,12 +65,9 @@
         for (DCPersonMO *personMO in results) {
             if ([personMO.personId isEqualToString:person.personId]) {
                 DCTransactionMO *transactionManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"DCTransactionMO" inManagedObjectContext:context];
-                transactionManagedObject.date = transaction.date;
-                transactionManagedObject.transactionDescription = transaction.transactionDescription;
-                transactionManagedObject.amount = transaction.amount ;
-                transactionManagedObject.person = personMO;
-                [personMO addTransactionsObject:transactionManagedObject];
-                personMO.debt = [personMO.debt decimalNumberByAdding:transaction.amount];
+                transactionManagedObject = [DCDataSerializer getManagedObject:transactionManagedObject
+                                                              fromTransaction:transaction
+                                                      withPersonManagedObject:personMO];
                 if ([context save:&error] == NO) {
                     NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
                 }
@@ -107,22 +90,7 @@
         }
         NSMutableArray *persons = [[NSMutableArray alloc] init];
         for (DCPersonMO *personMO in results) {
-            DCPerson *person = [DCPerson alloc];
-            person.name = personMO.name;
-            person.relation = personMO.relation;
-            person.avatar = [[UIImage alloc] initWithContentsOfFile:personMO.avatarUrl];
-            person.debt = personMO.debt;
-            person.personId = personMO.personId;
-            NSSet *transactions = [[NSSet alloc] init];
-            for (DCTransactionMO *transactionMO in personMO.transactions) {
-                DCTransaction * transaction = [[DCTransaction alloc] init];
-                transaction.date = transactionMO.date;
-                transaction.transactionDescription = transactionMO.transactionDescription;
-                transaction.amount = transactionMO.amount;
-                transactions = [transactions setByAddingObject:transaction];
-            }
-            person.transactions = transactions;
-            [persons addObject:person];
+            [persons addObject:[DCDataDeserializer getPersonFromManagedObject:personMO]];
         }
         completion(persons);
     }];

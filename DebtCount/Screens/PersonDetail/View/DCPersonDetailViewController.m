@@ -15,6 +15,11 @@
 @property DCPersonDetailsPresenter *presenter;
 @property NSMutableArray *cellModels;
 
+@property (weak, nonatomic) IBOutlet UIView *chartView;
+@property (weak, nonatomic) IBOutlet UITableView *detailsTableView;
+@property (weak, nonatomic) IBOutlet UIView *addButtonView;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
 @end
 
 @implementation DCPersonDetailViewController
@@ -84,6 +89,8 @@
 @implementation DCPersonDetailViewController (Private)
 
 - (void)setupUI {
+    self.view.backgroundColor = UIColor.iceBlue;
+    self.detailsTableView.backgroundColor = UIColor.iceBlue;
     self.detailsTableView.dataSource = self;
     self.detailsTableView.delegate = self;
     [self.detailsTableView registerNib:[UINib nibWithNibName:@"DCTransactionCell" bundle:NSBundle.mainBundle]
@@ -98,8 +105,7 @@
                                              yAxis:4
                                               blur:8
                                             spread:0];
-    [self.addButton.layer setCornerRadius:self.addButton.bounds.size.height / 2];
-    [self.addButton.layer setMasksToBounds:YES];
+    [self.addButton.layer applyCornersValue:self.addButton.bounds.size.height / 2];
 }
 
 @end
@@ -131,7 +137,6 @@
 @implementation DCPersonDetailViewController (AddTransactionDelegate)
 
 - (void)addTransaction:(DCTransaction *)transaction {
-    // TODO: - Implement saving secieved data and update tableView
     [self.presenter addedTransaction:transaction];
 }
 

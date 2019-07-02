@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DCAddTransactionDelegateProtocol.h"
-#import "AddTextField.h"
+#import "DCAddTextField.h"
 #import "DCValidator.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,23 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable) UITextField *activeField;
 
-@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-@property (weak, nonatomic) IBOutlet AddTextField *amountTextField;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet AddTextField *descriptionTextField;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-@property (weak, nonatomic) IBOutlet UIButton *okButton;
-@property (weak, nonatomic) IBOutlet UIButton *plusMinusButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
 @end
 
 // MARK: - Signals From Presenter
 
 @interface DCAddTransactionViewController (Presenter)
 
+- (void)setDatePickerMaximumDate:(NSDate *)date;
 - (void)setupCancelButtonWithText:(NSString *)text;
 - (void)setupOKButtonWithText:(NSString *)text;
 - (void)setupAmountLabelTitle:(NSString *)text;
@@ -43,9 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setupDescriptionTitle:(NSString *)text;
 
 - (void)setAmountError;
-- (void)setAmountValid;
-- (void)setDescriptionError;
-- (void)setDescriptionValid;
 
 - (void)closePopover;
 - (void)closePopoverWithTransaction:(DCTransaction *)transaction;

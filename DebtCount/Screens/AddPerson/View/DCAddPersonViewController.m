@@ -13,6 +13,15 @@
 
 @property DCAddPersonPresenter *presenter;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *addPictureButton;
+@property (weak, nonatomic) IBOutlet DCAddTextField *nameTextField;
+@property (weak, nonatomic) IBOutlet DCAddTextField *relationTextField;
+@property (weak, nonatomic) IBOutlet UILabel *nameTextFieldLabel;
+@property (weak, nonatomic) IBOutlet UILabel *relationTextFIeldLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *okButton;
+
 @end
 
 @interface DCAddPersonViewController (UISetup)
@@ -67,8 +76,10 @@
 @implementation DCAddPersonViewController (UISetup)
 
 - (void)setupUI {
-    [self.addPictureButton.layer setCornerRadius:(self.addPictureButton.bounds.size.width / 2)];
-    [self.addPictureButton.layer setMasksToBounds:true];
+    [self.okButton setTitleColor:UIColor.lightCyan forState:normal];
+    [self.cancelButton setTitleColor:UIColor.fancyRed forState:normal];
+    self.view.backgroundColor = UIColor.iceBlue;
+    [self.addPictureButton.layer applyCornersValue:(self.addPictureButton.bounds.size.width / 2)];
     [self setupNotifications];
     [self setupLabels];
 
@@ -116,7 +127,7 @@
 }
 
 - (void)closePopover {
-    [self dismissViewControllerAnimated:true completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)closePopoverAndReload {

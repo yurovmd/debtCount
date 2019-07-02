@@ -18,6 +18,8 @@
 
 - (void)setupUI;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addPersonButton;
+
 @end
 
 @interface DCPersonsListViewController (DCAddPersonDelegateProtocol) <DCAddPersonDelegateProtocol>
@@ -38,6 +40,7 @@
 }
 
 - (void)setupUI {
+    self.view.backgroundColor = UIColor.iceBlue;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.navigationItem.title = [@"PERSONS_LIST_SCREEN.TITLE" localized];
@@ -67,7 +70,9 @@
 
 - (void)reloadTableView {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
+        [self.tableView beginUpdates];
+        [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:YES];
+        [self.tableView endUpdates];
     });
 }
 
@@ -93,7 +98,7 @@
 @implementation DCPersonsListViewController (DCAddPersonDelegateProtocol)
 
 - (void)closePopoverAndReload {
-    [self dismissViewControllerAnimated:true completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [self.presenter popoverClosedAndNeedReload];
 }
 
@@ -127,7 +132,6 @@
 @implementation DCPersonsListViewController (UITableViewDelegate)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DCPerson *person = self.presenter.persons[indexPath.row];
     [self performSegueWithIdentifier:@"showDetail" sender:person];
 }

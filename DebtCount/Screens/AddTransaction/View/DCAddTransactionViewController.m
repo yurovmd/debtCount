@@ -15,6 +15,17 @@
 
 - (void)setupUI;
 
+@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
+@property (weak, nonatomic) IBOutlet DCAddTextField *amountTextField;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet DCAddTextField *descriptionTextField;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (weak, nonatomic) IBOutlet UIButton *plusMinusButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @end
 
 @interface DCAddTransactionViewController (HandlingKeyboardNotifications)
@@ -31,6 +42,7 @@
     DCValidator *validator = [[DCValidator alloc] init];
     self.presenter = [[DCAddTransactionPresenter alloc] initWithView:self validator:validator];
     [self setupUI];
+    [self setupNotifications];
     [self.presenter viewIsReady];
 }
 
@@ -61,13 +73,13 @@
 
 
 - (void)setupUI {
-    [self.plusMinusButton.layer setCornerRadius: self.plusMinusButton.bounds.size.height / 2];
-    [self.plusMinusButton.layer setMasksToBounds:YES];
+    [self.okButton setTitleColor:UIColor.lightCyan forState:normal];
+    [self.cancelButton setTitleColor:UIColor.fancyRed forState:normal];
+    self.view.backgroundColor = UIColor.iceBlue;
+    [self.plusMinusButton.layer applyCornersValue: self.plusMinusButton.bounds.size.height / 2];
     [self.amountTextField changeStyleToValid];
     [self.descriptionTextField changeStyleToValid];
-    [self setupNotifications];
     self.datePickerView.datePickerMode = UIDatePickerModeDate;
-    self.datePickerView.maximumDate = [[NSDate alloc] init];
 }
 
 - (void)setupNotifications {
@@ -124,6 +136,10 @@
 
 @implementation DCAddTransactionViewController (Presenter)
 
+- (void)setDatePickerMaximumDate:(NSDate *)date {
+    self.datePickerView.maximumDate = date;
+}
+
 - (void)setupCancelButtonWithText:(NSString *)text {
     [self.cancelButton setTitle:text forState:normal];
 }
@@ -148,18 +164,6 @@
     [self.amountTextField changeStyleToError];
 }
 
-- (void)setAmountValid {
-    [self.amountTextField changeStyleToValid];
-}
-
-- (void)setDescriptionError {
-    [self.descriptionTextField changeStyleToError];
-}
-
-- (void)setDescriptionValid {
-    [self.descriptionTextField changeStyleToValid];
-}
-
 - (void)closePopover {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -174,11 +178,11 @@
 }
 
 - (void)setAmountGreen {
-    [self.amountTextField setTextColor:UIColor.greenColor];
+    [self.amountTextField setTextColor:UIColor.lightCyan];
 }
 
 - (void)setAmountRed {
-    [self.amountTextField setTextColor:UIColor.redColor];
+    [self.amountTextField setTextColor:UIColor.fancyRed];
 }
 
 @end

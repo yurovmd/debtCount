@@ -43,11 +43,10 @@
     return NO;
 }
 
-- (void)validateTransaction:(DCTransaction *)transaction
-                 completion:(void (^)(DCTransactionValidationResponse *))completion {
+- (void)validateTransactionAmount:(NSString *)amount
+                       completion:(void (^)(DCTransactionValidationResponse *))completion {
     DCTransactionValidationResponse *response = [[DCTransactionValidationResponse alloc] init];
-    response.isValid = YES;
-    // TODO: - Implement validation
+    response.isAmountValid = [NSDecimalNumber decimalNumberWithString:amount].integerValue != 0;
     completion(response);
 }
 

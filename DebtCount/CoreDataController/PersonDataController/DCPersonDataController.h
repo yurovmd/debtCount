@@ -26,7 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)saveTransactionData:(DCTransaction *)transaction
                   forPerson:(DCPerson *)person
                  completion:(void(^)(void))completion;
-- (NSString *)saveImageToFileManager:(UIImage *)image;
 
 @end
 
