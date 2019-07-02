@@ -60,24 +60,15 @@
     } else {
         self.amount = [NSString stringWithFormat:@"+%@", self.amount];
     }
-    self.transaction.amount = [NSDecimalNumber decimalNumberWithString:self.amount];
     void (^responseCompletion)(DCTransactionValidationResponse *) = ^(DCTransactionValidationResponse *response) {
-        if (response.isValid) {
+        if (response.isAmountValid) {
+            self.transaction.amount = [NSDecimalNumber decimalNumberWithString:self.amount];
             [self.view closePopoverWithTransaction:self.transaction];
         } else {
-            if (response.isAmountValid) {
-                [self.view setAmountValid];
-            } else {
-                [self.view setAmountError];
-            }
-            if (response.isDescriptionValid) {
-                [self.view setDescriptionValid];
-            } else {
-                [self.view setDescriptionError];
-            }
+            [self.view setAmountError];
         }
     };
-    [self.validator validateTransaction:self.transaction completion:(responseCompletion)];
+    [self.validator validateTransactionAmount:self.amount completion:(responseCompletion)];
 }
 
 - (void)amountChangedWithText:(NSString *)text {

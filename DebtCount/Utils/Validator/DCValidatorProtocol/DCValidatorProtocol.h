@@ -16,7 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DCValidatorProtocol
 
 - (void)validatePerson:(DCPerson *)person completion:(void (^)(DCPersonValidationResponse *))completion;
-- (void)validateTransaction:(DCTransaction *)transaction completion:(void (^)(DCTransactionValidationResponse *))completion;
+- (void)validateTransactionAmount:(NSString *)amount
+                       completion:(void (^)(DCTransactionValidationResponse *))completion;
 
 @end
 

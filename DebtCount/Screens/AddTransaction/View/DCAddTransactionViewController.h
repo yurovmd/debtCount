@@ -33,9 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setupDescriptionTitle:(NSString *)text;
 
 - (void)setAmountError;
-- (void)setAmountValid;
-- (void)setDescriptionError;
-- (void)setDescriptionValid;
 
 - (void)closePopover;
 - (void)closePopoverWithTransaction:(DCTransaction *)transaction;

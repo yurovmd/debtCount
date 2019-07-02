@@ -161,18 +161,6 @@
     [self.amountTextField changeStyleToError];
 }
 
-- (void)setAmountValid {
-    [self.amountTextField changeStyleToValid];
-}
-
-- (void)setDescriptionError {
-    [self.descriptionTextField changeStyleToError];
-}
-
-- (void)setDescriptionValid {
-    [self.descriptionTextField changeStyleToValid];
-}
-
 - (void)closePopover {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
