@@ -40,6 +40,7 @@
     self.transaction.date = [NSDate date];
     self.isAmountNegative = NO;
     [self.view setAmountGreen];
+    [self.view setDatePickerMaximumDate:[NSDate date]];
     [self.view setupCancelButtonWithText:[@"ADD_TRANSACTION_SCREEN.BUTTONS.CANCEL" localized]];
     [self.view setupOKButtonWithText:[@"ADD_TRANSACTION_SCREEN.BUTTONS.OK" localized]];
     [self.view setupAmountLabelTitle:[@"ADD_TRANSACTION_SCREEN.LABELS.AMOUNT" localized]];

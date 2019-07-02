@@ -6,15 +6,15 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "AddTextField.h"
+#import "DCAddTextField.h"
 
-@interface AddTextField (AddPersonTextFieldUISetup)
+@interface DCAddTextField (AddPersonTextFieldUISetup)
 
 - (void)setupUI;
 
 @end
 
-@implementation AddTextField
+@implementation DCAddTextField
 
 - (void)drawRect:(CGRect)rect {
     [self setupUI];
@@ -30,13 +30,12 @@
 
 @end
 
-@implementation AddTextField (AddPersonTextFieldUISetup)
+@implementation DCAddTextField (AddPersonTextFieldUISetup)
 
 - (void)setupUI {
     [self.layer setBorderWidth:1.0];
     [self.layer setBorderColor:UIColor.blueColor.CGColor];
-    [self.layer setCornerRadius:self.bounds.size.height / 2];
-    [self.layer setMasksToBounds:true];
+    [self.layer applyCornersValue:self.bounds.size.height / 2];
 }
 
 @end

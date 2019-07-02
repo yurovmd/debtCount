@@ -20,11 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak) id<DCDetailsViewControllerDelegate> delegate;
 
-@property (weak, nonatomic) IBOutlet UIView *chartView;
-@property (weak, nonatomic) IBOutlet UITableView *detailsTableView;
-@property (weak, nonatomic) IBOutlet UIView *addButtonView;
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
-
 @end
 
 // MARK: - Signals from Presenter

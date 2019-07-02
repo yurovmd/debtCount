@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DCAddTransactionDelegateProtocol.h"
-#import "AddTextField.h"
+#import "DCAddTextField.h"
 #import "DCValidator.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,21 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak) id<DCAddTransactionDelegateProtocol> delegate;
 
-
-#warning It feels like that should have weak reference type
 @property (nullable) UITextField *activeField;
-
-#warning It's always better choice to store outlets in .m fileso they would not be accessible from the outside
-@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-@property (weak, nonatomic) IBOutlet AddTextField *amountTextField;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet AddTextField *descriptionTextField;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-@property (weak, nonatomic) IBOutlet UIButton *okButton;
-@property (weak, nonatomic) IBOutlet UIButton *plusMinusButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -39,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DCAddTransactionViewController (Presenter)
 
+- (void)setDatePickerMaximumDate:(NSDate *)date;
 - (void)setupCancelButtonWithText:(NSString *)text;
 - (void)setupOKButtonWithText:(NSString *)text;
 - (void)setupAmountLabelTitle:(NSString *)text;

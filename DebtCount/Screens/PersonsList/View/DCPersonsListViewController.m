@@ -18,6 +18,8 @@
 
 - (void)setupUI;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addPersonButton;
+
 @end
 
 @interface DCPersonsListViewController (DCAddPersonDelegateProtocol) <DCAddPersonDelegateProtocol>
@@ -67,7 +69,9 @@
 
 - (void)reloadTableView {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
+        [self.tableView beginUpdates];
+        [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:YES];
+        [self.tableView endUpdates];
     });
 }
 
@@ -93,7 +97,7 @@
 @implementation DCPersonsListViewController (DCAddPersonDelegateProtocol)
 
 - (void)closePopoverAndReload {
-    [self dismissViewControllerAnimated:true completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [self.presenter popoverClosedAndNeedReload];
 }
 

@@ -15,10 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property DCTransaction *transaction;
 
-@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-
 @end
 
 // MARK: - Cell Configuration After dequeue stage

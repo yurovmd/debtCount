@@ -15,6 +15,11 @@
 @property DCPersonDetailsPresenter *presenter;
 @property NSMutableArray *cellModels;
 
+@property (weak, nonatomic) IBOutlet UIView *chartView;
+@property (weak, nonatomic) IBOutlet UITableView *detailsTableView;
+@property (weak, nonatomic) IBOutlet UIView *addButtonView;
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
 @end
 
 @implementation DCPersonDetailViewController
@@ -98,8 +103,7 @@
                                              yAxis:4
                                               blur:8
                                             spread:0];
-    [self.addButton.layer setCornerRadius:self.addButton.bounds.size.height / 2];
-    [self.addButton.layer setMasksToBounds:YES];
+    [self.addButton.layer applyCornersValue:self.addButton.bounds.size.height / 2];
 }
 
 @end

@@ -15,6 +15,17 @@
 
 - (void)setupUI;
 
+@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
+@property (weak, nonatomic) IBOutlet DCAddTextField *amountTextField;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet DCAddTextField *descriptionTextField;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (weak, nonatomic) IBOutlet UIButton *plusMinusButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @end
 
 @interface DCAddTransactionViewController (HandlingKeyboardNotifications)
@@ -31,6 +42,7 @@
     DCValidator *validator = [[DCValidator alloc] init];
     self.presenter = [[DCAddTransactionPresenter alloc] initWithView:self validator:validator];
     [self setupUI];
+    [self setupNotifications];
     [self.presenter viewIsReady];
 }
 
@@ -61,15 +73,10 @@
 
 
 - (void)setupUI {
-    [self.plusMinusButton.layer setCornerRadius: self.plusMinusButton.bounds.size.height / 2];
-    [self.plusMinusButton.layer setMasksToBounds:YES];
+    [self.plusMinusButton.layer applyCornersValue: self.plusMinusButton.bounds.size.height / 2];
     [self.amountTextField changeStyleToValid];
     [self.descriptionTextField changeStyleToValid];
-#warning Are you sure it's a good idea to call another method inside? I would suggest renaming this method to "trackKeyboardAppearance" and call it outside in viewDidLoad
-    [self setupNotifications];
-#warning That's not a View's responsibility
     self.datePickerView.datePickerMode = UIDatePickerModeDate;
-    self.datePickerView.maximumDate = [[NSDate alloc] init];
 }
 
 - (void)setupNotifications {
@@ -125,6 +132,10 @@
 // MARK: - Signals From Presenter
 
 @implementation DCAddTransactionViewController (Presenter)
+
+- (void)setDatePickerMaximumDate:(NSDate *)date {
+    self.datePickerView.maximumDate = date;
+}
 
 - (void)setupCancelButtonWithText:(NSString *)text {
     [self.cancelButton setTitle:text forState:normal];

@@ -7,7 +7,7 @@
 //
 
 #import "DCValidator.h"
-#import "AddTextField.h"
+#import "DCAddTextField.h"
 #import "DCAddPersonDelegateProtocol.h"
 
 
@@ -18,15 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable) UITextField *activeField;
 
 @property id<DCAddPersonDelegateProtocol> delegate;
-
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIButton *addPictureButton;
-@property (weak, nonatomic) IBOutlet AddTextField *nameTextField;
-@property (weak, nonatomic) IBOutlet AddTextField *relationTextField;
-@property (weak, nonatomic) IBOutlet UILabel *nameTextFieldLabel;
-@property (weak, nonatomic) IBOutlet UILabel *relationTextFIeldLabel;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-@property (weak, nonatomic) IBOutlet UIButton *okButton;
 
 @end
 
