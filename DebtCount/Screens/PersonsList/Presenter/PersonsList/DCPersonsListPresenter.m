@@ -13,7 +13,7 @@
 
 @interface DCPersonsListPresenter ()
 
-- (void)getPersons;
+- (void)getPersonsAndFirstOpen:(BOOL)firstOpen;
 
 @property (weak) DCPersonsListViewController *view;
 
@@ -31,7 +31,8 @@
 }
 
 - (void)viewIsReady {
-    [self getPersons];
+    [self getPersonsAndFirstOpen:YES];
+
 }
 
 - (void)addPersonButtonPressed {
@@ -39,20 +40,29 @@
 }
 
 - (void)popoverClosedAndNeedReload {
-    [self getPersons];
+    [self getPersonsAndFirstOpen:NO];
 }
 
 - (void)transactionAddedAndNeedReload {
-    [self getPersons];
+    [self getPersonsAndFirstOpen:NO];
 }
 
-- (void)getPersons {
-    void (^completion)(NSMutableArray *) = ^(NSMutableArray *persons) {
-        self.persons = persons;
-        [self.view reloadTableView];
-        //[self.view openDetailsWithPerson:persons.firstObject];
-
-    };
+- (void)getPersonsAndFirstOpen:(BOOL)firstOpen {
+    void (^completion)(NSMutableArray *) = ^(NSMutableArray *persons) { };
+    if (firstOpen && ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )) {
+        completion = ^(NSMutableArray *persons) {
+            self.persons = persons;
+            [self.view reloadTableView];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.view openDetailsWithPerson:persons.firstObject];
+            });
+        };
+    } else {
+        completion = ^(NSMutableArray *persons) {
+            self.persons = persons;
+            [self.view reloadTableView];
+        };
+    }
     [DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];
 }
 

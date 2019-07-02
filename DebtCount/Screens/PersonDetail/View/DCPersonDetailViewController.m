@@ -137,7 +137,6 @@
 @implementation DCPersonDetailViewController (AddTransactionDelegate)
 
 - (void)addTransaction:(DCTransaction *)transaction {
-    // TODO: - Implement saving secieved data and update tableView
     [self.presenter addedTransaction:transaction];
 }
 
