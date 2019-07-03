@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addPersonButtonPressed;
 - (void)popoverClosedAndNeedReload;
 - (void)transactionAddedAndNeedReload;
+- (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
