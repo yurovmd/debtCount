@@ -66,4 +66,12 @@
     [DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];
 }
 
+- (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath {
+    void (^completion)(void) = ^(void) {
+        [self.persons removeObjectAtIndex:indexPath.row];
+        [self.view removeCellAtIndexPath:indexPath];
+    };
+    [DCPersonDataController.shared deletePerson:self.persons[indexPath.row] completion:completion];
+}
+
 @end

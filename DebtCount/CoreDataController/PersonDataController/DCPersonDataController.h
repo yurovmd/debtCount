@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)saveTransactionData:(DCTransaction *)transaction
                   forPerson:(DCPerson *)person
                  completion:(void(^)(void))completion;
+- (void)deletePerson:(DCPerson *)person completion:(void(^)(void))completion;
+- (void)deleteTransaction:(DCTransaction *)transaction
+                forPerson: (DCPerson *)person
+               completion:(void(^)(void))completion;
 
 @end
 

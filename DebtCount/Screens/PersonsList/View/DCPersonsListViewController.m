@@ -76,6 +76,14 @@
     });
 }
 
+- (void)removeCellAtIndexPath:(NSIndexPath *)indexPath {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+    });
+}
+
 - (void)openDetailsWithPerson:(DCPerson *)person {
     [self performSegueWithIdentifier:@"showDetail" sender:person];
 }
@@ -120,6 +128,20 @@
     DCPersonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DCPersonCell"];
     [cell configure:self.presenter.persons[indexPath.row]];
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.presenter userDeleleCellPressedAtIndexPath:indexPath];
+    }
+
 }
 
 @end

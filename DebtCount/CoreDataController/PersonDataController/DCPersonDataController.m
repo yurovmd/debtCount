@@ -96,4 +96,51 @@
     }];
 }
 
+- (void)deletePerson:(DCPerson *)person completion:(void(^)(void))completion {
+
+    [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:request error:&error];
+        if (!results) {
+            NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+        for (DCPersonMO *personMO in results) {
+            if ([personMO.personId isEqualToString:person.personId]) {
+                [context deleteObject:personMO];
+                if ([context save:&error] == NO) {
+                    NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+                }
+            }
+        }
+        completion();
+    }];
+}
+
+- (void)deleteTransaction:(DCTransaction *)transaction
+                forPerson: (DCPerson *)person
+               completion:(void(^)(void))completion {
+
+    [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCTransactionMO"];
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:request error:&error];
+        if (!results) {
+            NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+        for (DCTransactionMO *transactionMO in results) {
+            if ([transactionMO.person.personId isEqualToString:person.personId]) {
+                [transactionMO.person setDebt:[transactionMO.person.debt decimalNumberBySubtracting:transaction.amount]];
+                [context deleteObject:transactionMO];
+                if ([context save:&error] == NO) {
+                    NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+                }
+            }
+        }
+        completion();
+    }];
+}
+
 @end

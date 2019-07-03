@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithView:(DCPersonDetailViewController *)view;
 
 @property (weak) DCPersonDetailViewController *view;
+@property NSMutableArray *cellModels;
 
 @end
 
@@ -33,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)viewIsReadyWithPerson:(DCPerson *)person;
 - (void)addButtonTapped;
 - (void)addedTransaction:(DCTransaction *)transaction;
+- (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
