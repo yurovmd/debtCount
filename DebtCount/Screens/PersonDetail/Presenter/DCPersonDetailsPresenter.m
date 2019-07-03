@@ -10,7 +10,6 @@
 
 @interface DCPersonDetailsPresenter ()
 
-@property NSMutableArray *cellModels;
 @property DCPerson *person;
 
 @end
@@ -49,7 +48,7 @@
     for (DCTransaction *transaction in person.transactions) {
         [self.cellModels addObject: transaction];
     }
-    [self.view updateTableViewWithModels:self.cellModels];
+    [self.view updateTableView];
     [self.view setTitleViewTitle:person.name];
     // More to come when we will use chart
 }
@@ -60,14 +59,23 @@
 
 - (void)addedTransaction:(DCTransaction *)transaction {
     void (^completion)(void) = ^(void) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.cellModels addObject:transaction];
-            [self.view updateTableViewWithModels:self.cellModels];
-            [self.view sendUpdateMessageToMasterController];
-        });
+        [self.cellModels addObject:transaction];
+        [self.view updateTableView];
+        [self.view sendUpdateMessageToMasterController];
     };
     [self saveTransaction:transaction completion:completion];
 
+}
+
+- (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath {
+    void (^completion)(void) = ^(void) {
+        [self.cellModels removeObjectAtIndex:indexPath.row];
+        [self.view removeCellAtIndexPath:indexPath];
+        [self.view sendUpdateMessageToMasterController];
+    };
+    [DCPersonDataController.shared deleteTransaction:self.cellModels[indexPath.row]
+                                           forPerson:self.person
+                                          completion:completion];
 }
 
 @end

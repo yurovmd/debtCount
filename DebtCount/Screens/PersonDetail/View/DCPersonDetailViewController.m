@@ -13,7 +13,6 @@
 @interface DCPersonDetailViewController ()
 
 @property DCPersonDetailsPresenter *presenter;
-@property NSMutableArray *cellModels;
 
 @property (weak, nonatomic) IBOutlet UIView *chartView;
 @property (weak, nonatomic) IBOutlet UITableView *detailsTableView;
@@ -27,7 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.presenter = [[DCPersonDetailsPresenter alloc] initWithView:self];
-    self.cellModels = [[NSMutableArray alloc] init];
     [self setupUI];
     [self.presenter viewIsReadyWithPerson:self.person];
 }
@@ -42,9 +40,10 @@
 
 @implementation DCPersonDetailViewController (Presenter)
 
-- (void)updateTableViewWithModels:(NSMutableArray *)cellModels {
-    self.cellModels = cellModels;
-    [self.detailsTableView reloadData];
+- (void)updateTableView {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.detailsTableView reloadData];
+    });
 }
 
 - (void)sendUpdateMessageToMasterController {
@@ -69,6 +68,14 @@
     controller.popoverPresentationController.delegate = self;
 
     [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)removeCellAtIndexPath:(NSIndexPath *)indexPath {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.detailsTableView beginUpdates];
+        [self.detailsTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.detailsTableView endUpdates];
+    });
 }
 
 @end
@@ -115,13 +122,27 @@
 @implementation DCPersonDetailViewController (UITableViewDataSource)
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.cellModels count];
+    return [self.presenter.cellModels count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DCTransactionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DCTransactionCell"];
-    [cell configure:self.cellModels[indexPath.row]];
+    [cell configure:self.presenter.cellModels[indexPath.row]];
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.presenter userDeleleCellPressedAtIndexPath:indexPath];
+    }
+
 }
 
 @end

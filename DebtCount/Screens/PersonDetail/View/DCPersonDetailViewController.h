@@ -26,10 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonDetailViewController (Presenter)
 
-- (void)updateTableViewWithModels:(NSMutableArray *)cellModels;
+- (void)updateTableView;
 - (void)sendUpdateMessageToMasterController;
 - (void)setTitleViewTitle:(NSString *)title;
 - (void)openTransactionPopover;
+- (void)removeCellAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 

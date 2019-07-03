@@ -91,7 +91,9 @@
 
 - (void)saveData:(DCPerson *)person {
     void (^completion)(void) = ^(void) {
-        [self.view closePopoverAndReload];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.view closePopoverAndReload];
+        });
     };
     [DCPersonDataController.shared savePersonData:person completion:(completion)];
 

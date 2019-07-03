@@ -484,7 +484,6 @@
 		FAF8480522BA5B31009FDD55 /* PersonsList */ = {
 			isa = PBXGroup;
 			children = (
-				FAF8480E22BA7181009FDD55 /* Model */,
 				FAF8480D22BA715F009FDD55 /* Presenter */,
 				FAF8480B22BA714F009FDD55 /* View */,
 			);
@@ -528,13 +527,6 @@
 				FAF8481C22BA8578009FDD55 /* PersonsList */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		FAF8480E22BA7181009FDD55 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		FAF8481222BA836C009FDD55 /* Cell */ = {
