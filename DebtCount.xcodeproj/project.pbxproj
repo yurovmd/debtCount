@@ -12,6 +12,9 @@
 		FA0D93B622CB605C009610D9 /* DCDataDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0D93B522CB605C009610D9 /* DCDataDeserializer.m */; };
 		FA0D93BA22CB658A009610D9 /* DCFilesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0D93B922CB658A009610D9 /* DCFilesManager.m */; };
 		FA0D93BE22CB83BB009610D9 /* UIColor+pallete.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0D93BD22CB83BB009610D9 /* UIColor+pallete.m */; };
+		FA2FA28222CE1FE900DEF083 /* DCNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FA28122CE1FE900DEF083 /* DCNetworkManager.m */; };
+		FA2FA28622CE1FFF00DEF083 /* DCNetworkRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FA28522CE1FFF00DEF083 /* DCNetworkRouter.m */; };
+		FA2FA28A22CE202400DEF083 /* DCPersonEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FA28922CE202400DEF083 /* DCPersonEndpoint.m */; };
 		FA2FB8F222C618050085F894 /* CALayer+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FB8F122C618050085F894 /* CALayer+Shadow.m */; };
 		FA2FB8FA22C62E740085F894 /* DCAddTransactionPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FB8F922C62E740085F894 /* DCAddTransactionPresenter.m */; };
 		FA2FB8FD22C62E9A0085F894 /* DCAddTransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FB8FC22C62E9A0085F894 /* DCAddTransactionViewController.m */; };
@@ -64,6 +67,16 @@
 		FA0D93B922CB658A009610D9 /* DCFilesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCFilesManager.m; sourceTree = "<group>"; };
 		FA0D93BC22CB83AF009610D9 /* UIColor+pallete.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+pallete.h"; sourceTree = "<group>"; };
 		FA0D93BD22CB83BB009610D9 /* UIColor+pallete.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+pallete.m"; sourceTree = "<group>"; };
+		FA2FA27422CDEBD100DEF083 /* DCHTTPMethodType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCHTTPMethodType.h; sourceTree = "<group>"; };
+		FA2FA27E22CE1ED000DEF083 /* DCNetworkEnvironmentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetworkEnvironmentType.h; sourceTree = "<group>"; };
+		FA2FA27F22CE1F3E00DEF083 /* DCNetworkTaskType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetworkTaskType.h; sourceTree = "<group>"; };
+		FA2FA28022CE1FE900DEF083 /* DCNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetworkManager.h; sourceTree = "<group>"; };
+		FA2FA28122CE1FE900DEF083 /* DCNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCNetworkManager.m; sourceTree = "<group>"; };
+		FA2FA28422CE1FFF00DEF083 /* DCNetworkRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetworkRouter.h; sourceTree = "<group>"; };
+		FA2FA28522CE1FFF00DEF083 /* DCNetworkRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCNetworkRouter.m; sourceTree = "<group>"; };
+		FA2FA28822CE202400DEF083 /* DCPersonEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonEndpoint.h; sourceTree = "<group>"; };
+		FA2FA28922CE202400DEF083 /* DCPersonEndpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonEndpoint.m; sourceTree = "<group>"; };
+		FA2FA28B22CE3FDB00DEF083 /* DCEndpointAbstraction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCEndpointAbstraction.h; sourceTree = "<group>"; };
 		FA2FB8F022C618050085F894 /* CALayer+Shadow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+Shadow.h"; sourceTree = "<group>"; };
 		FA2FB8F122C618050085F894 /* CALayer+Shadow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Shadow.m"; sourceTree = "<group>"; };
 		FA2FB8F722C62A9E0085F894 /* DCAddTransactionDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAddTransactionDelegateProtocol.h; sourceTree = "<group>"; };
@@ -195,6 +208,79 @@
 				FA0D93BD22CB83BB009610D9 /* UIColor+pallete.m */,
 			);
 			path = UIColor;
+			sourceTree = "<group>";
+		};
+		FA2FA26F22CDEB6E00DEF083 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				FA2FA28322CE1FF000DEF083 /* Router */,
+				FA2FA27322CDEBA200DEF083 /* Endpoint */,
+				FA2FA27222CDEB9B00DEF083 /* Manager */,
+				FA2FA27122CDEB8D00DEF083 /* Encoding */,
+				FA2FA27022CDEB7900DEF083 /* Helpers */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		FA2FA27022CDEB7900DEF083 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA2FA27422CDEBD100DEF083 /* DCHTTPMethodType.h */,
+				FA2FA27E22CE1ED000DEF083 /* DCNetworkEnvironmentType.h */,
+				FA2FA27F22CE1F3E00DEF083 /* DCNetworkTaskType.h */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FA2FA27122CDEB8D00DEF083 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		FA2FA27222CDEB9B00DEF083 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FA2FA28022CE1FE900DEF083 /* DCNetworkManager.h */,
+				FA2FA28122CE1FE900DEF083 /* DCNetworkManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		FA2FA27322CDEBA200DEF083 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				FA2FA28722CE200A00DEF083 /* DCEndpoint */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		FA2FA28322CE1FF000DEF083 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FA2FA28422CE1FFF00DEF083 /* DCNetworkRouter.h */,
+				FA2FA28522CE1FFF00DEF083 /* DCNetworkRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FA2FA28722CE200A00DEF083 /* DCEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				FA2FA28C22CE4F2F00DEF083 /* DCPersonEndpoint */,
+				FA2FA28B22CE3FDB00DEF083 /* DCEndpointAbstraction.h */,
+			);
+			path = DCEndpoint;
+			sourceTree = "<group>";
+		};
+		FA2FA28C22CE4F2F00DEF083 /* DCPersonEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				FA2FA28822CE202400DEF083 /* DCPersonEndpoint.h */,
+				FA2FA28922CE202400DEF083 /* DCPersonEndpoint.m */,
+			);
+			path = DCPersonEndpoint;
 			sourceTree = "<group>";
 		};
 		FA2FB8EE22C617C80085F894 /* Extensions */ = {
@@ -462,6 +548,7 @@
 		FAF847E722BA39BF009FDD55 /* DebtCount */ = {
 			isa = PBXGroup;
 			children = (
+				FA2FA26F22CDEB6E00DEF083 /* NetworkLayer */,
 				FA2FB8EE22C617C80085F894 /* Extensions */,
 				FAAFAC6922C3B8FB00C866A8 /* Prefix-DebtCount.pch */,
 				FA6E623B22C509CE009FDAFA /* Models */,
@@ -714,7 +801,9 @@
 				FA2FB8FD22C62E9A0085F894 /* DCAddTransactionViewController.m in Sources */,
 				FA6E623622C50039009FDAFA /* DCTransactionMO+CoreDataClass.m in Sources */,
 				FA6E624222C50EC1009FDAFA /* DCTransactionCell.m in Sources */,
+				FA2FA28622CE1FFF00DEF083 /* DCNetworkRouter.m in Sources */,
 				FA97824522C241DE00FDCEBB /* DCDebtFormatter.m in Sources */,
+				FA2FA28A22CE202400DEF083 /* DCPersonEndpoint.m in Sources */,
 				FA6E623022C4FB5E009FDAFA /* DCPersonDetailsPresenter.m in Sources */,
 				FA0D93AE22CB56F5009610D9 /* CALayer+Corners.m in Sources */,
 				FA97823A22C21EE900FDCEBB /* DCCustomSplitViewController.m in Sources */,
@@ -728,6 +817,7 @@
 				FA6E624622C50F08009FDAFA /* DCTransactionCellPresenter.m in Sources */,
 				FA2FB8FA22C62E740085F894 /* DCAddTransactionPresenter.m in Sources */,
 				FA2FB8F222C618050085F894 /* CALayer+Shadow.m in Sources */,
+				FA2FA28222CE1FE900DEF083 /* DCNetworkManager.m in Sources */,
 				FA9DE0A522C0BB25006C024F /* DCPersonDataController.m in Sources */,
 				FAF8483A22BBBAB1009FDD55 /* DCPersonValidationResponse.m in Sources */,
 			);
