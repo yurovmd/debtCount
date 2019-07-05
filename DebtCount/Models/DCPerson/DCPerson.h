@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSSet *transactions;
 @property NSString *personId;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 @end
 
 NS_ASSUME_NONNULL_END

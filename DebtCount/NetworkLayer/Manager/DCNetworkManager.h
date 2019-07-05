@@ -21,10 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property DCNetworkRouter *router;
 
-- (void)getPersonsWithCompletion:(void(^)(NSArray *persons, NSString *error))completion;
+- (void)getPersonsWithCompletion:(void(^)(NSMutableArray *persons, NSString *error))completion;
 
 - (void)getTransactionsForPersonId:(NSString *)personId
-                        completion:(void(^)(NSArray *transactions, NSString *error))completion;
+                        completion:(void(^)(NSMutableArray *transactions, NSString *error))completion;
 
 - (void)postPerson:(DCPerson *)person
         completion:(void(^)(void))completion;

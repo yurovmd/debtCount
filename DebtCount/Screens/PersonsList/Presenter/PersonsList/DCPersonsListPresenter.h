@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "DCPersonsListViewController.h"
 #import "DCPersonDataController.h"
+#import "DCNetworkManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonsListPresenter : NSObject
 
-- (instancetype)initWithView:(DCPersonsListViewController *)view;
+- (instancetype)initWithView:(DCPersonsListViewController *)view
+              networkManager:(DCNetworkManager *)networkManager;
 
 @property NSMutableArray *persons;
 

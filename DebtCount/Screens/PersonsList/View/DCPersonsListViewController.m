@@ -30,7 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.presenter = [[DCPersonsListPresenter alloc] initWithView:self];
+    DCNetworkManager *networkManager = [[DCNetworkManager alloc] init];
+    self.presenter = [[DCPersonsListPresenter alloc] initWithView:self networkManager:networkManager];
     [self setupUI];
     [self.presenter viewIsReady];
 }

@@ -36,6 +36,18 @@
                                   cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                               timeoutInterval:10.0];
 
+    switch (endpoint.httpMethod) {
+        case DCHTTPMethodGet:
+            request.HTTPMethod = @"GET";
+            break;
+        case DCHTTPMethodPost:
+            request.HTTPMethod = @"POST";
+            break;
+        case DCHTTPMethodDelete:
+            request.HTTPMethod = @"DELETE";
+            break;
+    }
+
     switch (endpoint.taskType) {
         case DCNetworkTaskTypeRequest:
             [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];

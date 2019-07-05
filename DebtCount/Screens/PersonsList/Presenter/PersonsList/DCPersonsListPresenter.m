@@ -13,6 +13,8 @@
 
 @interface DCPersonsListPresenter ()
 
+@property DCNetworkManager *networkManager;
+
 - (void)getPersonsAndFirstOpen:(BOOL)firstOpen;
 
 @property (weak) DCPersonsListViewController *view;
@@ -23,9 +25,11 @@
 
 @implementation DCPersonsListPresenter
 
-- (instancetype)initWithView:(DCPersonsListViewController *)view {
+- (instancetype)initWithView:(DCPersonsListViewController *)view
+              networkManager:(DCNetworkManager *)networkManager {
     if (self = [super init]) {
         self.view = view;
+        self.networkManager = networkManager;
     }
     return self;
 }
@@ -48,9 +52,9 @@
 }
 
 - (void)getPersonsAndFirstOpen:(BOOL)firstOpen {
-    void (^completion)(NSMutableArray *) = ^(NSMutableArray *persons) { };
+    void (^completion)(NSMutableArray *, NSString *) = ^(NSMutableArray *persons, NSString *error) { };
     if (firstOpen && ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )) {
-        completion = ^(NSMutableArray *persons) {
+        completion = ^(NSMutableArray *persons, NSString *error) {
             self.persons = persons;
             [self.view reloadTableView];
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -58,12 +62,13 @@
             });
         };
     } else {
-        completion = ^(NSMutableArray *persons) {
+        completion = ^(NSMutableArray *persons, NSString *error) {
             self.persons = persons;
             [self.view reloadTableView];
         };
     }
-    [DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];
+    [self.networkManager getPersonsWithCompletion:completion];
+    //[DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];
 }
 
 - (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath {
