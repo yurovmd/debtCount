@@ -8,15 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "DCPersonsListViewController.h"
-#import "DCPersonDataController.h"
-#import "DCNetworkManager.h"
+#import "DCStorageDataProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonsListPresenter : NSObject
 
-- (instancetype)initWithView:(DCPersonsListViewController *)view
-              networkManager:(DCNetworkManager *)networkManager;
+- (instancetype)initWithView:(DCPersonsListViewController *)view;
 
 @property NSMutableArray *persons;
 
@@ -25,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)popoverClosedAndNeedReload;
 - (void)transactionAddedAndNeedReload;
 - (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath;
+- (void)userChoosedNetworkStoragetype;
+- (void)userChoosedLocalStorageType;
 
 @end
 

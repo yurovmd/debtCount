@@ -8,7 +8,7 @@
 
 #import "DCPersonDetailViewController.h"
 #import "DCTransaction.h"
-#import "DCPersonDataController.h"
+#import "DCStorageDataProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

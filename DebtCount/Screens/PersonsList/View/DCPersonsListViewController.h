@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showAddPersonPopover;
 - (void)reloadTableView;
 - (void)removeCellAtIndexPath:(NSIndexPath *)indexPath;
+- (void)openDataSourceTypeAlert;
 
 - (void)openDetailsWithPerson:(DCPerson *)person;
 

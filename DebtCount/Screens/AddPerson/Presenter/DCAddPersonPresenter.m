@@ -95,7 +95,8 @@
             [self.view closePopoverAndReload];
         });
     };
-    [DCPersonDataController.shared savePersonData:person completion:(completion)];
+    [DCStorageDataProvider.shared.manager postPerson:person
+                                          completion:(completion)];
 
 }
 

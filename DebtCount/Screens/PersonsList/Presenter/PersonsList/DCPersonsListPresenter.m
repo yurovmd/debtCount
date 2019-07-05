@@ -8,14 +8,14 @@
 
 #import "DCPersonsListPresenter.h"
 #import "DCPersonsListViewController.h"
+#import "DCAppStorageType.h"
 
 // MARK: - Properties
 
 @interface DCPersonsListPresenter ()
 
-@property DCNetworkManager *networkManager;
-
 - (void)getPersonsAndFirstOpen:(BOOL)firstOpen;
+- (void)configureStorageType:(DCAppStorageType)storageType;
 
 @property (weak) DCPersonsListViewController *view;
 
@@ -25,18 +25,15 @@
 
 @implementation DCPersonsListPresenter
 
-- (instancetype)initWithView:(DCPersonsListViewController *)view
-              networkManager:(DCNetworkManager *)networkManager {
+- (instancetype)initWithView:(DCPersonsListViewController *)view {
     if (self = [super init]) {
         self.view = view;
-        self.networkManager = networkManager;
     }
     return self;
 }
 
 - (void)viewIsReady {
-    [self getPersonsAndFirstOpen:YES];
-
+    [self.view openDataSourceTypeAlert];
 }
 
 - (void)addPersonButtonPressed {
@@ -67,8 +64,11 @@
             [self.view reloadTableView];
         };
     }
-    [self.networkManager getPersonsWithCompletion:completion];
-    //[DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];
+    [DCStorageDataProvider.shared.manager getPersonsWithCompletion:completion];
+}
+
+- (void)configureStorageType:(DCAppStorageType)storageType {
+    [DCStorageDataProvider.shared configureWithStorageType:storageType];
 }
 
 - (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath {
@@ -76,7 +76,18 @@
         [self.persons removeObjectAtIndex:indexPath.row];
         [self.view removeCellAtIndexPath:indexPath];
     };
-    [DCPersonDataController.shared deletePerson:self.persons[indexPath.row] completion:completion];
+    DCPerson *personToDelete = self.persons[indexPath.row];
+    [DCStorageDataProvider.shared.manager deletePersonById:personToDelete.personId completion:completion];
+}
+
+- (void)userChoosedNetworkStoragetype {
+    [self configureStorageType:DCAppStorageTypeRemote];
+    [self getPersonsAndFirstOpen:YES];
+}
+
+- (void)userChoosedLocalStorageType {
+    [self configureStorageType:DCAppStorageTypeLocal];
+    [self getPersonsAndFirstOpen:YES];
 }
 
 @end

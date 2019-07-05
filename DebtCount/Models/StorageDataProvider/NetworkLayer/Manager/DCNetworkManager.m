@@ -59,13 +59,19 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
     return self;
 }
 
+@end
+
+// MARK: - DCStorageDataProviderProtocol
+
+@implementation DCNetworkManager (DCStorageDataProviderProtocol)
+
 - (void)getPersonsWithCompletion:(void(^)(NSMutableArray *persons, NSString *error))completion {
     DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypeRequest];
     void (^requestCompletion)(NSData *data,
                               NSURLResponse *response,
                               NSError *error) = ^(NSData *data,
-                                                 NSURLResponse *response,
-                                                 NSError *error) {
+                                                  NSURLResponse *response,
+                                                  NSError *error) {
         if (error != nil) {
             completion(nil, @"Please check your network connection.");
         }
@@ -82,9 +88,9 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
             }
             NSError *serializationError = nil;
             id apiResponse = [NSJSONSerialization
-                                JSONObjectWithData:data
-                                options:0
-                                error:&serializationError];
+                              JSONObjectWithData:data
+                              options:0
+                              error:&serializationError];
             if (error) {
                 completion(nil, @"We could not decode the response.");
             }
@@ -112,6 +118,7 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 }
 
 - (void)postTransaction:(DCTransaction *)transaction
+            forPersonId:(NSString *)personId
              completion:(void(^)(void))completion {
 
 }
@@ -122,7 +129,7 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 }
 
 - (void)deleteTransactionForPersonId:(NSString *)personId
-                   withTransactionId:(NSString *)transactionId
+                     withTransaction:(DCTransaction *)transaction
                           completion:(void(^)(void))completion {
 
 }

@@ -30,10 +30,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    DCNetworkManager *networkManager = [[DCNetworkManager alloc] init];
-    self.presenter = [[DCPersonsListPresenter alloc] initWithView:self networkManager:networkManager];
+    self.presenter = [[DCPersonsListPresenter alloc] initWithView:self];
     [self setupUI];
-    [self.presenter viewIsReady];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    if (DCStorageDataProvider.shared.manager == nil) {
+        [self.presenter viewIsReady];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (IBAction)addPersonButtonPressed:(id)sender {
@@ -87,6 +96,30 @@
 
 - (void)openDetailsWithPerson:(DCPerson *)person {
     [self performSegueWithIdentifier:@"showDetail" sender:person];
+}
+
+- (void)openDataSourceTypeAlert {
+    UIAlertController *controller = [UIAlertController
+                                      alertControllerWithTitle:nil
+                                      message:[@"PERSONS_LIST_SCREEN.DATA_SOURCE_TYPE_ALERT.TITLE" localized]
+                                      preferredStyle:UIAlertControllerStyleAlert];
+    void(^netwokButtonHandler)(UIAlertAction *) = ^(UIAlertAction *action) {
+        [self.presenter userChoosedNetworkStoragetype];
+    };
+    UIAlertAction *networkButtonAction = [UIAlertAction
+                                          actionWithTitle:[@"PERSONS_LIST_SCREEN.DATA_SOURCE_TYPE_ALERT.NETWORK_BUTTON.TITLE" localized]
+                                                 style:UIAlertActionStyleDefault
+                                                 handler:netwokButtonHandler];
+    void(^localButtonHandler)(UIAlertAction *) = ^(UIAlertAction *action) {
+        [self.presenter userChoosedLocalStorageType];
+    };
+    UIAlertAction *localButtonAction = [UIAlertAction
+                                          actionWithTitle:[@"PERSONS_LIST_SCREEN.DATA_SOURCE_TYPE_ALERT.LOCAL_BUTTON.TITLE" localized]
+                                          style:UIAlertActionStyleDefault
+                                          handler:localButtonHandler];
+    [controller addAction:networkButtonAction];
+    [controller addAction:localButtonAction];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 @end

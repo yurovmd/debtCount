@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "DCAddPersonViewController.h"
 #import "DCValidatorProtocol.h"
-#import "DCPersonDataController.h"
+#import "DCStorageDataProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

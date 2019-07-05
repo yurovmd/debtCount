@@ -12,6 +12,7 @@
 #import "DCPerson.h"
 #import "DCTransaction.h"
 #import "DCPersonEndpoint.h"
+#import "DCStorageDataProviderProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class) DCNetworkEnvironmentType environment;
 
 @property DCNetworkRouter *router;
+
+@end
+
+// MARK: - DCStorageDataProviderProtocol
+
+@interface DCNetworkManager (DCStorageDataProviderProtocol) <DCStorageDataProviderProtocol>
 
 - (void)getPersonsWithCompletion:(void(^)(NSMutableArray *persons, NSString *error))completion;
 
@@ -30,13 +37,14 @@ NS_ASSUME_NONNULL_BEGIN
         completion:(void(^)(void))completion;
 
 - (void)postTransaction:(DCTransaction *)transaction
+            forPersonId:(NSString *)personId
              completion:(void(^)(void))completion;
 
 - (void)deletePersonById:(NSString *)personId
               completion:(void(^)(void))completion;
 
 - (void)deleteTransactionForPersonId:(NSString *)personId
-                   withTransactionId:(NSString *)transactionId
+                     withTransaction:(DCTransaction *)transaction
                           completion:(void(^)(void))completion;
 
 @end
