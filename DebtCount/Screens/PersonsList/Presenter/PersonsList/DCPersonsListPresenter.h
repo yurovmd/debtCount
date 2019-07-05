@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DCPersonsListViewController.h"
-#import "DCPersonDataController.h"
+#import "DCStorageDataProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)popoverClosedAndNeedReload;
 - (void)transactionAddedAndNeedReload;
 - (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath;
+- (void)userChoosedNetworkStoragetype;
+- (void)userChoosedLocalStorageType;
 
 @end
 

@@ -30,9 +30,9 @@
 @implementation DCPersonDetailsPresenter (Private)
 
 - (void) saveTransaction:(DCTransaction *)transaction completion:(void(^)(void))completion {
-    [DCPersonDataController.shared saveTransactionData:transaction
-                                             forPerson:self.person
-                                            completion:completion];
+    [DCStorageDataProvider.shared.manager postTransaction:transaction
+                                              forPersonId:self.person.personId
+                                               completion:completion];
 }
 
 @end
@@ -73,9 +73,9 @@
         [self.view removeCellAtIndexPath:indexPath];
         [self.view sendUpdateMessageToMasterController];
     };
-    [DCPersonDataController.shared deleteTransaction:self.cellModels[indexPath.row]
-                                           forPerson:self.person
-                                          completion:completion];
+    [DCStorageDataProvider.shared.manager deleteTransactionForPersonId:self.person.personId
+                                                       withTransaction:self.cellModels[indexPath.row]
+                                                            completion:completion];
 }
 
 @end

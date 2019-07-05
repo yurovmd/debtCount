@@ -10,4 +10,14 @@
 
 @implementation DCPerson
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+    if (self = [super init]) {
+        self.name = dictionary[@"name"];
+        self.relation = dictionary[@"relation"];
+        self.debt = [[NSDecimalNumber alloc] initWithString:dictionary[@"debt"]];
+        self.personId = dictionary[@"id"];
+    }
+    return self;
+}
+
 @end

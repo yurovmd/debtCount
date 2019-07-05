@@ -2,7 +2,7 @@
 //  DCPersonMO+CoreDataClass.h
 //  DebtCount
 //
-//  Created by MAKSIM YUROV on 24/06/2019.
+//  Created by MAKSIM YUROV on 05/07/2019.
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 //

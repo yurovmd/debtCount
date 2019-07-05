@@ -2,7 +2,7 @@
 //  DCTransactionMO+CoreDataClass.m
 //  DebtCount
 //
-//  Created by MAKSIM YUROV on 27/06/2019.
+//  Created by MAKSIM YUROV on 05/07/2019.
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 //

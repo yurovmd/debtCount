@@ -8,12 +8,14 @@
 
 #import "DCPersonsListPresenter.h"
 #import "DCPersonsListViewController.h"
+#import "DCAppStorageType.h"
 
 // MARK: - Properties
 
 @interface DCPersonsListPresenter ()
 
 - (void)getPersonsAndFirstOpen:(BOOL)firstOpen;
+- (void)configureStorageType:(DCAppStorageType)storageType;
 
 @property (weak) DCPersonsListViewController *view;
 
@@ -31,8 +33,7 @@
 }
 
 - (void)viewIsReady {
-    [self getPersonsAndFirstOpen:YES];
-
+    [self.view openDataSourceTypeAlert];
 }
 
 - (void)addPersonButtonPressed {
@@ -48,9 +49,9 @@
 }
 
 - (void)getPersonsAndFirstOpen:(BOOL)firstOpen {
-    void (^completion)(NSMutableArray *) = ^(NSMutableArray *persons) { };
+    void (^completion)(NSMutableArray *, NSString *) = ^(NSMutableArray *persons, NSString *error) { };
     if (firstOpen && ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )) {
-        completion = ^(NSMutableArray *persons) {
+        completion = ^(NSMutableArray *persons, NSString *error) {
             self.persons = persons;
             [self.view reloadTableView];
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -58,12 +59,16 @@
             });
         };
     } else {
-        completion = ^(NSMutableArray *persons) {
+        completion = ^(NSMutableArray *persons, NSString *error) {
             self.persons = persons;
             [self.view reloadTableView];
         };
     }
-    [DCPersonDataController.shared fetchPersonsWithCompletion:(completion)];
+    [DCStorageDataProvider.shared.manager getPersonsWithCompletion:completion];
+}
+
+- (void)configureStorageType:(DCAppStorageType)storageType {
+    [DCStorageDataProvider.shared configureWithStorageType:storageType];
 }
 
 - (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath {
@@ -71,7 +76,18 @@
         [self.persons removeObjectAtIndex:indexPath.row];
         [self.view removeCellAtIndexPath:indexPath];
     };
-    [DCPersonDataController.shared deletePerson:self.persons[indexPath.row] completion:completion];
+    DCPerson *personToDelete = self.persons[indexPath.row];
+    [DCStorageDataProvider.shared.manager deletePersonById:personToDelete.personId completion:completion];
+}
+
+- (void)userChoosedNetworkStoragetype {
+    [self configureStorageType:DCAppStorageTypeRemote];
+    [self getPersonsAndFirstOpen:YES];
+}
+
+- (void)userChoosedLocalStorageType {
+    [self configureStorageType:DCAppStorageTypeLocal];
+    [self getPersonsAndFirstOpen:YES];
 }
 
 @end

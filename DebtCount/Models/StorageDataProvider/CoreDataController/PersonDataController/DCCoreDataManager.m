@@ -6,24 +6,13 @@
 //  Copyright © 2019 MAKSIM YUROV. All rights reserved.
 //
 
-#import "DCPersonDataController.h"
+#import "DCCoreDataManager.h"
 #import "DCDataSerializer.h"
 #import "DCDataDeserializer.h"
 
-@implementation DCPersonDataController
+@implementation DCCoreDataManager
 
-+ (id) shared {
-
-    static DCPersonDataController *shared = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        shared = [[self alloc] init];
-    });
-    return shared;
-
-}
-
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (!self) return nil;
 
@@ -37,48 +26,13 @@
     return self;
 }
 
-- (void)savePersonData:(DCPerson *)person completion:(void(^)(void))completion {
+@end
 
-    [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
-        NSError *error = nil;
-        DCPersonMO *personManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"DCPersonMO" inManagedObjectContext:context];
-        personManagedObject = [DCDataSerializer getManagedObject:personManagedObject
-                                                      fromPerson:person];
-        if ([context save:&error] == NO) {
-            NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
-        }
-        completion();
-    }];
-}
+// MARK: - DCStorageDataProviderProtocol
 
-- (void)saveTransactionData:(DCTransaction *)transaction
-                  forPerson:(DCPerson *)person
-                  completion:(void(^)(void))completion {
-    [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
-        NSError *error = nil;
-        NSArray *results = [context executeFetchRequest:request error:&error];
-        if (!results) {
-            NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
-            abort();
-        }
-        for (DCPersonMO *personMO in results) {
-            if ([personMO.personId isEqualToString:person.personId]) {
-                DCTransactionMO *transactionManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"DCTransactionMO" inManagedObjectContext:context];
-                transactionManagedObject = [DCDataSerializer getManagedObject:transactionManagedObject
-                                                              fromTransaction:transaction
-                                                      withPersonManagedObject:personMO];
-                if ([context save:&error] == NO) {
-                    NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
-                }
-                completion();
-            }
-        };
-    }];
+@implementation DCCoreDataManager (DCStorageDataProviderProtocol)
 
-}
-
-- (void)fetchPersonsWithCompletion:(void (^)(NSMutableArray *persons))completion {
+- (void)getPersonsWithCompletion:(void(^)(NSMutableArray *persons, NSString *error))completion {
 
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
@@ -92,12 +46,32 @@
         for (DCPersonMO *personMO in results) {
             [persons addObject:[DCDataDeserializer getPersonFromManagedObject:personMO]];
         }
-        completion(persons);
+        completion(persons, nil);
     }];
 }
 
-- (void)deletePerson:(DCPerson *)person completion:(void(^)(void))completion {
+- (void)getTransactionsForPersonId:(NSString *)personId
+                        completion:(void(^)(NSMutableArray *transactions, NSString *error))completion {
 
+}
+
+- (void)postPerson:(DCPerson *)person
+        completion:(void(^)(void))completion {
+    [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
+        NSError *error = nil;
+        DCPersonMO *personManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"DCPersonMO" inManagedObjectContext:context];
+        personManagedObject = [DCDataSerializer getManagedObject:personManagedObject
+                                                      fromPerson:person];
+        if ([context save:&error] == NO) {
+            NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+        }
+        completion();
+    }];
+}
+
+- (void)postTransaction:(DCTransaction *)transaction
+              forPersonId:(NSString *)personId
+             completion:(void(^)(void))completion {
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
         NSError *error = nil;
@@ -107,7 +81,32 @@
             abort();
         }
         for (DCPersonMO *personMO in results) {
-            if ([personMO.personId isEqualToString:person.personId]) {
+            if ([personMO.personId isEqualToString:personId]) {
+                DCTransactionMO *transactionManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"DCTransactionMO" inManagedObjectContext:context];
+                transactionManagedObject = [DCDataSerializer getManagedObject:transactionManagedObject
+                                                              fromTransaction:transaction
+                                                      withPersonManagedObject:personMO];
+                if ([context save:&error] == NO) {
+                    NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+                }
+                completion();
+            }
+        };
+    }];
+}
+
+- (void)deletePersonById:(NSString *)personId
+              completion:(void(^)(void))completion {
+    [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:request error:&error];
+        if (!results) {
+            NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+        for (DCPersonMO *personMO in results) {
+            if ([personMO.personId isEqualToString:personId]) {
                 [context deleteObject:personMO];
                 if ([context save:&error] == NO) {
                     NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
@@ -118,10 +117,9 @@
     }];
 }
 
-- (void)deleteTransaction:(DCTransaction *)transaction
-                forPerson: (DCPerson *)person
-               completion:(void(^)(void))completion {
-
+- (void)deleteTransactionForPersonId:(NSString *)personId
+                   withTransaction:(DCTransaction *)transaction
+                          completion:(void(^)(void))completion {
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCTransactionMO"];
         NSError *error = nil;
@@ -131,7 +129,7 @@
             abort();
         }
         for (DCTransactionMO *transactionMO in results) {
-            if ([transactionMO.person.personId isEqualToString:person.personId]) {
+            if ([transactionMO.person.personId isEqualToString:personId]) {
                 [transactionMO.person setDebt:[transactionMO.person.debt decimalNumberBySubtracting:transaction.amount]];
                 [context deleteObject:transactionMO];
                 if ([context save:&error] == NO) {
@@ -144,3 +142,4 @@
 }
 
 @end
+
