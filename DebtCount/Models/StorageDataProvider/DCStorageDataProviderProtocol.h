@@ -28,5 +28,7 @@
 - (void)deleteTransactionForPersonId:(NSString *)personId
                    withTransaction:(DCTransaction *)transaction
                           completion:(void(^)(void))completion;
+- (void)postImage:(UIImage *)image
+       completion:(void(^)(NSString *imageUrl, NSString *error))completion;
 
 @end

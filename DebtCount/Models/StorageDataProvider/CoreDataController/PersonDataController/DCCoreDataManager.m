@@ -141,5 +141,10 @@
     }];
 }
 
+- (void)postImage:(UIImage *)image
+       completion:(void(^)(NSString *imageUrl, NSString *error))completion {
+    
+}
+
 @end
 

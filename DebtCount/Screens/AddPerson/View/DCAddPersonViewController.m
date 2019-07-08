@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *relationTextFIeldLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *avatarLoadingActivityView;
 
 @end
 
@@ -140,6 +141,26 @@
 
 - (void)setAvatar:(UIImage *)avatarImage {
     [self.addPictureButton setImage:avatarImage forState:normal];
+}
+
+- (void)disableOkButton {
+    [self.okButton setUserInteractionEnabled:NO];
+    [self.okButton setAlpha:0.2];
+}
+
+- (void)enableOkButton {
+    [self.okButton setUserInteractionEnabled:YES];
+    [self.okButton setAlpha:1];
+}
+
+- (void)startAvatarLoadingActivityView {
+    [self.avatarLoadingActivityView startAnimating];
+    self.addPictureButton.hidden = YES;
+}
+
+- (void)stopAvatarLoadingActivityView {
+    [self.avatarLoadingActivityView stopAnimating];
+    self.addPictureButton.hidden = NO;
 }
 
 @end

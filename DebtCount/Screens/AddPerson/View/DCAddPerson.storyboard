@@ -69,6 +69,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LS-IB-HmX">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="476"/>
                                                 <subviews>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iux-85-WGO">
+                                                        <rect key="frame" x="187" y="95" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="L8a-m8-sAs"/>
+                                                            <constraint firstAttribute="width" constant="40" id="VHi-eU-1Ty"/>
+                                                        </constraints>
+                                                        <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </activityIndicatorView>
                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xud-CQ-fgw">
                                                         <rect key="frame" x="132" y="40" width="150" height="150"/>
                                                         <constraints>
@@ -143,6 +151,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="mnL-IC-fTc" secondAttribute="trailing" constant="30" id="QHX-dG-2DM"/>
                                                     <constraint firstItem="s25-TA-GZK" firstAttribute="top" secondItem="fdp-6W-cLa" secondAttribute="bottom" constant="60" id="ReH-QB-FcZ"/>
                                                     <constraint firstItem="GsB-Y1-dBK" firstAttribute="leading" secondItem="mX3-eB-hpN" secondAttribute="leading" id="TDo-6a-bWL"/>
+                                                    <constraint firstItem="iux-85-WGO" firstAttribute="centerX" secondItem="xud-CQ-fgw" secondAttribute="centerX" id="V9T-Wg-Erh"/>
                                                     <constraint firstItem="mnL-IC-fTc" firstAttribute="top" secondItem="xud-CQ-fgw" secondAttribute="top" id="Wwh-p7-vrl"/>
                                                     <constraint firstItem="xud-CQ-fgw" firstAttribute="top" secondItem="7LS-IB-HmX" secondAttribute="top" constant="40" id="XAp-d1-74M"/>
                                                     <constraint firstAttribute="bottom" secondItem="GsB-Y1-dBK" secondAttribute="bottom" constant="34" id="XNN-gB-zzv"/>
@@ -150,6 +159,7 @@
                                                     <constraint firstItem="s25-TA-GZK" firstAttribute="top" secondItem="mnL-IC-fTc" secondAttribute="bottom" constant="10" id="e8T-bh-7WL"/>
                                                     <constraint firstItem="mX3-eB-hpN" firstAttribute="top" secondItem="s25-TA-GZK" secondAttribute="bottom" constant="30" id="eub-CZ-wli"/>
                                                     <constraint firstAttribute="bottom" secondItem="GsB-Y1-dBK" secondAttribute="bottom" constant="34" id="iB3-IE-zSQ"/>
+                                                    <constraint firstItem="iux-85-WGO" firstAttribute="centerY" secondItem="xud-CQ-fgw" secondAttribute="centerY" id="jG9-pT-VGW"/>
                                                     <constraint firstItem="GsB-Y1-dBK" firstAttribute="trailing" secondItem="s25-TA-GZK" secondAttribute="trailing" id="jhv-gS-eDp"/>
                                                     <constraint firstItem="s25-TA-GZK" firstAttribute="leading" secondItem="xud-CQ-fgw" secondAttribute="trailing" constant="30" id="nrW-Aa-e0x"/>
                                                     <constraint firstItem="mX3-eB-hpN" firstAttribute="width" secondItem="GsB-Y1-dBK" secondAttribute="width" id="rH5-6T-5Cj"/>
@@ -160,8 +170,8 @@
                                                         <exclude reference="fdp-6W-cLa"/>
                                                     </mask>
                                                     <mask key="constraints">
-                                                        <exclude reference="ZAC-Mb-RBw"/>
                                                         <exclude reference="I4U-pZ-NtP"/>
+                                                        <exclude reference="ZAC-Mb-RBw"/>
                                                         <exclude reference="ReH-QB-FcZ"/>
                                                         <exclude reference="uoO-dr-v5H"/>
                                                     </mask>
@@ -171,9 +181,9 @@
                                                         <exclude reference="fdp-6W-cLa"/>
                                                     </mask>
                                                     <mask key="constraints">
+                                                        <include reference="3so-Qz-y8c"/>
                                                         <exclude reference="44f-vq-iHZ"/>
                                                         <exclude reference="OaT-Qa-Wk2"/>
-                                                        <include reference="3so-Qz-y8c"/>
                                                         <include reference="Wwh-p7-vrl"/>
                                                         <include reference="nrW-Aa-e0x"/>
                                                         <exclude reference="XNN-gB-zzv"/>
@@ -185,9 +195,9 @@
                                                         <include reference="fdp-6W-cLa"/>
                                                     </mask>
                                                     <mask key="constraints">
-                                                        <include reference="ZAC-Mb-RBw"/>
                                                         <exclude reference="3so-Qz-y8c"/>
                                                         <include reference="I4U-pZ-NtP"/>
+                                                        <include reference="ZAC-Mb-RBw"/>
                                                         <exclude reference="Wwh-p7-vrl"/>
                                                         <include reference="ReH-QB-FcZ"/>
                                                         <exclude reference="nrW-Aa-e0x"/>
@@ -224,6 +234,7 @@
                     </view>
                     <connections>
                         <outlet property="addPictureButton" destination="xud-CQ-fgw" id="ByN-xD-nZS"/>
+                        <outlet property="avatarLoadingActivityView" destination="iux-85-WGO" id="NAr-qe-nve"/>
                         <outlet property="cancelButton" destination="eYW-gS-gxj" id="Vw2-Um-2gM"/>
                         <outlet property="nameTextField" destination="s25-TA-GZK" id="uTZ-CG-bPY"/>
                         <outlet property="nameTextFieldLabel" destination="mnL-IC-fTc" id="dXD-yv-X07"/>

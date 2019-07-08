@@ -33,6 +33,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)closePopover;
 - (void)closePopoverAndReload;
 - (void)setAvatar:(UIImage *)avatarImage;
+- (void)disableOkButton;
+- (void)enableOkButton;
+- (void)startAvatarLoadingActivityView;
+- (void)stopAvatarLoadingActivityView;
 
 @end
 

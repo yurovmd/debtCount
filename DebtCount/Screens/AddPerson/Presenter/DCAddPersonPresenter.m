@@ -23,6 +23,7 @@
 @interface DCAddPersonPresenter (PrivateCollection)
 
 - (void)saveData:(DCPerson *)person;
+- (void)saveImage;
 
 @end
 
@@ -39,6 +40,7 @@
 - (void)viewIsReady {
     self.person = [[DCPerson alloc] init];
     self.person.personId = [[NSUUID UUID] UUIDString];
+    [self.view stopAvatarLoadingActivityView];
 }
 
 - (void)userChangedNameString:(NSString *)string {
@@ -80,7 +82,9 @@
 
 - (void)pictureTaken:(UIImage *)picture {
     self.person.avatar = picture;
-    [self.view setAvatar:picture];
+    [self.view disableOkButton];
+    [self.view startAvatarLoadingActivityView];
+    [self saveImage];
 }
 
 @end
@@ -98,6 +102,27 @@
     [DCStorageDataProvider.shared.manager postPerson:person
                                           completion:(completion)];
 
+}
+
+- (void)saveImage {
+    void (^completion)(NSString *imageUrl,
+                       NSString *error) = ^(NSString *imageUrl,
+                                            NSString *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error != nil) {
+                NSLog(@"%@", error);
+                [self.view setAvatar:[UIImage imageNamed:@"no_network"]];
+                self.person.avatarUrl = @"";
+            } else {
+                self.person.avatarUrl = imageUrl;
+                [self.view setAvatar:self.person.avatar];
+            }
+            [self.view enableOkButton];
+            [self.view stopAvatarLoadingActivityView];
+        });
+    };
+    [DCStorageDataProvider.shared.manager postImage:self.person.avatar
+                                         completion:completion];
 }
 
 @end
