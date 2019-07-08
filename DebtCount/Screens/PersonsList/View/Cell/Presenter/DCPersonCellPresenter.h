@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DCDebtFormatter.h"
 #import "DCPersonCell.h"
+#import "DCStorageDataProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)getName;
 - (NSString *)getRelation;
 - (NSString *)getDebt;
-- (UIImage *)getAvatar;
+- (void)getAvatar;
 
 @end
 

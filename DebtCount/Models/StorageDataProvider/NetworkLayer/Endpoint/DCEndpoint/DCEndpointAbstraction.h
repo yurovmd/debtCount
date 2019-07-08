@@ -17,5 +17,7 @@
 @property (nonatomic) DCHTTPMethodType httpMethod;
 @property (nonatomic) NSDictionary *headers;
 @property (nonatomic) DCNetworkTaskType taskType;
+@property (nonatomic) NSMutableDictionary *bodyParameters;
+@property (nonatomic) NSData *bodyData;
 
 @end

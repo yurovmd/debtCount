@@ -13,6 +13,7 @@
 #import "DCTransaction.h"
 #import "DCPersonEndpoint.h"
 #import "DCStorageDataProviderProtocol.h"
+#import "DCImageEndpoint.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,25 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: - DCStorageDataProviderProtocol
 
 @interface DCNetworkManager (DCStorageDataProviderProtocol) <DCStorageDataProviderProtocol>
-
-- (void)getPersonsWithCompletion:(void(^)(NSMutableArray *persons, NSString *error))completion;
-
-- (void)getTransactionsForPersonId:(NSString *)personId
-                        completion:(void(^)(NSMutableArray *transactions, NSString *error))completion;
-
-- (void)postPerson:(DCPerson *)person
-        completion:(void(^)(void))completion;
-
-- (void)postTransaction:(DCTransaction *)transaction
-            forPersonId:(NSString *)personId
-             completion:(void(^)(void))completion;
-
-- (void)deletePersonById:(NSString *)personId
-              completion:(void(^)(void))completion;
-
-- (void)deleteTransactionForPersonId:(NSString *)personId
-                     withTransaction:(DCTransaction *)transaction
-                          completion:(void(^)(void))completion;
 
 @end
 

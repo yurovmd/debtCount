@@ -66,7 +66,8 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 @implementation DCNetworkManager (DCStorageDataProviderProtocol)
 
 - (void)getPersonsWithCompletion:(void(^)(NSMutableArray *persons, NSString *error))completion {
-    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypeRequest];
+    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypeRequest
+                                                                     person:nil];
     void (^requestCompletion)(NSData *data,
                               NSURLResponse *response,
                               NSError *error) = ^(NSData *data,
@@ -114,7 +115,16 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 
 - (void)postPerson:(DCPerson *)person
         completion:(void(^)(void))completion {
-
+    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypePOST
+                                  person:person];
+    void (^requestCompletion)(NSData *data,
+                              NSURLResponse *response,
+                              NSError *error) = ^(NSData *data,
+                                                  NSURLResponse *response,
+                                                  NSError *error) {
+        completion();
+    };
+    [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }
 
 - (void)postTransaction:(DCTransaction *)transaction
@@ -132,6 +142,64 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                      withTransaction:(DCTransaction *)transaction
                           completion:(void(^)(void))completion {
 
+}
+
+- (void)postImage:(UIImage *)image
+       completion:(void(^)(NSString *imageUrl, NSString *error))completion {
+    DCImageEndpoint *endpoint = [[DCImageEndpoint alloc] initWithImage:image];
+    void (^requestCompletion)(NSData *data,
+                              NSURLResponse *response,
+                              NSError *error) = ^(NSData *data,
+                                                  NSURLResponse *response,
+                                                  NSError *error) {
+        if (error != nil) {
+            completion(nil, @"Please check your network connection.");
+        }
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSHTTPURLResponse *httpResponce = (NSHTTPURLResponse *)response;
+            NSString *result = [self handleNetworkResponse:httpResponce];
+            if (result != nil) {
+                completion(nil, result);
+                return;
+            }
+            if (data == nil) {
+                completion(nil, @"Response returned with no data to decode.");
+                return;
+            }
+            NSError *serializationError = nil;
+            id apiResponse = [NSJSONSerialization
+                              JSONObjectWithData:data
+                              options:0
+                              error:&serializationError];
+            if (error) {
+                completion(nil, @"We could not decode the response.");
+            }
+            if ([apiResponse isKindOfClass:[NSDictionary class]]) {
+                completion(apiResponse[@"url"], nil);
+            }
+        }
+    };
+    [self.router requestForEndpoint:endpoint completion:requestCompletion];
+}
+
+- (void)getImageWithURLString:(NSString *)imageURLString
+                   completion:(void(^)(UIImage *image, NSString *error))completion {
+    void (^requestCompletion)(NSData *data,
+                              NSURLResponse *response,
+                              NSError *error) = ^(NSData *data,
+                                                  NSURLResponse *response,
+                                                  NSError *error) {
+        if (error != nil) {
+            completion(nil, @"Please check your network connection.");
+        }
+        UIImage *image = [[UIImage alloc] initWithData:data];
+        if (image != nil) {
+            completion(image, nil);
+        } else {
+            completion(nil, @"problem with deserializing image data");
+        }
+    };
+    [self.router requestImage:imageURLString completion:requestCompletion];
 }
 
 @end

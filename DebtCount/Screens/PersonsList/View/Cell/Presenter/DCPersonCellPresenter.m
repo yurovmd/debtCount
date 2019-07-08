@@ -34,7 +34,7 @@
     [self.cellView setNameValue:[self getName]];
     [self.cellView setRelationValue:[self getRelation]];
     [self.cellView setDebtValue:[self getDebt]];
-    [self.cellView setAvatarValue:[self getAvatar]];
+    [self getAvatar];
 
     if (self.person.debt.integerValue >=0) {
         [self.cellView setDebtGreen];
@@ -63,11 +63,23 @@
     return localizedDebt;
 }
 
-- (UIImage *)getAvatar {
+- (void)getAvatar {
     if (self.person.avatar == nil) {
-        return [UIImage imageNamed:@"avatarDefault"];
+        if (self.person.avatarUrl != nil) {
+            void (^requestCompletion)(UIImage *image,
+                                      NSString *error) = ^(UIImage *image,
+                                                           NSString *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.cellView setAvatarValue:image];
+                });
+            };
+            [DCStorageDataProvider.shared.manager getImageWithURLString:self.person.avatarUrl
+                                                             completion:requestCompletion];
+        } else {
+            [self.cellView setAvatarValue:[UIImage imageNamed:@"avatarDefault"]];
+        }
     }
-    return self.person.avatar;
+    [self.cellView setAvatarValue:self.person.avatar];
 }
 
 @end

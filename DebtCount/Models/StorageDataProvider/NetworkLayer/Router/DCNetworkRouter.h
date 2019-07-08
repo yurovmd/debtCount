@@ -17,6 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
                 completion:(void (^)(NSData *data,
                                      NSURLResponse *response,
                                      NSError *error))completion;
+
+- (void)requestImage:(NSString *)imageStringUrl
+          completion:(void (^)(NSData *data,
+                               NSURLResponse *response,
+                               NSError *error))completion;
+
 - (void)cancel;
 
 @end

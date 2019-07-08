@@ -29,4 +29,10 @@
                    withTransaction:(DCTransaction *)transaction
                           completion:(void(^)(void))completion;
 
+- (void)postImage:(UIImage *)image
+       completion:(void(^)(NSString *imageUrl, NSString *error))completion;
+
+- (void)getImageWithURLString:(NSString *)imageURLString
+                   completion:(void(^)(UIImage *image, NSString *error))completion;
+
 @end

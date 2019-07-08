@@ -12,7 +12,11 @@
 
 @property NSURLSessionTask *task;
 
-- (NSURLRequest *)buildRequestFrom:(id)endpoint;
+- (NSURLRequest *)buildRequestFrom:(id<DCEndpointAbstraction>)endpoint;
+- (NSMutableURLRequest *)configureParametersForRequest:(NSMutableURLRequest *)request
+                                 withParameters:(NSMutableDictionary *)parameters;
+- (NSMutableURLRequest *)configureBodyOfRequest:(NSMutableURLRequest *)request
+                                       withData:(NSData *)data;
 
 @end
 
@@ -51,14 +55,60 @@
     switch (endpoint.taskType) {
         case DCNetworkTaskTypeRequest:
             [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        case DCNetworkTaskTypePOST:
             break;
+        case DCNetworkTaskTypePOST:
+            if (endpoint.bodyParameters != nil) {
+                request = [self configureParametersForRequest:request
+                                               withParameters:endpoint.bodyParameters];
+                break;
+            } else if (endpoint.bodyData != nil) {
+                request = [self configureBodyOfRequest:request
+                                              withData:endpoint.bodyData];
+                break;
+            }
         case DCNetworkTaskTypeDELETE:
             break;
     }
 
     return request;
     
+}
+
+- (void)requestImage:(NSString *)imageStringUrl
+          completion:(void (^)(NSData *data,
+                               NSURLResponse *response,
+                               NSError *error))completion {
+    NSURLSession *session = NSURLSession.sharedSession;
+    NSURL *imageUrl = [[NSURL alloc] initWithString:imageStringUrl];
+    NSURLSessionTask *imageDownloadTask = [session dataTaskWithURL:imageUrl completionHandler:completion];
+    [imageDownloadTask resume];
+}
+
+- (NSMutableURLRequest *)configureParametersForRequest:(NSMutableURLRequest *)request
+                                        withParameters:(NSMutableDictionary *)parameters {
+    NSError *error = nil;
+    id jsonData = [NSJSONSerialization
+                   dataWithJSONObject:parameters
+                   options:NSJSONWritingPrettyPrinted
+                   error:&error];
+    request.HTTPBody = jsonData;
+
+    if ([request valueForHTTPHeaderField:@"Content-Type"] == nil) {
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    }
+    
+    return request;
+}
+
+- (NSMutableURLRequest *)configureBodyOfRequest:(NSMutableURLRequest *)request
+                                       withData:(NSData *)data {
+    request.HTTPBody = data;
+    
+    if ([request valueForHTTPHeaderField:@"Content-Type"] == nil) {
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    }
+
+    return request;
 }
 
 - (void)cancel {

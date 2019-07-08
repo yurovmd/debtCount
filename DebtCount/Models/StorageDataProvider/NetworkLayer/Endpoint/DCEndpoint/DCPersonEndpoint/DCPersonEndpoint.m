@@ -11,14 +11,17 @@
 @interface DCPersonEndpoint ()
 
 @property (nonatomic) NSString *environmentURL;
+@property DCPerson *person;
 
 @end
 
 @implementation DCPersonEndpoint
 
-- (instancetype)initWithTaskType:(DCNetworkTaskType)taskType {
+- (instancetype)initWithTaskType:(DCNetworkTaskType)taskType
+                          person:(DCPerson *)person {
     if (self = [super init]) {
         self.taskType = taskType;
+        self.person = person;
     }
     return self;
 }
@@ -44,10 +47,42 @@
 }
 
 - (DCHTTPMethodType)httpMethod {
-    return DCHTTPMethodGet;
+    switch (self.taskType) {
+        case DCNetworkTaskTypeRequest:
+            return DCHTTPMethodGet;
+            break;
+        case DCNetworkTaskTypePOST:
+            return DCHTTPMethodPost;
+            break;
+        case DCNetworkTaskTypeDELETE:
+            return DCHTTPMethodDelete;
+            break;
+    }
 }
 
 - (NSDictionary *)headers {
+    return nil;
+}
+
+- (NSMutableDictionary *)bodyParameters {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    switch (self.taskType) {
+        case DCNetworkTaskTypeRequest:
+            return nil;
+            break;
+        case DCNetworkTaskTypePOST:
+            [parameters setValue:self.person.name forKey:@"name"];
+            [parameters setValue:self.person.relation forKey:@"relation"];
+            [parameters setValue:self.person.avatarUrl forKey:@"avatar"];
+            return parameters;
+            break;
+        case DCNetworkTaskTypeDELETE:
+            return nil;
+            break;
+    }
+}
+
+- (NSData *)bodyData {
     return nil;
 }
 

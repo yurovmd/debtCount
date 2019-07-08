@@ -16,9 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString *name;
 @property NSString *relation;
 @property (nullable) UIImage *avatar;
-@property (nullable) NSDecimalNumber *debt;
+@property NSDecimalNumber *debt;
 @property NSSet *transactions;
 @property NSString *personId;
+@property NSString *avatarUrl;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
