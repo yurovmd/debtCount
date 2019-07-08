@@ -74,6 +74,16 @@
     
 }
 
+- (void)requestImage:(NSString *)imageStringUrl
+          completion:(void (^)(NSData *data,
+                               NSURLResponse *response,
+                               NSError *error))completion {
+    NSURLSession *session = NSURLSession.sharedSession;
+    NSURL *imageUrl = [[NSURL alloc] initWithString:imageStringUrl];
+    NSURLSessionTask *imageDownloadTask = [session dataTaskWithURL:imageUrl completionHandler:completion];
+    [imageDownloadTask resume];
+}
+
 - (NSMutableURLRequest *)configureParametersForRequest:(NSMutableURLRequest *)request
                                         withParameters:(NSMutableDictionary *)parameters {
     NSError *error = nil;

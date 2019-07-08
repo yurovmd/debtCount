@@ -182,4 +182,24 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
     [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }
 
+- (void)getImageWithURLString:(NSString *)imageURLString
+                   completion:(void(^)(UIImage *image, NSString *error))completion {
+    void (^requestCompletion)(NSData *data,
+                              NSURLResponse *response,
+                              NSError *error) = ^(NSData *data,
+                                                  NSURLResponse *response,
+                                                  NSError *error) {
+        if (error != nil) {
+            completion(nil, @"Please check your network connection.");
+        }
+        UIImage *image = [[UIImage alloc] initWithData:data];
+        if (image != nil) {
+            completion(image, nil);
+        } else {
+            completion(nil, @"problem with deserializing image data");
+        }
+    };
+    [self.router requestImage:imageURLString completion:requestCompletion];
+}
+
 @end

@@ -146,5 +146,10 @@
     
 }
 
+- (void)getImageWithURLString:(NSString *)imageURLString
+                   completion:(void(^)(UIImage *image, NSString *error))completion {
+    
+}
+
 @end
 
