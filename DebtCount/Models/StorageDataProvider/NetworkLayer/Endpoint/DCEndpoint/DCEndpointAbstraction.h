@@ -19,5 +19,6 @@
 @property (nonatomic) DCNetworkTaskType taskType;
 @property (nonatomic) NSMutableDictionary *bodyParameters;
 @property (nonatomic) NSData *bodyData;
+@property (nonatomic) NSMutableDictionary *urlParameters;
 
 @end

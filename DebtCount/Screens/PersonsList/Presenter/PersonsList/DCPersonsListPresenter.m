@@ -72,12 +72,15 @@
 }
 
 - (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath {
-    void (^completion)(void) = ^(void) {
-        [self.persons removeObjectAtIndex:indexPath.row];
-        [self.view removeCellAtIndexPath:indexPath];
+    void (^completion)(NSString *error) = ^(NSString *error) {
+        if (error == nil) {
+            [self.persons removeObjectAtIndex:indexPath.row];
+            [self.view removeCellAtIndexPath:indexPath];
+        }
     };
     DCPerson *personToDelete = self.persons[indexPath.row];
-    [DCStorageDataProvider.shared.manager deletePersonById:personToDelete.personId completion:completion];
+    [DCStorageDataProvider.shared.manager deletePerson:personToDelete
+                                            completion:completion];
 }
 
 - (void)userChoosedNetworkStoragetype {

@@ -95,8 +95,8 @@
     }];
 }
 
-- (void)deletePersonById:(NSString *)personId
-              completion:(void(^)(void))completion {
+- (void)deletePerson:(DCPerson *)person
+              completion:(void(^)(NSString *error))completion {
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
         NSError *error = nil;
@@ -106,14 +106,14 @@
             abort();
         }
         for (DCPersonMO *personMO in results) {
-            if ([personMO.personId isEqualToString:personId]) {
+            if ([personMO.personId isEqualToString:person.personId]) {
                 [context deleteObject:personMO];
                 if ([context save:&error] == NO) {
                     NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
                 }
             }
         }
-        completion();
+        completion(nil);
     }];
 }
 

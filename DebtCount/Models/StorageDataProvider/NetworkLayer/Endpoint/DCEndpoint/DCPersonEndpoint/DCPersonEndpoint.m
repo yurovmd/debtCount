@@ -86,4 +86,20 @@
     return nil;
 }
 
+- (NSMutableDictionary *)urlParameters {
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    switch (self.taskType) {
+        case DCNetworkTaskTypeRequest:
+            return nil;
+            break;
+        case DCNetworkTaskTypePOST:
+            return nil;
+            break;
+        case DCNetworkTaskTypeDELETE:
+            [parameters setValue:self.person.personId forKey:@"personId"];
+            return parameters;
+            break;
+    }
+}
+
 @end
