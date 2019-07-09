@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath;
 - (void)userChoosedNetworkStoragetype;
 - (void)userChoosedLocalStorageType;
+- (void)userPulledRefresh;
 
 @end
 

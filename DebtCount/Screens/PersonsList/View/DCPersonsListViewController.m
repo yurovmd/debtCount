@@ -17,6 +17,8 @@
 @property DCPersonsListPresenter *presenter;
 
 - (void)setupUI;
+- (void)setupRefreshControl;
+- (void)userPulledRefresh;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addPersonButton;
 
@@ -50,10 +52,23 @@
 }
 
 - (void)setupUI {
+    [self setupRefreshControl];
     self.view.backgroundColor = UIColor.iceBlue;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.navigationItem.title = [@"PERSONS_LIST_SCREEN.TITLE" localized];
+}
+
+- (void)setupRefreshControl {
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self
+                       action:@selector(userPulledRefresh)
+             forControlEvents:UIControlEventValueChanged];
+    [self.tableView setRefreshControl:refreshControl];
+}
+
+- (void)userPulledRefresh {
+    [self.presenter userPulledRefresh];
 }
 
 @end
@@ -80,6 +95,7 @@
 
 - (void)reloadTableView {
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView.refreshControl endRefreshing];
         [self.tableView beginUpdates];
         [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:YES];
         [self.tableView endUpdates];

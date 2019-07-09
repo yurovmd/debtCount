@@ -93,4 +93,8 @@
     [self getPersonsAndFirstOpen:YES];
 }
 
+- (void)userPulledRefresh {
+    [self getPersonsAndFirstOpen:NO];
+}
+
 @end
