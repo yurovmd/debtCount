@@ -133,9 +133,22 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 
 }
 
-- (void)deletePersonById:(NSString *)personId
-              completion:(void(^)(void))completion {
-
+- (void)deletePerson:(DCPerson *)person
+              completion:(void(^)(NSString *error))completion {
+    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypeDELETE
+                                                                     person:person];
+    void (^requestCompletion)(NSData *data,
+                              NSURLResponse *response,
+                              NSError *error) = ^(NSData *data,
+                                                  NSURLResponse *response,
+                                                  NSError *error) {
+        if (error == nil) {
+            completion(nil);
+        } else {
+            completion(@"Problem with person deletion");
+        }
+    };
+    [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }
 
 - (void)deleteTransactionForPersonId:(NSString *)personId

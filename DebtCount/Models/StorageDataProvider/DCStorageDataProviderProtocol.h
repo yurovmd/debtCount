@@ -22,8 +22,8 @@
             forPersonId:(NSString *)personId
              completion:(void(^)(void))completion;
 
-- (void)deletePersonById:(NSString *)personId
-              completion:(void(^)(void))completion;
+- (void)deletePerson:(DCPerson *)person
+              completion:(void(^)(NSString *error))completion;
 
 - (void)deleteTransactionForPersonId:(NSString *)personId
                    withTransaction:(DCTransaction *)transaction

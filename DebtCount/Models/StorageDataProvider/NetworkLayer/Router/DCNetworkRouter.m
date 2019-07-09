@@ -14,7 +14,9 @@
 
 - (NSURLRequest *)buildRequestFrom:(id<DCEndpointAbstraction>)endpoint;
 - (NSMutableURLRequest *)configureParametersForRequest:(NSMutableURLRequest *)request
-                                 withParameters:(NSMutableDictionary *)parameters;
+                                 withBodyParameters:(NSMutableDictionary *)parameters;
+- (NSMutableURLRequest *)configureParametersForRequest:(NSMutableURLRequest *)request
+                                    withURLParameters:(NSMutableDictionary *)parameters;
 - (NSMutableURLRequest *)configureBodyOfRequest:(NSMutableURLRequest *)request
                                        withData:(NSData *)data;
 
@@ -59,14 +61,15 @@
         case DCNetworkTaskTypePOST:
             if (endpoint.bodyParameters != nil) {
                 request = [self configureParametersForRequest:request
-                                               withParameters:endpoint.bodyParameters];
-                break;
+                                               withBodyParameters:endpoint.bodyParameters];
             } else if (endpoint.bodyData != nil) {
                 request = [self configureBodyOfRequest:request
                                               withData:endpoint.bodyData];
-                break;
             }
+            break;
         case DCNetworkTaskTypeDELETE:
+            request = [self configureParametersForRequest:request
+                                        withURLParameters:endpoint.urlParameters];
             break;
     }
 
@@ -85,7 +88,7 @@
 }
 
 - (NSMutableURLRequest *)configureParametersForRequest:(NSMutableURLRequest *)request
-                                        withParameters:(NSMutableDictionary *)parameters {
+                                        withBodyParameters:(NSMutableDictionary *)parameters {
     NSError *error = nil;
     id jsonData = [NSJSONSerialization
                    dataWithJSONObject:parameters
@@ -97,6 +100,18 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     }
     
+    return request;
+}
+
+- (NSMutableURLRequest *)configureParametersForRequest:(NSMutableURLRequest *)request
+                                     withURLParameters:(NSMutableDictionary *)parameters {
+    NSString *requestURLString = request.URL.absoluteString;
+    NSString *appendingPart = [NSString stringWithFormat:@"/%@", [parameters valueForKey:@"personId"]];
+    NSString *resultRequestURLString = [requestURLString stringByAppendingString:appendingPart];
+    request.URL = [[NSURL alloc] initWithString:resultRequestURLString];
+    if ([request valueForHTTPHeaderField:@"Content-Type"] == nil) {
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    }
     return request;
 }
 

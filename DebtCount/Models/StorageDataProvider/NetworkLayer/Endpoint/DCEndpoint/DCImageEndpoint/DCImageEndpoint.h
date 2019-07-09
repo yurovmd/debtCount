@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) DCNetworkTaskType taskType;
 @property (nonatomic) NSMutableDictionary *bodyParameters;
 @property (nonatomic) NSData *bodyData;
+@property (nonatomic) NSMutableDictionary *urlParameters;
 
 - (instancetype)initWithImage:(nullable UIImage *)image;
 

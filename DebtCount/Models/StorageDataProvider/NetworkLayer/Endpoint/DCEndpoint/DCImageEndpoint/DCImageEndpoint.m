@@ -62,4 +62,8 @@
     return imageData;
 }
 
+- (NSMutableDictionary *)urlParameters {
+    return nil;
+}
+
 @end
