@@ -14,7 +14,7 @@
     DCPerson *person = [[DCPerson alloc] init];
     person.name = personManagedObject.name;
     person.relation = personManagedObject.relation;
-    person.avatar = [[UIImage alloc] initWithContentsOfFile:personManagedObject.avatarUrl];
+    person.avatarUrl = personManagedObject.avatarUrl;
     person.debt = personManagedObject.debt;
     person.personId = personManagedObject.personId;
     NSSet *transactions = [[NSSet alloc] init];

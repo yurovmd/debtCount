@@ -42,7 +42,10 @@
 
 - (void)updateTableView {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.detailsTableView reloadData];
+        [self.detailsTableView.refreshControl endRefreshing];
+        [self.detailsTableView beginUpdates];
+        [self.detailsTableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:YES];
+        [self.detailsTableView endUpdates];
     });
 }
 
@@ -72,6 +75,7 @@
 
 - (void)removeCellAtIndexPath:(NSIndexPath *)indexPath {
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self.detailsTableView.refreshControl endRefreshing];
         [self.detailsTableView beginUpdates];
         [self.detailsTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self.detailsTableView endUpdates];
@@ -96,6 +100,7 @@
 @implementation DCPersonDetailViewController (Private)
 
 - (void)setupUI {
+    [self setupRefreshControl];
     self.view.backgroundColor = UIColor.iceBlue;
     self.detailsTableView.backgroundColor = UIColor.iceBlue;
     self.detailsTableView.dataSource = self;
@@ -113,6 +118,18 @@
                                               blur:8
                                             spread:0];
     [self.addButton.layer applyCornersValue:self.addButton.bounds.size.height / 2];
+}
+
+- (void)setupRefreshControl {
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self
+                       action:@selector(userPulledRefresh)
+             forControlEvents:UIControlEventValueChanged];
+    [self.detailsTableView setRefreshControl:refreshControl];
+}
+
+- (void)userPulledRefresh {
+    [self.presenter userPulledRefresh];
 }
 
 @end

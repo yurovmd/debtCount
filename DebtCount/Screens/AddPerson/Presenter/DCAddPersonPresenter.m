@@ -94,7 +94,7 @@
 @implementation DCAddPersonPresenter (Private)
 
 - (void)saveData:(DCPerson *)person {
-    void (^completion)(void) = ^(void) {
+    void (^completion)(NSString *error) = ^(NSString *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view closePopoverAndReload];
         });

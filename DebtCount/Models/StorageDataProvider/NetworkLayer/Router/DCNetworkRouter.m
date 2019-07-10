@@ -106,9 +106,11 @@
 - (NSMutableURLRequest *)configureParametersForRequest:(NSMutableURLRequest *)request
                                      withURLParameters:(NSMutableDictionary *)parameters {
     NSString *requestURLString = request.URL.absoluteString;
-    NSString *appendingPart = [NSString stringWithFormat:@"/%@", [parameters valueForKey:@"personId"]];
-    NSString *resultRequestURLString = [requestURLString stringByAppendingString:appendingPart];
-    request.URL = [[NSURL alloc] initWithString:resultRequestURLString];
+    for (id key in parameters) {
+        NSString *appendingPart = [NSString stringWithFormat:@"/%@", [parameters valueForKey:key]];
+        NSString *resultRequestURLString = [requestURLString stringByAppendingString:appendingPart];
+        request.URL = [[NSURL alloc] initWithString:resultRequestURLString];
+    }
     if ([request valueForHTTPHeaderField:@"Content-Type"] == nil) {
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     }

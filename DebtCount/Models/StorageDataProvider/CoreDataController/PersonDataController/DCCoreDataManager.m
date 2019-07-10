@@ -52,11 +52,27 @@
 
 - (void)getTransactionsForPersonId:(NSString *)personId
                         completion:(void(^)(NSMutableArray *transactions, NSString *error))completion {
-
+    [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:request error:&error];
+        if (!results) {
+            NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+        NSMutableArray *transactions = [[NSMutableArray alloc] init];
+        for (DCPersonMO *personMO in results) {
+            if ([personMO.personId isEqualToString:personId]) {
+                DCPerson *person = [DCDataDeserializer getPersonFromManagedObject:personMO];
+                transactions = [NSMutableArray arrayWithArray:[person.transactions allObjects]];
+            }
+        }
+        completion(transactions, nil);
+    }];
 }
 
 - (void)postPerson:(DCPerson *)person
-        completion:(void(^)(void))completion {
+        completion:(void(^)(NSString *error))completion {
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSError *error = nil;
         DCPersonMO *personManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"DCPersonMO" inManagedObjectContext:context];
@@ -65,13 +81,13 @@
         if ([context save:&error] == NO) {
             NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
         }
-        completion();
+        completion(nil);
     }];
 }
 
 - (void)postTransaction:(DCTransaction *)transaction
               forPersonId:(NSString *)personId
-             completion:(void(^)(void))completion {
+             completion:(void(^)(NSString *error))completion {
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
         NSError *error = nil;
@@ -89,7 +105,7 @@
                 if ([context save:&error] == NO) {
                     NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
                 }
-                completion();
+                completion(nil);
             }
         };
     }];
@@ -119,7 +135,7 @@
 
 - (void)deleteTransactionForPersonId:(NSString *)personId
                    withTransaction:(DCTransaction *)transaction
-                          completion:(void(^)(void))completion {
+                          completion:(void(^)(NSString *error))completion {
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCTransactionMO"];
         NSError *error = nil;
@@ -137,18 +153,21 @@
                 }
             }
         }
-        completion();
+        completion(nil);
     }];
 }
 
 - (void)postImage:(UIImage *)image
        completion:(void(^)(NSString *imageUrl, NSString *error))completion {
-    
+    completion([DCFilesManager saveImage:image],nil);
 }
 
 - (void)getImageWithURLString:(NSString *)imageURLString
                    completion:(void(^)(UIImage *image, NSString *error))completion {
-    
+    UIImage *imageFromFile = [UIImage
+                              imageWithContentsOfFile:[DCFilesManager
+                                                       getImagePathForImageName:imageURLString]];
+    completion(imageFromFile, nil);
 }
 
 @end

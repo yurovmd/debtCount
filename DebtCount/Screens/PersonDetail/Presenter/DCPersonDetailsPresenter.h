@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addButtonTapped;
 - (void)addedTransaction:(DCTransaction *)transaction;
 - (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath;
+- (void)userPulledRefresh;
 
 @end
 

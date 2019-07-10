@@ -10,4 +10,19 @@
 
 @implementation DCTransaction
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+    if (self = [super init]) {
+        self.transactionId = dictionary[@"id"];
+        self.personId = dictionary[@"personId"];
+        NSNumber *integer = [[NSNumber alloc] init];
+        integer = dictionary[@"value"];
+        self.amount = [[NSDecimalNumber alloc] initWithInteger:integer.integerValue];
+        self.transactionDescription = dictionary[@"description"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+        self.date = [dateFormatter dateFromString:dictionary[@"date"]];
+    }
+    return self;
+}
+
 @end

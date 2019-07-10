@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DCFilesManager : NSObject
 
 + (NSString *)saveImage:(UIImage *)image;
++ (NSString *)getImagePathForImageName:(NSString *)imageName;
 
 @end
 

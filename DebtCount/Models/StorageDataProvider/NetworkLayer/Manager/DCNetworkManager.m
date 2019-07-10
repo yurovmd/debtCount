@@ -66,8 +66,9 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 @implementation DCNetworkManager (DCStorageDataProviderProtocol)
 
 - (void)getPersonsWithCompletion:(void(^)(NSMutableArray *persons, NSString *error))completion {
-    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypeRequest
-                                                                     person:nil];
+    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc]
+                                  initWithTaskType:DCNetworkTaskTypeRequest
+                                  person:nil];
     void (^requestCompletion)(NSData *data,
                               NSURLResponse *response,
                               NSError *error) = ^(NSData *data,
@@ -110,33 +111,117 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 
 - (void)getTransactionsForPersonId:(NSString *)personId
                         completion:(void(^)(NSMutableArray *transactions, NSString *error))completion {
-
+    DCTransactionEndpoint *endpoint = [[DCTransactionEndpoint alloc]
+                                       initWithTaskType:DCNetworkTaskTypeRequest
+                                       personId:(NSString *)personId
+                                       transaction:nil];
+    void (^requestCompletion)(NSData *data,
+                              NSURLResponse *response,
+                              NSError *error) = ^(NSData *data,
+                                                  NSURLResponse *response,
+                                                  NSError *error) {
+        if (error != nil) {
+            completion(nil, @"Please check your network connection.");
+        }
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSHTTPURLResponse *httpResponce = (NSHTTPURLResponse *)response;
+            NSString *result = [self handleNetworkResponse:httpResponce];
+            if (result != nil) {
+                completion(nil, result);
+                return;
+            }
+            if (data == nil) {
+                completion(nil, @"Response returned with no data to decode.");
+                return;
+            }
+            NSError *serializationError = nil;
+            id apiResponse = [NSJSONSerialization
+                              JSONObjectWithData:data
+                              options:0
+                              error:&serializationError];
+            if (error) {
+                completion(nil, @"We could not decode the response.");
+            }
+            NSMutableArray *transactions = [[NSMutableArray alloc] init];
+            if ([apiResponse isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *dict in apiResponse) {
+                    DCTransaction *transaction = [[DCTransaction alloc] initWithDictionary:dict];
+                    [transactions addObject:transaction];
+                }
+                completion(transactions, nil);
+            }
+        }
+    };
+    [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }
 
 - (void)postPerson:(DCPerson *)person
-        completion:(void(^)(void))completion {
-    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypePOST
+        completion:(void(^)(NSString *error))completion {
+    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc]
+                                  initWithTaskType:DCNetworkTaskTypePOST
                                   person:person];
     void (^requestCompletion)(NSData *data,
                               NSURLResponse *response,
                               NSError *error) = ^(NSData *data,
                                                   NSURLResponse *response,
                                                   NSError *error) {
-        completion();
+        if (data == nil) {
+            completion(@"Response returned with no data to decode.");
+            return;
+        }
+        id apiResponse = [NSJSONSerialization
+                          JSONObjectWithData:data
+                          options:0
+                          error:NULL];
+        if ([apiResponse isKindOfClass:[NSDictionary class]] && ([apiResponse objectForKey:@"error"] != nil)) {
+            NSString *error = [[NSString alloc] initWithString:[apiResponse objectForKey:@"reason"]];
+            if (error) {
+                completion(error);
+                return;
+            }
+        }
+        completion(nil);
     };
     [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }
 
 - (void)postTransaction:(DCTransaction *)transaction
             forPersonId:(NSString *)personId
-             completion:(void(^)(void))completion {
-
+             completion:(void(^)(NSString *error))completion {
+    DCTransactionEndpoint *endpoint = [[DCTransactionEndpoint alloc]
+                                       initWithTaskType:DCNetworkTaskTypePOST
+                                       personId:(NSString *)personId
+                                       transaction:transaction];
+    void (^requestCompletion)(NSData *data,
+                              NSURLResponse *response,
+                              NSError *error) = ^(NSData *data,
+                                                  NSURLResponse *response,
+                                                  NSError *error) {
+        if (data == nil) {
+            completion(@"Response returned with no data to decode.");
+            return;
+        }
+        id apiResponse = [NSJSONSerialization
+                          JSONObjectWithData:data
+                          options:0
+                          error:NULL];
+        if ([apiResponse isKindOfClass:[NSDictionary class]] && ([apiResponse objectForKey:@"error"] != nil)) {
+            NSString *error = [[NSString alloc] initWithString:[apiResponse objectForKey:@"reason"]];
+            if (error) {
+                completion(error);
+                return;
+            }
+        }
+        completion(nil);
+    };
+    [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }
 
 - (void)deletePerson:(DCPerson *)person
               completion:(void(^)(NSString *error))completion {
-    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypeDELETE
-                                                                     person:person];
+    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc]
+                                  initWithTaskType:DCNetworkTaskTypeDELETE
+                                  person:person];
     void (^requestCompletion)(NSData *data,
                               NSURLResponse *response,
                               NSError *error) = ^(NSData *data,
@@ -153,13 +238,40 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 
 - (void)deleteTransactionForPersonId:(NSString *)personId
                      withTransaction:(DCTransaction *)transaction
-                          completion:(void(^)(void))completion {
-
+                          completion:(void(^)(NSString *error))completion {
+    DCTransactionEndpoint *endpoint = [[DCTransactionEndpoint alloc]
+                                       initWithTaskType:DCNetworkTaskTypeDELETE
+                                       personId:(NSString *)personId
+                                       transaction:transaction];
+    void (^requestCompletion)(NSData *data,
+                              NSURLResponse *response,
+                              NSError *error) = ^(NSData *data,
+                                                  NSURLResponse *response,
+                                                  NSError *error) {
+        if (data == nil) {
+            completion(@"Response returned with no data to decode.");
+            return;
+        }
+        id apiResponse = [NSJSONSerialization
+                          JSONObjectWithData:data
+                          options:0
+                          error:NULL];
+        if ([apiResponse isKindOfClass:[NSDictionary class]] && ([apiResponse objectForKey:@"error"] != nil)) {
+            NSString *error = [[NSString alloc] initWithString:[apiResponse objectForKey:@"reason"]];
+            if (error) {
+                completion(error);
+                return;
+            }
+        }
+        completion(nil);
+    };
+    [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }
 
 - (void)postImage:(UIImage *)image
        completion:(void(^)(NSString *imageUrl, NSString *error))completion {
-    DCImageEndpoint *endpoint = [[DCImageEndpoint alloc] initWithImage:image];
+    DCImageEndpoint *endpoint = [[DCImageEndpoint alloc]
+                                 initWithImage:image];
     void (^requestCompletion)(NSData *data,
                               NSURLResponse *response,
                               NSError *error) = ^(NSData *data,

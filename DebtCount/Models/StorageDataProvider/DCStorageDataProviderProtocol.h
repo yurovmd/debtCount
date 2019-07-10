@@ -16,18 +16,18 @@
                         completion:(void(^)(NSMutableArray *transactions, NSString *error))completion;
 
 - (void)postPerson:(DCPerson *)person
-        completion:(void(^)(void))completion;
+        completion:(void(^)(NSString *error))completion;
 
 - (void)postTransaction:(DCTransaction *)transaction
             forPersonId:(NSString *)personId
-             completion:(void(^)(void))completion;
+             completion:(void(^)(NSString *error))completion;
 
 - (void)deletePerson:(DCPerson *)person
               completion:(void(^)(NSString *error))completion;
 
 - (void)deleteTransactionForPersonId:(NSString *)personId
                    withTransaction:(DCTransaction *)transaction
-                          completion:(void(^)(void))completion;
+                          completion:(void(^)(NSString *error))completion;
 
 - (void)postImage:(UIImage *)image
        completion:(void(^)(NSString *imageUrl, NSString *error))completion;

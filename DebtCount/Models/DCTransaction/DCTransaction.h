@@ -15,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSDate *date;
 @property NSString *transactionDescription;
 @property NSDecimalNumber *amount;
+@property NSString *transactionId;
+@property NSString *personId;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
 

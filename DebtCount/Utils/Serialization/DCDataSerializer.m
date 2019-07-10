@@ -15,7 +15,7 @@
                       fromPerson:(DCPerson *)person {
     personManagedObject.name = person.name;
     personManagedObject.relation = person.relation;
-    personManagedObject.avatarUrl = [DCFilesManager saveImage:person.avatar];
+    personManagedObject.avatarUrl = person.avatarUrl;
     personManagedObject.debt = [NSDecimalNumber zero];
     personManagedObject.personId = person.personId;
     return personManagedObject;

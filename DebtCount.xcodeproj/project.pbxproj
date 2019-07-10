@@ -21,6 +21,7 @@
 		FA2FB8FF22C62EA80085F894 /* DCAddTransaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2FB8FE22C62EA80085F894 /* DCAddTransaction.storyboard */; };
 		FA2FB90422C657940085F894 /* DCTransactionValidationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2FB90322C657940085F894 /* DCTransactionValidationResponse.m */; };
 		FA34220922D3534E002465FB /* DCImageEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = FA34220822D3534E002465FB /* DCImageEndpoint.m */; };
+		FA43626022D4E7F400821AFC /* DCTransactionEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = FA43625F22D4E7F400821AFC /* DCTransactionEndpoint.m */; };
 		FA6E623022C4FB5E009FDAFA /* DCPersonDetailsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E622F22C4FB5E009FDAFA /* DCPersonDetailsPresenter.m */; };
 		FA6E623F22C50A01009FDAFA /* DCTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E623E22C50A01009FDAFA /* DCTransaction.m */; };
 		FA6E624222C50EC1009FDAFA /* DCTransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E624122C50EC1009FDAFA /* DCTransactionCell.m */; };
@@ -91,6 +92,8 @@
 		FA2FB90322C657940085F894 /* DCTransactionValidationResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCTransactionValidationResponse.m; sourceTree = "<group>"; };
 		FA34220722D3534E002465FB /* DCImageEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCImageEndpoint.h; sourceTree = "<group>"; };
 		FA34220822D3534E002465FB /* DCImageEndpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCImageEndpoint.m; sourceTree = "<group>"; };
+		FA43625E22D4E7F400821AFC /* DCTransactionEndpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCTransactionEndpoint.h; sourceTree = "<group>"; };
+		FA43625F22D4E7F400821AFC /* DCTransactionEndpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCTransactionEndpoint.m; sourceTree = "<group>"; };
 		FA6E622E22C4FB5E009FDAFA /* DCPersonDetailsPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPersonDetailsPresenter.h; sourceTree = "<group>"; };
 		FA6E622F22C4FB5E009FDAFA /* DCPersonDetailsPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPersonDetailsPresenter.m; sourceTree = "<group>"; };
 		FA6E623D22C50A01009FDAFA /* DCTransaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCTransaction.h; sourceTree = "<group>"; };
@@ -276,6 +279,7 @@
 		FA2FA28722CE200A00DEF083 /* DCEndpoint */ = {
 			isa = PBXGroup;
 			children = (
+				FA43625D22D4E75800821AFC /* DCTransactionEndpoint */,
 				FA34220622D35326002465FB /* DCImageEndpoint */,
 				FA2FA28C22CE4F2F00DEF083 /* DCPersonEndpoint */,
 				FA2FA28B22CE3FDB00DEF083 /* DCEndpointAbstraction.h */,
@@ -387,6 +391,15 @@
 				FA34220822D3534E002465FB /* DCImageEndpoint.m */,
 			);
 			path = DCImageEndpoint;
+			sourceTree = "<group>";
+		};
+		FA43625D22D4E75800821AFC /* DCTransactionEndpoint */ = {
+			isa = PBXGroup;
+			children = (
+				FA43625E22D4E7F400821AFC /* DCTransactionEndpoint.h */,
+				FA43625F22D4E7F400821AFC /* DCTransactionEndpoint.m */,
+			);
+			path = DCTransactionEndpoint;
 			sourceTree = "<group>";
 		};
 		FA6E622922C4E720009FDAFA /* Presenter */ = {
@@ -823,6 +836,7 @@
 				FAF8483122BB9304009FDD55 /* DCPerson.m in Sources */,
 				FA0D93B322CB604C009610D9 /* DCDataSerializer.m in Sources */,
 				FAF87E3222CF6B2F0001F46D /* DCStorageDataProvider.m in Sources */,
+				FA43626022D4E7F400821AFC /* DCTransactionEndpoint.m in Sources */,
 				FA2FB90422C657940085F894 /* DCTransactionValidationResponse.m in Sources */,
 				FAF8481822BA83E0009FDD55 /* DCPersonCell.m in Sources */,
 				FAF847F322BA39BF009FDD55 /* DebtCount.xcdatamodeld in Sources */,
