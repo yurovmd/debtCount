@@ -52,7 +52,23 @@
 
 - (void)getTransactionsForPersonId:(NSString *)personId
                         completion:(void(^)(NSMutableArray *transactions, NSString *error))completion {
-
+    [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:request error:&error];
+        if (!results) {
+            NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+        NSMutableArray *transactions = [[NSMutableArray alloc] init];
+        for (DCPersonMO *personMO in results) {
+            if ([personMO.personId isEqualToString:personId]) {
+                DCPerson *person = [DCDataDeserializer getPersonFromManagedObject:personMO];
+                transactions = [NSMutableArray arrayWithArray:[person.transactions allObjects]];
+            }
+        }
+        completion(transactions, nil);
+    }];
 }
 
 - (void)postPerson:(DCPerson *)person
@@ -143,12 +159,15 @@
 
 - (void)postImage:(UIImage *)image
        completion:(void(^)(NSString *imageUrl, NSString *error))completion {
-    
+    completion([DCFilesManager saveImage:image],nil);
 }
 
 - (void)getImageWithURLString:(NSString *)imageURLString
                    completion:(void(^)(UIImage *image, NSString *error))completion {
-    
+    UIImage *imageFromFile = [UIImage
+                              imageWithContentsOfFile:[DCFilesManager
+                                                       getImagePathForImageName:imageURLString]];
+    completion(imageFromFile, nil);
 }
 
 @end

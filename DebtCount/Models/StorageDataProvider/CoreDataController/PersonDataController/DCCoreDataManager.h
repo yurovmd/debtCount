@@ -11,6 +11,7 @@
 #import "DCTransactionMO+CoreDataClass.h"
 #import "DCPersonMO+CoreDataClass.h"
 #import "DCStorageDataProviderProtocol.h"
+#import "DCFilesManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -20,6 +20,13 @@
     NSString *imageName = [[formatter stringFromDate:currentDate] stringByAppendingString:@".png"];
     NSString *imagePath = [basePath stringByAppendingPathComponent:imageName];
     [avatarData writeToFile:imagePath atomically:YES];
+    return imageName;
+}
+
++ (NSString *)getImagePathForImageName:(NSString *)imageName {
+    NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString * basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    NSString *imagePath = [basePath stringByAppendingPathComponent:imageName];
     return imagePath;
 }
 

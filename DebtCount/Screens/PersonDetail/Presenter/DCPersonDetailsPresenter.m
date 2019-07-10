@@ -96,4 +96,8 @@
                                                             completion:completion];
 }
 
+- (void)userPulledRefresh {
+    [self fetchTransactions];
+}
+
 @end

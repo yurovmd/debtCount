@@ -66,8 +66,9 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 @implementation DCNetworkManager (DCStorageDataProviderProtocol)
 
 - (void)getPersonsWithCompletion:(void(^)(NSMutableArray *persons, NSString *error))completion {
-    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypeRequest
-                                                                     person:nil];
+    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc]
+                                  initWithTaskType:DCNetworkTaskTypeRequest
+                                  person:nil];
     void (^requestCompletion)(NSData *data,
                               NSURLResponse *response,
                               NSError *error) = ^(NSData *data,
@@ -156,7 +157,8 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 
 - (void)postPerson:(DCPerson *)person
         completion:(void(^)(NSString *error))completion {
-    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypePOST
+    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc]
+                                  initWithTaskType:DCNetworkTaskTypePOST
                                   person:person];
     void (^requestCompletion)(NSData *data,
                               NSURLResponse *response,
@@ -217,8 +219,9 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 
 - (void)deletePerson:(DCPerson *)person
               completion:(void(^)(NSString *error))completion {
-    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc] initWithTaskType:DCNetworkTaskTypeDELETE
-                                                                     person:person];
+    DCPersonEndpoint *endpoint = [[DCPersonEndpoint alloc]
+                                  initWithTaskType:DCNetworkTaskTypeDELETE
+                                  person:person];
     void (^requestCompletion)(NSData *data,
                               NSURLResponse *response,
                               NSError *error) = ^(NSData *data,
@@ -267,7 +270,8 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 
 - (void)postImage:(UIImage *)image
        completion:(void(^)(NSString *imageUrl, NSString *error))completion {
-    DCImageEndpoint *endpoint = [[DCImageEndpoint alloc] initWithImage:image];
+    DCImageEndpoint *endpoint = [[DCImageEndpoint alloc]
+                                 initWithImage:image];
     void (^requestCompletion)(NSData *data,
                               NSURLResponse *response,
                               NSError *error) = ^(NSData *data,

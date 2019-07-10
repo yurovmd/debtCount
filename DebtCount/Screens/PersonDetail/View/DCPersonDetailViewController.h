@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setupUI;
 - (void)setupAddButton;
+- (void)setupRefreshControl;
+- (void)userPulledRefresh;
 
 @end
 
