@@ -12,6 +12,7 @@
 #import "DCPerson.h"
 #import "DCTransaction.h"
 #import "DCPersonEndpoint.h"
+#import "DCTransactionEndpoint.h"
 #import "DCStorageDataProviderProtocol.h"
 #import "DCImageEndpoint.h"
 

@@ -56,7 +56,7 @@
 }
 
 - (void)postPerson:(DCPerson *)person
-        completion:(void(^)(void))completion {
+        completion:(void(^)(NSString *error))completion {
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSError *error = nil;
         DCPersonMO *personManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"DCPersonMO" inManagedObjectContext:context];
@@ -65,13 +65,13 @@
         if ([context save:&error] == NO) {
             NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
         }
-        completion();
+        completion(nil);
     }];
 }
 
 - (void)postTransaction:(DCTransaction *)transaction
               forPersonId:(NSString *)personId
-             completion:(void(^)(void))completion {
+             completion:(void(^)(NSString *error))completion {
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCPersonMO"];
         NSError *error = nil;
@@ -89,7 +89,7 @@
                 if ([context save:&error] == NO) {
                     NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
                 }
-                completion();
+                completion(nil);
             }
         };
     }];
