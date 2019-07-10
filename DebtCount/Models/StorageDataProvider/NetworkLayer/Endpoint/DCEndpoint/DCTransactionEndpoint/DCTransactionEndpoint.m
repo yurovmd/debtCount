@@ -54,7 +54,7 @@
             return [NSString stringWithFormat:@"/people/%@/debts", self.personId];
             break;
         case DCNetworkTaskTypeDELETE:
-            return [NSString stringWithFormat:@"/debts/%@", self.transaction.transactionId];
+            return [NSString stringWithFormat:@"/people/%@/debts/%@", self.personId, self.transaction.transactionId];
             break;
     }
 }

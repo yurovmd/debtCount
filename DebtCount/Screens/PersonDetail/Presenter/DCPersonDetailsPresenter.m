@@ -82,10 +82,14 @@
 }
 
 - (void)userDeleleCellPressedAtIndexPath:(NSIndexPath *)indexPath {
-    void (^completion)(void) = ^(void) {
-        [self.cellModels removeObjectAtIndex:indexPath.row];
-        [self.view removeCellAtIndexPath:indexPath];
-        [self.view sendUpdateMessageToMasterController];
+    void (^completion)(NSString *error) = ^(NSString *error) {
+        if (error) {
+
+        } else {
+            [self.cellModels removeObjectAtIndex:indexPath.row];
+            [self.view removeCellAtIndexPath:indexPath];
+            [self.view sendUpdateMessageToMasterController];
+        }
     };
     [DCStorageDataProvider.shared.manager deleteTransactionForPersonId:self.person.personId
                                                        withTransaction:self.cellModels[indexPath.row]

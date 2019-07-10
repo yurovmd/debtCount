@@ -163,14 +163,19 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                               NSError *error) = ^(NSData *data,
                                                   NSURLResponse *response,
                                                   NSError *error) {
+        if (data == nil) {
+            completion(@"Response returned with no data to decode.");
+            return;
+        }
         id apiResponse = [NSJSONSerialization
                           JSONObjectWithData:data
                           options:0
                           error:NULL];
         if ([apiResponse isKindOfClass:[NSDictionary class]] && ([apiResponse objectForKey:@"error"] != nil)) {
-            NSString *error = [[NSString alloc] initWithString:[apiResponse objectForKey:@"error"]];
+            NSString *error = [[NSString alloc] initWithString:[apiResponse objectForKey:@"reason"]];
             if (error) {
                 completion(error);
+                return;
             }
         }
         completion(nil);
@@ -190,14 +195,19 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                               NSError *error) = ^(NSData *data,
                                                   NSURLResponse *response,
                                                   NSError *error) {
+        if (data == nil) {
+            completion(@"Response returned with no data to decode.");
+            return;
+        }
         id apiResponse = [NSJSONSerialization
                           JSONObjectWithData:data
                           options:0
                           error:NULL];
         if ([apiResponse isKindOfClass:[NSDictionary class]] && ([apiResponse objectForKey:@"error"] != nil)) {
-            NSString *error = [[NSString alloc] initWithString:[apiResponse objectForKey:@"error"]];
+            NSString *error = [[NSString alloc] initWithString:[apiResponse objectForKey:@"reason"]];
             if (error) {
                 completion(error);
+                return;
             }
         }
         completion(nil);
@@ -225,8 +235,34 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
 
 - (void)deleteTransactionForPersonId:(NSString *)personId
                      withTransaction:(DCTransaction *)transaction
-                          completion:(void(^)(void))completion {
-
+                          completion:(void(^)(NSString *error))completion {
+    DCTransactionEndpoint *endpoint = [[DCTransactionEndpoint alloc]
+                                       initWithTaskType:DCNetworkTaskTypeDELETE
+                                       personId:(NSString *)personId
+                                       transaction:transaction];
+    void (^requestCompletion)(NSData *data,
+                              NSURLResponse *response,
+                              NSError *error) = ^(NSData *data,
+                                                  NSURLResponse *response,
+                                                  NSError *error) {
+        if (data == nil) {
+            completion(@"Response returned with no data to decode.");
+            return;
+        }
+        id apiResponse = [NSJSONSerialization
+                          JSONObjectWithData:data
+                          options:0
+                          error:NULL];
+        if ([apiResponse isKindOfClass:[NSDictionary class]] && ([apiResponse objectForKey:@"error"] != nil)) {
+            NSString *error = [[NSString alloc] initWithString:[apiResponse objectForKey:@"reason"]];
+            if (error) {
+                completion(error);
+                return;
+            }
+        }
+        completion(nil);
+    };
+    [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }
 
 - (void)postImage:(UIImage *)image

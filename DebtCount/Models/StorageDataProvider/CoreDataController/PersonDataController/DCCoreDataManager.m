@@ -119,7 +119,7 @@
 
 - (void)deleteTransactionForPersonId:(NSString *)personId
                    withTransaction:(DCTransaction *)transaction
-                          completion:(void(^)(void))completion {
+                          completion:(void(^)(NSString *error))completion {
     [self.persistentContainer performBackgroundTask:^(NSManagedObjectContext * _Nonnull context) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"DCTransactionMO"];
         NSError *error = nil;
@@ -137,7 +137,7 @@
                 }
             }
         }
-        completion();
+        completion(nil);
     }];
 }
 
