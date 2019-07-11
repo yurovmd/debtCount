@@ -26,14 +26,7 @@
 }
 
 - (NSString *)environmentURL {
-    switch (DCNetworkManager.environment) {
-        case DCNetworkEnvironmentTypeProd:
-            return @"https://apiakvelondebts-prod.vapor.cloud";
-            break;
-        case DCNetworkEnvironmentTypeDev:
-            return @"https://apiakvelondebts-dev.vapor.cloud";
-            break;
-    }
+    return API_DEV;
 }
 
 - (NSURL *)baseURL {

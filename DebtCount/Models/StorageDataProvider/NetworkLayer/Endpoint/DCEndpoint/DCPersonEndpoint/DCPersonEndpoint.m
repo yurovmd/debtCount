@@ -27,14 +27,7 @@
 }
 
 - (NSString *)environmentURL {
-    switch (DCNetworkManager.environment) {
-        case DCNetworkEnvironmentTypeProd:
-            return @"https://apiakvelondebts-prod.vapor.cloud";
-            break;
-        case DCNetworkEnvironmentTypeDev:
-            return @"https://apiakvelondebts-dev.vapor.cloud";
-            break;
-    }
+    return API_DEV;
 }
 
 - (NSURL *)baseURL {
@@ -48,15 +41,15 @@
 
 - (DCHTTPMethodType)httpMethod {
     switch (self.taskType) {
-        case DCNetworkTaskTypeRequest:
+        case DCNetworkTaskTypeRequest: {
             return DCHTTPMethodGet;
-            break;
-        case DCNetworkTaskTypePOST:
+        }
+        case DCNetworkTaskTypePOST: {
             return DCHTTPMethodPost;
-            break;
-        case DCNetworkTaskTypeDELETE:
+        }
+        case DCNetworkTaskTypeDELETE: {
             return DCHTTPMethodDelete;
-            break;
+        }
     }
 }
 
@@ -65,20 +58,20 @@
 }
 
 - (NSMutableDictionary *)bodyParameters {
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     switch (self.taskType) {
-        case DCNetworkTaskTypeRequest:
+        case DCNetworkTaskTypeRequest: {
             return nil;
-            break;
-        case DCNetworkTaskTypePOST:
-            [parameters setValue:self.person.name forKey:@"name"];
-            [parameters setValue:self.person.relation forKey:@"relation"];
-            [parameters setValue:self.person.avatarUrl forKey:@"avatar"];
+        }
+        case DCNetworkTaskTypePOST: {
+            NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+            parameters[@"name"] = self.person.name;
+            parameters[@"relation"] = self.person.relation;
+            parameters[@"avatar"] = self.person.avatarUrl;
             return parameters;
-            break;
-        case DCNetworkTaskTypeDELETE:
+        }
+        case DCNetworkTaskTypeDELETE: {
             return nil;
-            break;
+        }
     }
 }
 
@@ -87,18 +80,18 @@
 }
 
 - (NSMutableDictionary *)urlParameters {
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     switch (self.taskType) {
-        case DCNetworkTaskTypeRequest:
+        case DCNetworkTaskTypeRequest: {
             return nil;
-            break;
-        case DCNetworkTaskTypePOST:
+        }
+        case DCNetworkTaskTypePOST: {
             return nil;
-            break;
-        case DCNetworkTaskTypeDELETE:
-            [parameters setValue:self.person.personId forKey:@"personId"];
+        }
+        case DCNetworkTaskTypeDELETE: {
+            NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+            parameters[@"personId"] = self.person.personId;
             return parameters;
-            break;
+        }
     }
 }
 

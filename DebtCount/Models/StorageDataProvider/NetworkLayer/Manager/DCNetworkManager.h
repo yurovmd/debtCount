@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "DCNetworkRouter.h"
-#import "DCNetworkEnvironmentType.h"
 #import "DCPerson.h"
 #import "DCTransaction.h"
 #import "DCPersonEndpoint.h"
@@ -19,10 +18,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DCNetworkManager : NSObject
-
-@property (class) DCNetworkEnvironmentType environment;
-
-@property DCNetworkRouter *router;
 
 @end
 

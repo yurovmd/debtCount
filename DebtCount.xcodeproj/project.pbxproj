@@ -72,7 +72,6 @@
 		FA0D93BC22CB83AF009610D9 /* UIColor+pallete.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+pallete.h"; sourceTree = "<group>"; };
 		FA0D93BD22CB83BB009610D9 /* UIColor+pallete.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+pallete.m"; sourceTree = "<group>"; };
 		FA2FA27422CDEBD100DEF083 /* DCHTTPMethodType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCHTTPMethodType.h; sourceTree = "<group>"; };
-		FA2FA27E22CE1ED000DEF083 /* DCNetworkEnvironmentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetworkEnvironmentType.h; sourceTree = "<group>"; };
 		FA2FA27F22CE1F3E00DEF083 /* DCNetworkTaskType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetworkTaskType.h; sourceTree = "<group>"; };
 		FA2FA28022CE1FE900DEF083 /* DCNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetworkManager.h; sourceTree = "<group>"; };
 		FA2FA28122CE1FE900DEF083 /* DCNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCNetworkManager.m; sourceTree = "<group>"; };
@@ -240,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				FA2FA27422CDEBD100DEF083 /* DCHTTPMethodType.h */,
-				FA2FA27E22CE1ED000DEF083 /* DCNetworkEnvironmentType.h */,
 				FA2FA27F22CE1F3E00DEF083 /* DCNetworkTaskType.h */,
 			);
 			path = Helpers;

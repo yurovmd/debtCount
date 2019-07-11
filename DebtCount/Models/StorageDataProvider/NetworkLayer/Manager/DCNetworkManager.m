@@ -8,6 +8,12 @@
 
 #import "DCNetworkManager.h"
 
+@interface DCNetworkManager ()
+
+@property (nonatomic) DCNetworkRouter *router;
+
+@end
+
 // MARK: - Private Section
 
 @interface DCNetworkManager (Private)
@@ -42,22 +48,19 @@
 
 @implementation DCNetworkManager
 
-static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev;
-
-+ (DCNetworkEnvironmentType)environment {
-    return defaultEnvironment;
-}
-
-+ (void)setEnvironment:(DCNetworkEnvironmentType)environment {
-    defaultEnvironment = environment;
-}
-
-- (instancetype) init {
-    if (self = [super init]) {
-        self.router = [[DCNetworkRouter alloc] init];
+- (DCNetworkRouter *)router {
+    if (!_router) {
+        _router = [[DCNetworkRouter alloc] init];
     }
-    return self;
+    return _router;
 }
+
+//- (instancetype) init {
+//    if (self = [super init]) {
+//        self.router = [[DCNetworkRouter alloc] init];
+//    }
+//    return self;
+//}
 
 @end
 

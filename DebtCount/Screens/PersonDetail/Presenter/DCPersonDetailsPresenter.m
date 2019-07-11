@@ -63,7 +63,6 @@
 @implementation DCPersonDetailsPresenter (ViewInputs)
 
 - (void)viewIsReadyWithPerson:(DCPerson *)person {
-    //self.cellModels = [[NSMutableArray alloc] init];
     self.person = [[DCPerson alloc] init];
     self.person = person;
     [self fetchTransactions];

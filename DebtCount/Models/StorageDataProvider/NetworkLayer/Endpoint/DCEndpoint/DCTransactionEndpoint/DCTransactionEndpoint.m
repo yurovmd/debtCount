@@ -30,14 +30,7 @@
 }
 
 - (NSString *)environmentURL {
-    switch (DCNetworkManager.environment) {
-        case DCNetworkEnvironmentTypeProd:
-            return @"https://apiakvelondebts-prod.vapor.cloud";
-            break;
-        case DCNetworkEnvironmentTypeDev:
-            return @"https://apiakvelondebts-dev.vapor.cloud";
-            break;
-    }
+    return API_DEV;
 }
 
 - (NSURL *)baseURL {
@@ -47,29 +40,30 @@
 
 - (NSString *)path {
     switch (self.taskType) {
-        case DCNetworkTaskTypeRequest:
+        case DCNetworkTaskTypeRequest: {
             return [NSString stringWithFormat:@"/people/%@/debts", self.personId];
-            break;
-        case DCNetworkTaskTypePOST:
+        }
+        case DCNetworkTaskTypePOST: {
             return [NSString stringWithFormat:@"/people/%@/debts", self.personId];
-            break;
-        case DCNetworkTaskTypeDELETE:
-            return [NSString stringWithFormat:@"/people/%@/debts/%@", self.personId, self.transaction.transactionId];
-            break;
+        }
+        case DCNetworkTaskTypeDELETE: {
+            return [NSString stringWithFormat:@"/people/%@/debts/%@", self.personId,
+                    self.transaction.transactionId];
+        }
     }
 }
 
 - (DCHTTPMethodType)httpMethod {
     switch (self.taskType) {
-        case DCNetworkTaskTypeRequest:
+        case DCNetworkTaskTypeRequest: {
             return DCHTTPMethodGet;
-            break;
-        case DCNetworkTaskTypePOST:
+        }
+        case DCNetworkTaskTypePOST: {
             return DCHTTPMethodPost;
-            break;
-        case DCNetworkTaskTypeDELETE:
+        }
+        case DCNetworkTaskTypeDELETE: {
             return DCHTTPMethodDelete;
-            break;
+        }
     }
 }
 
@@ -78,25 +72,24 @@
 }
 
 - (NSMutableDictionary *)bodyParameters {
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     switch (self.taskType) {
-        case DCNetworkTaskTypeRequest:
+        case DCNetworkTaskTypeRequest: {
             return nil;
-            break;
+        }
         case DCNetworkTaskTypePOST: {
-            [parameters setValue:self.transaction.transactionDescription forKey:@"description"];
+            NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+            parameters[@"description"] = self.transaction.transactionDescription;
             NSNumber *amount = @(self.transaction.amount.intValue);
-            [parameters setValue:amount forKey:@"value"];
+            parameters[@"value"] = amount;
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormatForStorage];
             NSString *iso8601String = [dateFormatter stringFromDate:self.transaction.date];
-            [parameters setValue:iso8601String forKey:@"date"];
+            parameters[@"date"] = iso8601String;
             return parameters;
-            break;
         }
-        case DCNetworkTaskTypeDELETE:
+        case DCNetworkTaskTypeDELETE: {
             return nil;
-            break;
+        }
     }
 }
 
@@ -106,18 +99,5 @@
 
 - (NSMutableDictionary *)urlParameters {
     return nil;
-//    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-//    switch (self.taskType) {
-//        case DCNetworkTaskTypeRequest:
-//            return nil;
-//            break;
-//        case DCNetworkTaskTypePOST:
-//            return nil;
-//            break;
-//        case DCNetworkTaskTypeDELETE:
-//            [parameters setValue:self.transaction.transactionId forKey:@"debtId"];
-//            return parameters;
-//            break;
-//    }
 }
 @end

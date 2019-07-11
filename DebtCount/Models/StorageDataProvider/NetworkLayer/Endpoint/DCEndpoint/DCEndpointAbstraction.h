@@ -10,8 +10,12 @@
 #import "DCNetworkTaskType.h"
 #import "DCHTTPMethodType.h"
 
+#define API_DEV @"https://apiakvelondebts-dev.vapor.cloud"
+#define API_PROD @"https://apiakvelondebts-prod.vapor.cloud"
+
 @protocol DCEndpointAbstraction
 
+#warning Accessors (functions)
 @property (nonatomic) NSURL *baseURL;
 @property (nonatomic) NSString *path;
 @property (nonatomic) DCHTTPMethodType httpMethod;
