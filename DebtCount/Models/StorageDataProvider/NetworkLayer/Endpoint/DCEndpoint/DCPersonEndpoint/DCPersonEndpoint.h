@@ -15,15 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DCPersonEndpoint : NSObject <DCEndpointAbstraction>
 
-@property (nonatomic) NSURL *baseURL;
-@property (nonatomic) NSString *path;
-@property (nonatomic) DCHTTPMethodType httpMethod;
-@property (nonatomic) NSDictionary *headers;
-@property (nonatomic) DCNetworkTaskType taskType;
-@property (nonatomic) NSMutableDictionary *bodyParameters;
-@property (nonatomic) NSData *bodyData;
-@property (nonatomic) NSMutableDictionary *urlParameters;
-
 - (instancetype)initWithTaskType:(DCNetworkTaskType)taskType
                           person:(nullable DCPerson *)person;
 

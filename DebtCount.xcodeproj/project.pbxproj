@@ -36,6 +36,7 @@
 		FAAFAC5F22C364FE00C866A8 /* DCStringsLocalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAFAC5E22C364FE00C866A8 /* DCStringsLocalizer.m */; };
 		FAAFAC6422C3753B00C866A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAAFAC6622C3753B00C866A8 /* Localizable.strings */; };
 		FAAFAC6822C3783A00C866A8 /* DCAddPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF8482322BA8955009FDD55 /* DCAddPersonViewController.m */; };
+		FAEF331A22D7785E00198DDA /* NSDateFormatter+customDateFormats.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEF331922D7785E00198DDA /* NSDateFormatter+customDateFormats.m */; };
 		FAF847EA22BA39BF009FDD55 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF847E922BA39BF009FDD55 /* AppDelegate.m */; };
 		FAF847F022BA39BF009FDD55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAF847EE22BA39BF009FDD55 /* Main.storyboard */; };
 		FAF847F322BA39BF009FDD55 /* DebtCount.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAF847F122BA39BF009FDD55 /* DebtCount.xcdatamodeld */; };
@@ -71,7 +72,6 @@
 		FA0D93BC22CB83AF009610D9 /* UIColor+pallete.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+pallete.h"; sourceTree = "<group>"; };
 		FA0D93BD22CB83BB009610D9 /* UIColor+pallete.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+pallete.m"; sourceTree = "<group>"; };
 		FA2FA27422CDEBD100DEF083 /* DCHTTPMethodType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCHTTPMethodType.h; sourceTree = "<group>"; };
-		FA2FA27E22CE1ED000DEF083 /* DCNetworkEnvironmentType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetworkEnvironmentType.h; sourceTree = "<group>"; };
 		FA2FA27F22CE1F3E00DEF083 /* DCNetworkTaskType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetworkTaskType.h; sourceTree = "<group>"; };
 		FA2FA28022CE1FE900DEF083 /* DCNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetworkManager.h; sourceTree = "<group>"; };
 		FA2FA28122CE1FE900DEF083 /* DCNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCNetworkManager.m; sourceTree = "<group>"; };
@@ -124,6 +124,8 @@
 		FAAFAC6522C3753B00C866A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FAAFAC6722C3754200C866A8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FAAFAC6922C3B8FB00C866A8 /* Prefix-DebtCount.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Prefix-DebtCount.pch"; sourceTree = "<group>"; };
+		FAEF331822D7785100198DDA /* NSDateFormatter+customDateFormats.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+customDateFormats.h"; sourceTree = "<group>"; };
+		FAEF331922D7785E00198DDA /* NSDateFormatter+customDateFormats.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+customDateFormats.m"; sourceTree = "<group>"; };
 		FAF847E522BA39BF009FDD55 /* DebtCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebtCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF847E822BA39BF009FDD55 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAF847E922BA39BF009FDD55 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -237,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				FA2FA27422CDEBD100DEF083 /* DCHTTPMethodType.h */,
-				FA2FA27E22CE1ED000DEF083 /* DCNetworkEnvironmentType.h */,
 				FA2FA27F22CE1F3E00DEF083 /* DCNetworkTaskType.h */,
 			);
 			path = Helpers;
@@ -312,6 +313,7 @@
 		FA2FB8EE22C617C80085F894 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FAEF331722D7780600198DDA /* NSDateFormatter */,
 				FA0D93BB22CB8396009610D9 /* UIColor */,
 				FA2FB8EF22C617D90085F894 /* CALayer */,
 			);
@@ -564,6 +566,15 @@
 				FAAFAC5B22C35A7700C866A8 /* NSString+Localized.m */,
 			);
 			path = "NSString+Localized";
+			sourceTree = "<group>";
+		};
+		FAEF331722D7780600198DDA /* NSDateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				FAEF331822D7785100198DDA /* NSDateFormatter+customDateFormats.h */,
+				FAEF331922D7785E00198DDA /* NSDateFormatter+customDateFormats.m */,
+			);
+			path = NSDateFormatter;
 			sourceTree = "<group>";
 		};
 		FAF847DC22BA39BF009FDD55 = {
@@ -857,6 +868,7 @@
 				FAF87E2C22CF6AC90001F46D /* DCPersonMO+CoreDataProperties.m in Sources */,
 				FA97824122C235C400FDCEBB /* DCPersonCellPresenter.m in Sources */,
 				FAF847EA22BA39BF009FDD55 /* AppDelegate.m in Sources */,
+				FAEF331A22D7785E00198DDA /* NSDateFormatter+customDateFormats.m in Sources */,
 				FAF8480322BA5B1C009FDD55 /* DCPersonsListViewController.m in Sources */,
 				FA6E624622C50F08009FDAFA /* DCTransactionCellPresenter.m in Sources */,
 				FA2FB8FA22C62E740085F894 /* DCAddTransactionPresenter.m in Sources */,

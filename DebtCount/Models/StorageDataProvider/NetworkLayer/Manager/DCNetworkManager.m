@@ -8,6 +8,12 @@
 
 #import "DCNetworkManager.h"
 
+@interface DCNetworkManager ()
+
+@property (nonatomic) DCNetworkRouter *router;
+
+@end
+
 // MARK: - Private Section
 
 @interface DCNetworkManager (Private)
@@ -42,22 +48,19 @@
 
 @implementation DCNetworkManager
 
-static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev;
-
-+ (DCNetworkEnvironmentType)environment {
-    return defaultEnvironment;
-}
-
-+ (void)setEnvironment:(DCNetworkEnvironmentType)environment {
-    defaultEnvironment = environment;
-}
-
-- (instancetype) init {
-    if (self = [super init]) {
-        self.router = [[DCNetworkRouter alloc] init];
+- (DCNetworkRouter *)router {
+    if (!_router) {
+        _router = [[DCNetworkRouter alloc] init];
     }
-    return self;
+    return _router;
 }
+
+//- (instancetype) init {
+//    if (self = [super init]) {
+//        self.router = [[DCNetworkRouter alloc] init];
+//    }
+//    return self;
+//}
 
 @end
 
@@ -76,6 +79,7 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                                                   NSError *error) {
         if (error != nil) {
             completion(nil, @"Please check your network connection.");
+            return;
         }
         if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
             NSHTTPURLResponse *httpResponce = (NSHTTPURLResponse *)response;
@@ -95,6 +99,7 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                               error:&serializationError];
             if (error) {
                 completion(nil, @"We could not decode the response.");
+                return;
             }
             NSMutableArray *persons = [[NSMutableArray alloc] init];
             if ([apiResponse isKindOfClass:[NSArray class]]) {
@@ -103,8 +108,9 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                     [persons addObject:person];
                 }
                 completion(persons, nil);
+                return;
             }
-#warning If response is not a type of Array, where is completion?
+            completion(nil, @"Error with detecting response as NSArray");
         }
     };
     [self.router requestForEndpoint:endpoint completion:requestCompletion];
@@ -123,6 +129,7 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                                                   NSError *error) {
         if (error != nil) {
             completion(nil, @"Please check your network connection.");
+            return;
         }
         if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
             NSHTTPURLResponse *httpResponce = (NSHTTPURLResponse *)response;
@@ -142,6 +149,7 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                               error:&serializationError];
             if (error) {
                 completion(nil, @"We could not decode the response.");
+                return;
             }
             NSMutableArray *transactions = [[NSMutableArray alloc] init];
             if ([apiResponse isKindOfClass:[NSArray class]]) {
@@ -150,9 +158,10 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                     [transactions addObject:transaction];
                 }
                 completion(transactions, nil);
+                return;
             }
         }
-#warning Missing completion for 'else' statement
+        completion(nil, @"Error with detecting response as NSArray");
     };
     [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }
@@ -301,12 +310,14 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                               error:&serializationError];
             if (error) {
                 completion(nil, @"We could not decode the response.");
+                return;
             }
             if ([apiResponse isKindOfClass:[NSDictionary class]]) {
                 completion(apiResponse[@"url"], nil);
+                return;
             }
         }
-#warning Missing 'default' completion
+        completion(nil, @"Error with detecting response as NSHTTPResponse");
     };
     [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }

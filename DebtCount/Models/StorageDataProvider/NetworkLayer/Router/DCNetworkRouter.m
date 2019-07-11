@@ -38,11 +38,11 @@
 - (NSURLRequest *)buildRequestFrom:(id<DCEndpointAbstraction>)endpoint {
 
     NSMutableURLRequest *request =
-    [[NSMutableURLRequest  alloc] initWithURL:[endpoint.baseURL URLByAppendingPathComponent:endpoint.path]
+    [[NSMutableURLRequest  alloc] initWithURL:[endpoint.getBaseURL URLByAppendingPathComponent:endpoint.getPath]
                                   cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                               timeoutInterval:10.0];
 
-    switch (endpoint.httpMethod) {
+    switch (endpoint.getHttpMethod) {
         case DCHTTPMethodGet:
             request.HTTPMethod = @"GET";
             break;
@@ -54,22 +54,22 @@
             break;
     }
 
-    switch (endpoint.taskType) {
+    switch (endpoint.getTaskType) {
         case DCNetworkTaskTypeRequest:
             [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             break;
         case DCNetworkTaskTypePOST:
-            if (endpoint.bodyParameters != nil) {
+            if (endpoint.getBodyParameters != nil) {
                 request = [self configureParametersForRequest:request
-                                               withBodyParameters:endpoint.bodyParameters];
-            } else if (endpoint.bodyData != nil) {
+                                               withBodyParameters:endpoint.getBodyParameters];
+            } else if (endpoint.getBodyData != nil) {
                 request = [self configureBodyOfRequest:request
-                                              withData:endpoint.bodyData];
+                                              withData:endpoint.getBodyData];
             }
             break;
         case DCNetworkTaskTypeDELETE:
             request = [self configureParametersForRequest:request
-                                        withURLParameters:endpoint.urlParameters];
+                                        withURLParameters:endpoint.getUrlParameters];
             break;
     }
 

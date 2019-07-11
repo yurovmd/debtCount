@@ -42,8 +42,19 @@
     DCValidator *validator = [[DCValidator alloc] init];
     self.presenter = [[DCAddTransactionPresenter alloc] initWithView:self validator:validator];
     [self setupUI];
-    [self setupNotifications];
     [self.presenter viewIsReady];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setupNotifications];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.isBeingDismissed) {
+        [NSNotificationCenter.defaultCenter removeObserver:self];
+    }
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
@@ -71,7 +82,6 @@
 }
 
 
-
 - (void)setupUI {
     [self.okButton setTitleColor:UIColor.lightCyan forState:normal];
     [self.cancelButton setTitleColor:UIColor.fancyRed forState:normal];
@@ -82,7 +92,6 @@
     self.datePickerView.datePickerMode = UIDatePickerModeDate;
 }
 
-#warning Remove observers in dealloc method
 - (void)setupNotifications {
     if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad ) {
         [[NSNotificationCenter defaultCenter] addObserver:self

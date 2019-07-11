@@ -13,6 +13,7 @@
 @property (nonatomic) NSString *environmentURL;
 @property DCTransaction *transaction;
 @property NSString *personId;
+@property (nonatomic) DCNetworkTaskType taskType;
 
 @end
 
@@ -30,94 +31,78 @@
 }
 
 - (NSString *)environmentURL {
-    switch (DCNetworkManager.environment) {
-        case DCNetworkEnvironmentTypeProd:
-            return @"https://apiakvelondebts-prod.vapor.cloud";
-            break;
-        case DCNetworkEnvironmentTypeDev:
-            return @"https://apiakvelondebts-dev.vapor.cloud";
-            break;
-    }
+    return API_DEV;
 }
 
-- (NSURL *)baseURL {
+- (NSURL *)getBaseURL {
     NSURL *url = [[NSURL alloc] initWithString:self.environmentURL];
     return url;
 }
 
-- (NSString *)path {
+- (NSString *)getPath {
     switch (self.taskType) {
-        case DCNetworkTaskTypeRequest:
+        case DCNetworkTaskTypeRequest: {
             return [NSString stringWithFormat:@"/people/%@/debts", self.personId];
-            break;
-        case DCNetworkTaskTypePOST:
-            return [NSString stringWithFormat:@"/people/%@/debts", self.personId];
-            break;
-        case DCNetworkTaskTypeDELETE:
-            return [NSString stringWithFormat:@"/people/%@/debts/%@", self.personId, self.transaction.transactionId];
-            break;
-    }
-}
-
-- (DCHTTPMethodType)httpMethod {
-    switch (self.taskType) {
-        case DCNetworkTaskTypeRequest:
-            return DCHTTPMethodGet;
-            break;
-        case DCNetworkTaskTypePOST:
-            return DCHTTPMethodPost;
-            break;
-        case DCNetworkTaskTypeDELETE:
-            return DCHTTPMethodDelete;
-            break;
-    }
-}
-
-- (NSDictionary *)headers {
-    return nil;
-}
-
-- (NSMutableDictionary *)bodyParameters {
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    switch (self.taskType) {
-        case DCNetworkTaskTypeRequest:
-            return nil;
-            break;
-        case DCNetworkTaskTypePOST: {
-            [parameters setValue:self.transaction.transactionDescription forKey:@"description"];
-            NSNumber *amount = @(self.transaction.amount.intValue);
-            [parameters setValue:amount forKey:@"value"];
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
-            NSString *iso8601String = [dateFormatter stringFromDate:self.transaction.date];
-            [parameters setValue:iso8601String forKey:@"date"];
-            return parameters;
-            break;
         }
-        case DCNetworkTaskTypeDELETE:
-            return nil;
-            break;
+        case DCNetworkTaskTypePOST: {
+            return [NSString stringWithFormat:@"/people/%@/debts", self.personId];
+        }
+        case DCNetworkTaskTypeDELETE: {
+            return [NSString stringWithFormat:@"/people/%@/debts/%@", self.personId,
+                    self.transaction.transactionId];
+        }
     }
 }
 
-- (NSData *)bodyData {
+- (DCHTTPMethodType)getHttpMethod {
+    switch (self.taskType) {
+        case DCNetworkTaskTypeRequest: {
+            return DCHTTPMethodGet;
+        }
+        case DCNetworkTaskTypePOST: {
+            return DCHTTPMethodPost;
+        }
+        case DCNetworkTaskTypeDELETE: {
+            return DCHTTPMethodDelete;
+        }
+    }
+}
+
+- (DCNetworkTaskType)getTaskType {
+    return self.taskType;
+}
+
+- (NSDictionary *)getHeaders {
     return nil;
 }
 
-- (NSMutableDictionary *)urlParameters {
+- (NSMutableDictionary *)getBodyParameters {
+    switch (self.taskType) {
+        case DCNetworkTaskTypeRequest: {
+            return nil;
+        }
+        case DCNetworkTaskTypePOST: {
+            NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+            parameters[@"description"] = self.transaction.transactionDescription;
+            NSNumber *amount = @(self.transaction.amount.intValue);
+            parameters[@"value"] = amount;
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormatForStorage];
+            NSString *iso8601String = [dateFormatter stringFromDate:self.transaction.date];
+            parameters[@"date"] = iso8601String;
+            return parameters;
+        }
+        case DCNetworkTaskTypeDELETE: {
+            return nil;
+        }
+    }
+}
+
+- (NSData *)getBodyData {
     return nil;
-//    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-//    switch (self.taskType) {
-//        case DCNetworkTaskTypeRequest:
-//            return nil;
-//            break;
-//        case DCNetworkTaskTypePOST:
-//            return nil;
-//            break;
-//        case DCNetworkTaskTypeDELETE:
-//            [parameters setValue:self.transaction.transactionId forKey:@"debtId"];
-//            return parameters;
-//            break;
-//    }
+}
+
+- (NSMutableDictionary *)getUrlParameters {
+    return nil;
 }
 @end

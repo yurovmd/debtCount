@@ -12,6 +12,7 @@
 
 @property (nonatomic) NSString *environmentURL;
 @property UIImage *image;
+@property (nonatomic) DCNetworkTaskType taskType;
 
 @end
 
@@ -26,43 +27,40 @@
 }
 
 - (NSString *)environmentURL {
-    switch (DCNetworkManager.environment) {
-        case DCNetworkEnvironmentTypeProd:
-            return @"https://apiakvelondebts-prod.vapor.cloud";
-            break;
-        case DCNetworkEnvironmentTypeDev:
-            return @"https://apiakvelondebts-dev.vapor.cloud";
-            break;
-    }
+    return API_DEV;
 }
 
-- (NSURL *)baseURL {
+- (NSURL *)getBaseURL {
     NSURL *url = [[NSURL alloc] initWithString:self.environmentURL];
     return url;
 }
 
-- (NSString *)path {
+- (NSString *)getPath {
     return @"/image";
 }
 
-- (DCHTTPMethodType)httpMethod {
+- (DCHTTPMethodType)getHttpMethod {
     return DCHTTPMethodPost;
 }
 
-- (NSDictionary *)headers {
+- (DCNetworkTaskType)getTaskType {
+    return self.taskType;
+}
+
+- (NSDictionary *)getHeaders {
     return nil;
 }
 
-- (NSMutableDictionary *)bodyParameters {
+- (NSMutableDictionary *)getBodyParameters {
     return nil;
 }
 
-- (NSData *)bodyData {
+- (NSData *)getBodyData {
     NSData *imageData = UIImagePNGRepresentation(self.image);
     return imageData;
 }
 
-- (NSMutableDictionary *)urlParameters {
+- (NSMutableDictionary *)getUrlParameters {
     return nil;
 }
 

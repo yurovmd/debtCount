@@ -50,6 +50,18 @@
     [self.presenter viewIsReady];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setupNotifications];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.isBeingDismissed) {
+        [NSNotificationCenter.defaultCenter removeObserver:self];
+    }
+}
+
 - (IBAction)addPictureButtonPressed:(id)sender {
     [self.presenter changePicturePressed];
 }
@@ -81,12 +93,10 @@
     [self.cancelButton setTitleColor:UIColor.fancyRed forState:normal];
     self.view.backgroundColor = UIColor.iceBlue;
     [self.addPictureButton.layer applyCornersValue:(self.addPictureButton.bounds.size.width / 2)];
-    [self setupNotifications];
     [self setupLabels];
 
 }
 
-#warning Should remove observer on dealloc
 - (void)setupNotifications {
     if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad ) {
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -140,20 +150,16 @@
     [self openImagePickerController];
 }
 
-#warning For all 'forState' statements use UIControlState enum value (ex. UIControlStateNormal)
 - (void)setAvatar:(UIImage *)avatarImage {
-    [self.addPictureButton setImage:avatarImage forState:normal];
+    [self.addPictureButton setImage:avatarImage forState:UIControlStateNormal];
 }
 
-#warning Why not use setEnabled method forbutton?
 - (void)disableOkButton {
-    [self.okButton setUserInteractionEnabled:NO];
-    [self.okButton setAlpha:0.2];
+    [self.okButton setEnabled:NO];
 }
 
 - (void)enableOkButton {
-    [self.okButton setUserInteractionEnabled:YES];
-    [self.okButton setAlpha:1];
+    [self.okButton setEnabled:YES];
 }
 
 - (void)startAvatarLoadingActivityView {
@@ -211,8 +217,7 @@
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     controller.delegate = self;
     controller.allowsEditing = YES;
-#warning for blocks it's better code style to use nil instead of NULL
-    [self presentViewController:controller animated:YES completion:NULL];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -220,7 +225,7 @@
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     [self.presenter pictureTaken:chosenImage];
 
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 
 }
 
