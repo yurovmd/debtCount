@@ -20,13 +20,12 @@
     [self setupUI];
 }
 
-#warning Colors not styleguided
 - (void)changeStyleToError {
-    [self.layer setBorderColor:UIColor.redColor.CGColor];
+    [self.layer setBorderColor:UIColor.justRed.CGColor];
 }
 
 - (void)changeStyleToValid {
-    [self.layer setBorderColor:UIColor.blueColor.CGColor];
+    [self.layer setBorderColor:UIColor.justBlue.CGColor];
 }
 
 @end

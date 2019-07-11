@@ -15,5 +15,7 @@
 @property (class, nonatomic, readonly) UIColor *fancyRed;
 @property (class, nonatomic, readonly) UIColor *lightCyan;
 @property (class, nonatomic, readonly) UIColor *iceBlue;
+@property (class, nonatomic, readonly) UIColor *justRed;
+@property (class, nonatomic, readonly) UIColor *justBlue;
 
 @end

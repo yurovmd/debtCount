@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithView:(DCPersonDetailViewController *)view;
 
 @property (weak) DCPersonDetailViewController *view;
-@property NSMutableArray *cellModels;
+@property (nonatomic) NSMutableArray *cellModels;
 
 @end
 

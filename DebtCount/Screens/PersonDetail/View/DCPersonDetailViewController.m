@@ -40,10 +40,11 @@
 
 @implementation DCPersonDetailViewController (Presenter)
 
-#warning It's always a good idea to check whether refreshControl isRefreshing before calling endRefreshing. Otherwise it may cause a bug later wher attempting to perform p2r
 - (void)updateTableView {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.detailsTableView.refreshControl endRefreshing];
+        if (self.detailsTableView.refreshControl.isRefreshing) {
+            [self.detailsTableView.refreshControl endRefreshing];
+        }
         [self.detailsTableView beginUpdates];
         [self.detailsTableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:YES];
         [self.detailsTableView endUpdates];

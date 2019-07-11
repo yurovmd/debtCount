@@ -88,7 +88,7 @@
             NSNumber *amount = @(self.transaction.amount.intValue);
             [parameters setValue:amount forKey:@"value"];
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+            [dateFormatter setDateFormatForStorage];
             NSString *iso8601String = [dateFormatter stringFromDate:self.transaction.date];
             [parameters setValue:iso8601String forKey:@"date"];
             return parameters;
