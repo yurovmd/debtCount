@@ -104,6 +104,7 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                 }
                 completion(persons, nil);
             }
+#warning If response is not a type of Array, where is completion?
         }
     };
     [self.router requestForEndpoint:endpoint completion:requestCompletion];
@@ -151,6 +152,7 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                 completion(transactions, nil);
             }
         }
+#warning Missing completion for 'else' statement
     };
     [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }
@@ -173,6 +175,7 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                           JSONObjectWithData:data
                           options:0
                           error:NULL];
+        
         if ([apiResponse isKindOfClass:[NSDictionary class]] && ([apiResponse objectForKey:@"error"] != nil)) {
             NSString *error = [[NSString alloc] initWithString:[apiResponse objectForKey:@"reason"]];
             if (error) {
@@ -303,6 +306,7 @@ static DCNetworkEnvironmentType defaultEnvironment = DCNetworkEnvironmentTypeDev
                 completion(apiResponse[@"url"], nil);
             }
         }
+#warning Missing 'default' completion
     };
     [self.router requestForEndpoint:endpoint completion:requestCompletion];
 }

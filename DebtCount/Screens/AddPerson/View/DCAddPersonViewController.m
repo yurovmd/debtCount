@@ -86,6 +86,7 @@
 
 }
 
+#warning Should remove observer on dealloc
 - (void)setupNotifications {
     if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad ) {
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -139,10 +140,12 @@
     [self openImagePickerController];
 }
 
+#warning For all 'forState' statements use UIControlState enum value (ex. UIControlStateNormal)
 - (void)setAvatar:(UIImage *)avatarImage {
     [self.addPictureButton setImage:avatarImage forState:normal];
 }
 
+#warning Why not use setEnabled method forbutton?
 - (void)disableOkButton {
     [self.okButton setUserInteractionEnabled:NO];
     [self.okButton setAlpha:0.2];
@@ -208,7 +211,7 @@
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     controller.delegate = self;
     controller.allowsEditing = YES;
-
+#warning for blocks it's better code style to use nil instead of NULL
     [self presentViewController:controller animated:YES completion:NULL];
 }
 

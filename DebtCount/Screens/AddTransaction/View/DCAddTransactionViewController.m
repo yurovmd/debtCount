@@ -82,6 +82,7 @@
     self.datePickerView.datePickerMode = UIDatePickerModeDate;
 }
 
+#warning Remove observers in dealloc method
 - (void)setupNotifications {
     if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad ) {
         [[NSNotificationCenter defaultCenter] addObserver:self

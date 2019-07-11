@@ -18,6 +18,7 @@
         integer = dictionary[@"value"];
         self.amount = [[NSDecimalNumber alloc] initWithInteger:integer.integerValue];
         self.transactionDescription = dictionary[@"description"];
+#warning There are couple of places where we use this typeof dataFormatter. Consider moving it outside and reuse
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
         self.date = [dateFormatter dateFromString:dictionary[@"date"]];

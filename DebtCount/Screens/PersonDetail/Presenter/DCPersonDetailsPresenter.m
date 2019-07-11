@@ -55,6 +55,13 @@
 
 @implementation DCPersonDetailsPresenter (ViewInputs)
 
+#warning To be more sure about cellModels array being initialized, it's better to override getter that would return initialized array if it's not existing yet like that:
+/*
+- (NSMutableArray *)cellModels {
+    return _cellModels ? _cellModels : [NSMutableArray array];
+}
+*/
+
 - (void)viewIsReadyWithPerson:(DCPerson *)person {
     self.cellModels = [[NSMutableArray alloc] init];
     self.person = [[DCPerson alloc] init];
