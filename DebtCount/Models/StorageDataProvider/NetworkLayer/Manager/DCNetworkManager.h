@@ -20,8 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DCNetworkManager : NSObject
 
+#warning Remove it to macros
 @property (class) DCNetworkEnvironmentType environment;
 
+#warning move to .m file
 @property DCNetworkRouter *router;
 
 @end

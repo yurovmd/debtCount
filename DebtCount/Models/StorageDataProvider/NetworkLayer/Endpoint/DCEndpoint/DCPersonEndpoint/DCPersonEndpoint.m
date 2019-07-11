@@ -26,13 +26,14 @@
     return self;
 }
 
+#warning API_PROD in macros as API_DEV
 - (NSString *)environmentURL {
     switch (DCNetworkManager.environment) {
         case DCNetworkEnvironmentTypeProd:
             return @"https://apiakvelondebts-prod.vapor.cloud";
             break;
         case DCNetworkEnvironmentTypeDev:
-            return @"https://apiakvelondebts-dev.vapor.cloud";
+            return API_DEV;
             break;
     }
 }
@@ -65,16 +66,19 @@
 }
 
 - (NSMutableDictionary *)bodyParameters {
+#warning return to end
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     switch (self.taskType) {
         case DCNetworkTaskTypeRequest:
             return nil;
             break;
         case DCNetworkTaskTypePOST:
+#warning Better code style is parameters[@"name"] = self.person.name
             [parameters setValue:self.person.name forKey:@"name"];
             [parameters setValue:self.person.relation forKey:@"relation"];
             [parameters setValue:self.person.avatarUrl forKey:@"avatar"];
             return parameters;
+#warning break not needed
             break;
         case DCNetworkTaskTypeDELETE:
             return nil;
