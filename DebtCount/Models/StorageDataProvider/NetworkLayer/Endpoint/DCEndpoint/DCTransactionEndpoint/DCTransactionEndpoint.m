@@ -13,6 +13,7 @@
 @property (nonatomic) NSString *environmentURL;
 @property DCTransaction *transaction;
 @property NSString *personId;
+@property (nonatomic) DCNetworkTaskType taskType;
 
 @end
 
@@ -33,12 +34,12 @@
     return API_DEV;
 }
 
-- (NSURL *)baseURL {
+- (NSURL *)getBaseURL {
     NSURL *url = [[NSURL alloc] initWithString:self.environmentURL];
     return url;
 }
 
-- (NSString *)path {
+- (NSString *)getPath {
     switch (self.taskType) {
         case DCNetworkTaskTypeRequest: {
             return [NSString stringWithFormat:@"/people/%@/debts", self.personId];
@@ -53,7 +54,7 @@
     }
 }
 
-- (DCHTTPMethodType)httpMethod {
+- (DCHTTPMethodType)getHttpMethod {
     switch (self.taskType) {
         case DCNetworkTaskTypeRequest: {
             return DCHTTPMethodGet;
@@ -67,11 +68,15 @@
     }
 }
 
-- (NSDictionary *)headers {
+- (DCNetworkTaskType)getTaskType {
+    return self.taskType;
+}
+
+- (NSDictionary *)getHeaders {
     return nil;
 }
 
-- (NSMutableDictionary *)bodyParameters {
+- (NSMutableDictionary *)getBodyParameters {
     switch (self.taskType) {
         case DCNetworkTaskTypeRequest: {
             return nil;
@@ -93,11 +98,11 @@
     }
 }
 
-- (NSData *)bodyData {
+- (NSData *)getBodyData {
     return nil;
 }
 
-- (NSMutableDictionary *)urlParameters {
+- (NSMutableDictionary *)getUrlParameters {
     return nil;
 }
 @end

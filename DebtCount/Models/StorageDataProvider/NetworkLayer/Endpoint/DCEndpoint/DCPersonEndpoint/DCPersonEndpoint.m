@@ -12,6 +12,7 @@
 
 @property (nonatomic) NSString *environmentURL;
 @property DCPerson *person;
+@property (nonatomic) DCNetworkTaskType taskType;
 
 @end
 
@@ -30,16 +31,16 @@
     return API_DEV;
 }
 
-- (NSURL *)baseURL {
+- (NSURL *)getBaseURL {
     NSURL *url = [[NSURL alloc] initWithString:self.environmentURL];
     return url;
 }
 
-- (NSString *)path {
+- (NSString *)getPath {
     return @"/people";
 }
 
-- (DCHTTPMethodType)httpMethod {
+- (DCHTTPMethodType)getHttpMethod {
     switch (self.taskType) {
         case DCNetworkTaskTypeRequest: {
             return DCHTTPMethodGet;
@@ -53,11 +54,15 @@
     }
 }
 
-- (NSDictionary *)headers {
+- (DCNetworkTaskType)getTaskType {
+    return self.taskType;
+}
+
+- (NSDictionary *)getHeaders {
     return nil;
 }
 
-- (NSMutableDictionary *)bodyParameters {
+- (NSMutableDictionary *)getBodyParameters {
     switch (self.taskType) {
         case DCNetworkTaskTypeRequest: {
             return nil;
@@ -75,11 +80,11 @@
     }
 }
 
-- (NSData *)bodyData {
+- (NSData *)getBodyData {
     return nil;
 }
 
-- (NSMutableDictionary *)urlParameters {
+- (NSMutableDictionary *)getUrlParameters {
     switch (self.taskType) {
         case DCNetworkTaskTypeRequest: {
             return nil;

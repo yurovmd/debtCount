@@ -15,14 +15,13 @@
 
 @protocol DCEndpointAbstraction
 
-#warning Accessors (functions)
-@property (nonatomic) NSURL *baseURL;
-@property (nonatomic) NSString *path;
-@property (nonatomic) DCHTTPMethodType httpMethod;
-@property (nonatomic) NSDictionary *headers;
-@property (nonatomic) DCNetworkTaskType taskType;
-@property (nonatomic) NSMutableDictionary *bodyParameters;
-@property (nonatomic) NSData *bodyData;
-@property (nonatomic) NSMutableDictionary *urlParameters;
+- (NSURL *)getBaseURL;
+- (NSString *)getPath;
+- (DCHTTPMethodType)getHttpMethod;
+- (DCNetworkTaskType)getTaskType;
+- (NSDictionary *)getHeaders;
+- (NSMutableDictionary *)getBodyParameters;
+- (NSData *)getBodyData;
+- (NSMutableDictionary *)getUrlParameters;
 
 @end
